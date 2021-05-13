@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geopro/helpers/validators.dart';
 import 'package:geopro/services/auth.dart';
 import 'package:provider/provider.dart';
 
@@ -50,7 +51,14 @@ class _RegisterFormState extends State<RegisterForm> {
                 labelText: 'Email',
                 border: OutlineInputBorder(),
               ),
-              validator: (value) => value.isEmpty ? 'Please enter email' : null,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter email';
+                } else if (!isEmail(value)) {
+                  return 'Provide a valid email';
+                }
+                return null;
+              },
             ),
             SizedBox(
               height: 16.0,
