@@ -10,6 +10,9 @@ class RegisterForm extends StatefulWidget {
 
 class _RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
+  bool _autovalidate = false;
+
+  Map<String, dynamic> errors = {};
 
   final TextEditingController _email = TextEditingController();
   final TextEditingController _username = TextEditingController();
@@ -31,6 +34,7 @@ class _RegisterFormState extends State<RegisterForm> {
 
     return Form(
         key: _formKey,
+        autovalidate: _autovalidate,
         child: Column(
           children: <Widget>[
             TextFormField(
@@ -40,6 +44,19 @@ class _RegisterFormState extends State<RegisterForm> {
                 labelText: 'Username',
                 border: OutlineInputBorder(),
               ),
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter username';
+                } else if (value.length < 3) {
+                  return 'Username allows a minimum of 3 characters.';
+                } else if (errors.containsKey('username')) {
+                  return errors['username'].reduce((v, e) => v + '\n' + e);
+                }
+                return null;
+              },
+              onChanged: (value) {
+                errors.remove('username');
+              },
             ),
             SizedBox(
               height: 16.0,
@@ -56,8 +73,13 @@ class _RegisterFormState extends State<RegisterForm> {
                   return 'Please enter email';
                 } else if (!isEmail(value)) {
                   return 'Provide a valid email';
+                } else if (errors.containsKey('email')) {
+                  return errors['email'].reduce((v, e) => v + '\n' + e);
                 }
                 return null;
+              },
+              onChanged: (value) {
+                errors.remove('email');
               },
             ),
             SizedBox(
@@ -70,8 +92,19 @@ class _RegisterFormState extends State<RegisterForm> {
                 border: OutlineInputBorder(),
               ),
               obscureText: true,
-              validator: (value) =>
-                  value.isEmpty ? 'Please enter password' : null,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please enter password';
+                } else if (value.length < 8) {
+                  return 'Password cannot be less than 8 Characters';
+                } else if (errors.containsKey('password')) {
+                  return errors['password'].reduce((v, e) => v + '\n' + e);
+                }
+                return null;
+              },
+              onChanged: (value) {
+                errors.remove('password');
+              },
             ),
             SizedBox(
               height: 16.0,
@@ -94,6 +127,8 @@ class _RegisterFormState extends State<RegisterForm> {
             FlatButton(
               onPressed: () {
                 if (_formKey.currentState.validate()) {
+                  _formKey.currentState.save();
+
                   final Future<Map<String, dynamic>> successMessage = auth
                       .register(_email.text, _username.text, _password.text);
 
@@ -101,9 +136,20 @@ class _RegisterFormState extends State<RegisterForm> {
                     if (response['status']) {
                       Navigator.pushReplacementNamed(context, '/welcome');
                     } else {
-                      Scaffold.of(context).showSnackBar(SnackBar(
-                          content: Text(response['message'].toString())));
+                      Map<String, dynamic> responseErrors = {};
+                      var errorFields = response['message'].keys;
+                      for (var errorField in errorFields) {
+                        responseErrors.putIfAbsent(
+                            errorField, () => response['message'][errorField]);
+                      }
+                      setState(() {
+                        errors = responseErrors;
+                      });
                     }
+                  });
+                } else {
+                  setState(() {
+                    _autovalidate = true;
                   });
                 }
               },

@@ -9,6 +9,8 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
+  bool _autovalidate = false;
+  Map<String, dynamic> errors = {};
 
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
@@ -26,6 +28,7 @@ class _LoginFormState extends State<LoginForm> {
 
     return Form(
       key: _formKey,
+      autovalidate: _autovalidate,
       child: Column(
         children: <Widget>[
           TextFormField(
@@ -71,6 +74,10 @@ class _LoginFormState extends State<LoginForm> {
                                   .toString()),
                               backgroundColor: Colors.red));
                         }
+                      });
+                    } else {
+                      setState(() {
+                        _autovalidate = true;
                       });
                     }
                   },
