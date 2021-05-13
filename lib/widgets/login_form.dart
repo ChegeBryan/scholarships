@@ -66,7 +66,10 @@ class _LoginFormState extends State<LoginForm> {
                           Navigator.pushReplacementNamed(context, '/welcome');
                         } else {
                           Scaffold.of(context).showSnackBar(SnackBar(
-                              content: Text(response['message'].toString())));
+                              content: Text(response['message']
+                                      ['non_field_errors'][0]
+                                  .toString()),
+                              backgroundColor: Colors.red));
                         }
                       });
                     }
