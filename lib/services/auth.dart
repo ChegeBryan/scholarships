@@ -5,7 +5,7 @@ import 'package:geopro/models/user.dart';
 import 'package:geopro/services/api.dart';
 import 'package:http/http.dart';
 
-enum Status { LoggedIn, NotLoggedIn }
+enum Status { LoggedIn, NotLoggedIn, Authenticating }
 
 class AuthProvider with ChangeNotifier {
   // track authentication status
@@ -25,11 +25,15 @@ class AuthProvider with ChangeNotifier {
       'password': password,
     };
 
+    _loggedInStatus = Status.Authenticating;
+    notifyListeners();
+
     Response res = await post(
       ApiUrl.login,
       body: jsonEncode(data),
       headers: {'Content-Type': 'application/json'},
     );
+
     if (res.statusCode == 200) {
       final Map<String, dynamic> responseData = jsonDecode(res.body);
 

@@ -53,28 +53,30 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(
             height: 16.0,
           ),
-          FlatButton(
-            onPressed: () {
-              if (_formKey.currentState.validate()) {
-                final Future<Map<String, dynamic>> successMessage =
-                    auth.login(_email.text, _password.text);
+          auth.loggedInStatus == Status.Authenticating
+              ? CircularProgressIndicator()
+              : FlatButton(
+                  onPressed: () {
+                    if (_formKey.currentState.validate()) {
+                      final Future<Map<String, dynamic>> successMessage =
+                          auth.login(_email.text, _password.text);
 
-                successMessage.then((response) {
-                  if (response['status']) {
-                    Navigator.pushReplacementNamed(context, '/welcome');
-                  } else {
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                        content: Text(response['message'].toString())));
-                  }
-                });
-              }
-            },
-            child: Text(
-              "Sign in",
-              style: TextStyle(color: Colors.white),
-            ),
-            color: Colors.blue,
-          ),
+                      successMessage.then((response) {
+                        if (response['status']) {
+                          Navigator.pushReplacementNamed(context, '/welcome');
+                        } else {
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text(response['message'].toString())));
+                        }
+                      });
+                    }
+                  },
+                  child: Text(
+                    "Sign in",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  color: Colors.blue,
+                ),
         ],
       ),
     );
