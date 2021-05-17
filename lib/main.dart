@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geopro/login.dart';
 import 'package:geopro/register.dart';
 import 'package:geopro/services/auth.dart';
+import 'package:geopro/services/sponsorship.dart';
 import 'package:geopro/welcome.dart';
 import 'package:provider/provider.dart';
 
@@ -11,8 +12,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => AuthProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => AuthProvider(),
+        ),
+        ChangeNotifierProxyProvider<AuthProvider, SponsorshipProvider>(
+          update: (_, auth, __) => SponsorshipProvider(auth),
+          create: (context) => SponsorshipProvider(null),
+        ),
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
