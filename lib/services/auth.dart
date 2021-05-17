@@ -12,10 +12,12 @@ class AuthProvider with ChangeNotifier {
   Status _loggedInStatus = Status.NotLoggedIn;
 
   String _userEmail;
+  String _token;
 
   Status get loggedInStatus => _loggedInStatus;
 
   String get userEmail => _userEmail;
+  String get token => _token;
 
   Future<Map<String, dynamic>> login(String email, String password) async {
     var result;
@@ -41,6 +43,7 @@ class AuthProvider with ChangeNotifier {
 
       _loggedInStatus = Status.LoggedIn;
       _userEmail = authUser.email;
+      _token = authUser.token;
       notifyListeners();
 
       result = {'status': true, 'message': 'Successful'};
@@ -77,6 +80,7 @@ class AuthProvider with ChangeNotifier {
 
       _loggedInStatus = Status.LoggedIn;
       _userEmail = authUser.email;
+      _token = authUser.token;
       notifyListeners();
 
       result = {'status': true, 'message': 'Successful', 'user': authUser};
