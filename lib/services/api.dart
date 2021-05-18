@@ -7,4 +7,5 @@ class ApiUrl {
 
   // sponsorship URLs
   static const String getSponsorships = baseUrl + '/sponsorship/';
+  static const String apply = baseUrl + '/apply/';
 }
