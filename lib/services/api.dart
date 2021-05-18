@@ -6,6 +6,8 @@ class ApiUrl {
   static const String register = baseUrl + '/register/';
 
   // sponsorship URLs
-  static const String getSponsorships = baseUrl + '/sponsorship/';
+  static const String sponsorship = baseUrl + '/sponsorship/';
+
+  // sponsorship application
   static const String apply = baseUrl + '/apply/';
 }
