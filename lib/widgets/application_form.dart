@@ -47,6 +47,8 @@ class _ApplicationFormState extends State<ApplicationForm> {
 
   @override
   Widget build(BuildContext context) {
+    ApplicationProvider application = Provider.of<ApplicationProvider>(context);
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16.0),
       child: Form(
@@ -338,6 +340,22 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
+                    Future<Map<String, dynamic>> response =
+                        application.addApplication(
+                            sponsorshipId: _sponsorshipId,
+                            firstName: _firstName.text,
+                            lastName: _lastName.text,
+                            country: _country.text,
+                            city: _city.text,
+                            postalCode: _postalCode.text,
+                            mobile: _mobile.text,
+                            schoolName: _schoolName.text,
+                            degree: _degree.text,
+                            start: _start.text,
+                            to: _to.text,
+                            birthCertificate: _birthCertificate.text,
+                            nationalId: _nationalId.text,
+                            coverLetter: _coverLetter.text);
                   } else {
                     setState(() {
                       _autovalidate = true;
