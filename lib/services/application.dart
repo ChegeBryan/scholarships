@@ -30,6 +30,8 @@ class ApplicationProvider with ChangeNotifier {
     String birthCertificate,
     String nationalId,
   }) async {
+    var result;
+
     //serialize to JSON
     final Map<String, dynamic> data = Application(
       firstName: firstName,
@@ -56,9 +58,16 @@ class ApplicationProvider with ChangeNotifier {
 
     if (response.statusCode == 201) {
       Map<String, dynamic> application = jsonDecode(response.body);
-      return application;
+      result = {'status': true, 'message': 'success', 'data': application};
     } else {
+      result = {
+        'status': false,
+        'message': 'failed',
+        'errors': jsonDecode(response.body)
+      };
       print(response.body);
     }
+
+    return result;
   }
 }
