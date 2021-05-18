@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geopro/services/auth.dart';
 import 'package:provider/provider.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -10,35 +9,58 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
-    AuthProvider auth = Provider.of<AuthProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('GeoPro'),
+        title: Text('Welcome'),
       ),
       body: Container(
-        height: MediaQuery.of(context).size.height,
+        // height: MediaQuery.of(context).size.height,
         padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(auth.userEmail),
-              FlatButton(
-                onPressed: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                    context,
-                    '/',
-                    (Route<dynamic> route) => false,
-                  );
-                },
-                child: Text(
-                  'Exit',
-                  style: TextStyle(color: Colors.white),
+        child: Column(
+          children: <Widget>[
+            Center(
+              child: Text(
+                'Choose Action',
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
                 ),
-                color: Colors.blue,
-              )
-            ],
-          ),
+              ),
+            ),
+            Expanded(
+              child: GridView.count(
+                primary: false,
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                crossAxisCount: 2,
+                children: <Widget>[
+                  Card(
+                    elevation: 2.0,
+                    child: InkWell(
+                      onTap: () {},
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        child: const Center(
+                          child: Text(
+                            'Apply For Sponsorship',
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            softWrap: true,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
