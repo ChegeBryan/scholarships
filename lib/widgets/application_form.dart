@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:geopro/models/sponsorship.dart';
+import 'package:geopro/services/application.dart';
+import 'package:provider/provider.dart';
 
 class ApplicationForm extends StatefulWidget {
+  final List<Sponsorship> sponsorshipList;
+
+  const ApplicationForm({Key key, this.sponsorshipList}) : super(key: key);
+
   @override
   _ApplicationFormState createState() => _ApplicationFormState();
 }
@@ -8,6 +15,17 @@ class ApplicationForm extends StatefulWidget {
 class _ApplicationFormState extends State<ApplicationForm> {
   final _formKey = GlobalKey<FormState>();
   bool _autovalidate = false;
+
+  static List<Map<String, dynamic>> _sponsorships;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _sponsorships = widget.sponsorshipList
+        .map((sponsorship) => sponsorship.toJson())
+        .toList();
+    super.initState();
+  }
 
   // form input fields controllers
   final TextEditingController _firstName = TextEditingController();
@@ -24,6 +42,9 @@ class _ApplicationFormState extends State<ApplicationForm> {
   final TextEditingController _birthCertificate = TextEditingController();
   final TextEditingController _nationalId = TextEditingController();
 
+  String _dropdownValue = _sponsorships[0]['name'];
+  String _sponsorshipId = _sponsorships[0]['pk'].toString();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -34,6 +55,34 @@ class _ApplicationFormState extends State<ApplicationForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            DropdownButtonFormField(
+              value: _dropdownValue,
+              items: _sponsorships.map<DropdownMenuItem<String>>((value) {
+                print(value);
+                return DropdownMenuItem<String>(
+                  value: value['pk'].toString(),
+                  child: Text(value['name']),
+                );
+              }).toList(),
+              onChanged: (value) {
+                print(value);
+                setState(() {
+                  Map<String, dynamic> _sponsorship =
+                      _sponsorships.firstWhere((item) => item['pk'] == value);
+                  _dropdownValue = _sponsorship['name'];
+                  _sponsorshipId = value;
+                });
+              },
+              decoration: InputDecoration(
+                labelText: "Sponsorship",
+                isDense: true,
+                border: OutlineInputBorder(),
+              ),
+            ),
+            Divider(),
+            SizedBox(
+              height: 8.0,
+            ),
             TextFormField(
               controller: _firstName,
               keyboardType: TextInputType.text,
@@ -289,6 +338,10 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
+                  } else {
+                    setState(() {
+                      _autovalidate = true;
+                    });
                   }
                 },
                 child: Text(

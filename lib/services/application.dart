@@ -14,7 +14,7 @@ class ApplicationProvider with ChangeNotifier {
   String applicationUrl = ApiUrl.apply;
 
   //Save sponsorship application
-  Future<Map<String, dynamic>> addApplication(
+  Future<Map<String, dynamic>> addApplication({
     String sponsorshipId,
     String firstName,
     String lastName,
@@ -29,7 +29,7 @@ class ApplicationProvider with ChangeNotifier {
     String postalCode,
     String birthCertificate,
     String nationalId,
-  ) async {
+  }) async {
     //serialize to JSON
     final Map<String, dynamic> data = Application(
       firstName: firstName,
