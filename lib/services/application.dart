@@ -47,10 +47,12 @@ class ApplicationProvider with ChangeNotifier {
       nationalId: nationalId,
     ).toJson();
 
-    Response response = await post("$applicationUrl$sponsorshipId/", headers: {
-      'Accept': 'application/json',
-      'Authorization': 'Bearer ${auth.token}',
-    });
+    Response response = await post("$applicationUrl$sponsorshipId/",
+        body: jsonEncode(data),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${auth.token}',
+        });
 
     if (response.statusCode == 201) {
       Map<String, dynamic> application = jsonDecode(response.body);
