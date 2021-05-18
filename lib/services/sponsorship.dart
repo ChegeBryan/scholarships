@@ -15,7 +15,7 @@ class SponsorshipProvider with ChangeNotifier {
   // get sponsorhsip list
   Future<List<Sponsorship>> fetchSponsorships() async {
     Response response = await get(
-      ApiUrl.getSponsorships,
+      ApiUrl.sponsorship,
       headers: {
         'Accept': 'application/json',
         'Authorization': 'Bearer ${auth.token}',
