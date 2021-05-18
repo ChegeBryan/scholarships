@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geopro/apply_screen.dart';
 import 'package:provider/provider.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -39,7 +40,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   Card(
                     elevation: 2.0,
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ApplyScreen(),
+                        ),
+                      ),
                       child: Container(
                         padding: const EdgeInsets.all(8),
                         child: const Center(
