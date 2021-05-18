@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/login.dart';
 import 'package:geopro/register.dart';
+import 'package:geopro/services/application.dart';
 import 'package:geopro/services/auth.dart';
 import 'package:geopro/services/sponsorship.dart';
 import 'package:geopro/welcome.dart';
@@ -20,6 +21,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProxyProvider<AuthProvider, SponsorshipProvider>(
           update: (_, auth, __) => SponsorshipProvider(auth),
           create: (context) => SponsorshipProvider(null),
+        ),
+        ChangeNotifierProxyProvider<AuthProvider, ApplicationProvider>(
+          update: (_, auth, __) => ApplicationProvider(auth),
+          create: (context) => ApplicationProvider(null),
         ),
       ],
       child: MaterialApp(
