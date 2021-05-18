@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geopro/application_details.dart';
 import 'package:geopro/models/sponsorship.dart';
 import 'package:geopro/services/application.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,16 @@ class _ApplicationFormState extends State<ApplicationForm> {
   bool _autovalidate = false;
 
   static List<Map<String, dynamic>> _sponsorships;
+
+  void _showApplicationDetails(BuildContext context, data) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ApplicationDetails(data: data),
+        fullscreenDialog: true,
+      ),
+    );
+  }
 
   @override
   void initState() {
@@ -356,6 +367,17 @@ class _ApplicationFormState extends State<ApplicationForm> {
                             birthCertificate: _birthCertificate.text,
                             nationalId: _nationalId.text,
                             coverLetter: _coverLetter.text);
+                    response.then((res) {
+                      if (res['status']) {
+                        _showApplicationDetails(context, res['data']);
+                      } else {
+                        Scaffold.of(context).showSnackBar(
+                          SnackBar(
+                              content: Text(res['errors'].toString()),
+                              backgroundColor: Colors.red),
+                        );
+                      }
+                    });
                   } else {
                     setState(() {
                       _autovalidate = true;
