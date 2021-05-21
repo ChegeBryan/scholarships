@@ -52,7 +52,7 @@ class ApplicationProvider with ChangeNotifier {
     Response response = await post("$applicationUrl$sponsorshipId/",
         body: jsonEncode(data),
         headers: {
-          'Accept': 'application/json',
+          'Content-Type': 'application/json',
           'Authorization': 'Bearer ${auth.token}',
         });
 
@@ -65,7 +65,6 @@ class ApplicationProvider with ChangeNotifier {
         'message': 'failed',
         'errors': jsonDecode(response.body)
       };
-      print(response.body);
     }
 
     return result;
