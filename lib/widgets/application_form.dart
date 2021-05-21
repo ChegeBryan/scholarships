@@ -16,6 +16,9 @@ class ApplicationForm extends StatefulWidget {
 class _ApplicationFormState extends State<ApplicationForm> {
   final _formKey = GlobalKey<FormState>();
   bool _autovalidate = false;
+  List<Map<String, dynamic>> _sponsorships;
+  var _dropdownValue;
+  String _sponsorshipId;
 
   void _showApplicationDetails(BuildContext context, data) {
     Navigator.push(
@@ -27,14 +30,13 @@ class _ApplicationFormState extends State<ApplicationForm> {
     );
   }
 
-  List<Map<String, dynamic>> _sponsorships;
-
   @override
   void initState() {
     super.initState();
     _sponsorships = widget.sponsorshipList
         .map((sponsorship) => sponsorship.toJson())
         .toList();
+    _dropdownValue = _sponsorships[0];
   }
 
   // form input fields controllers
@@ -52,9 +54,6 @@ class _ApplicationFormState extends State<ApplicationForm> {
   final TextEditingController _birthCertificate = TextEditingController();
   final TextEditingController _nationalId = TextEditingController();
 
-  String _dropdownValue;
-  String _sponsorshipId;
-
   @override
   Widget build(BuildContext context) {
     ApplicationProvider application = Provider.of<ApplicationProvider>(context);
@@ -68,29 +67,25 @@ class _ApplicationFormState extends State<ApplicationForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             DropdownButtonFormField(
-              // value: _dropdownValue != null
-              //     ? _dropdownValue
-              //     : _sponsorships[0]['name'],
-              items: _sponsorships.map<DropdownMenuItem<String>>((value) {
-                print(value['name']);
-                return DropdownMenuItem<String>(
-                  value: value['pk'].toString(),
+              value: _dropdownValue,
+              items: _sponsorships
+                  .map<DropdownMenuItem<Map<String, dynamic>>>((value) {
+                return DropdownMenuItem<Map<String, dynamic>>(
+                  value: value,
                   child: Text(value['name']),
                 );
               }).toList(),
               onChanged: (value) {
                 setState(() {
-                  Map<String, dynamic> _sponsorship =
-                      _sponsorships.firstWhere((item) => item['pk'] == value);
-                  _dropdownValue = _sponsorship['name'];
-                  _sponsorshipId = value;
+                  _dropdownValue = value;
+                  _sponsorshipId = value['pk'].toString();
                 });
               },
               decoration: InputDecoration(
                 labelText: "Sponsorship",
-                isDense: true,
                 border: OutlineInputBorder(),
               ),
+              isDense: true,
             ),
             Divider(),
             SizedBox(
