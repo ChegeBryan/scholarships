@@ -368,7 +368,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                       } else {
                         Scaffold.of(context).showSnackBar(
                           SnackBar(
-                              content: Text(res['errors'].toString()),
+                              content: Text(res['errors'][0]),
                               backgroundColor: Colors.red),
                         );
                       }
