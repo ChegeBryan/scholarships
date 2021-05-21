@@ -17,8 +17,6 @@ class _ApplicationFormState extends State<ApplicationForm> {
   final _formKey = GlobalKey<FormState>();
   bool _autovalidate = false;
 
-  static List<Map<String, dynamic>> _sponsorships;
-
   void _showApplicationDetails(BuildContext context, data) {
     Navigator.push(
       context,
@@ -29,13 +27,14 @@ class _ApplicationFormState extends State<ApplicationForm> {
     );
   }
 
+  List<Map<String, dynamic>> _sponsorships;
+
   @override
   void initState() {
-    // TODO: implement initState
+    super.initState();
     _sponsorships = widget.sponsorshipList
         .map((sponsorship) => sponsorship.toJson())
         .toList();
-    super.initState();
   }
 
   // form input fields controllers
@@ -53,8 +52,8 @@ class _ApplicationFormState extends State<ApplicationForm> {
   final TextEditingController _birthCertificate = TextEditingController();
   final TextEditingController _nationalId = TextEditingController();
 
-  String _dropdownValue = _sponsorships[0]['name'];
-  String _sponsorshipId = _sponsorships[0]['pk'].toString();
+  String _dropdownValue;
+  String _sponsorshipId;
 
   @override
   Widget build(BuildContext context) {
@@ -69,16 +68,17 @@ class _ApplicationFormState extends State<ApplicationForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             DropdownButtonFormField(
-              value: _dropdownValue,
+              // value: _dropdownValue != null
+              //     ? _dropdownValue
+              //     : _sponsorships[0]['name'],
               items: _sponsorships.map<DropdownMenuItem<String>>((value) {
-                print(value);
+                print(value['name']);
                 return DropdownMenuItem<String>(
                   value: value['pk'].toString(),
                   child: Text(value['name']),
                 );
               }).toList(),
               onChanged: (value) {
-                print(value);
                 setState(() {
                   Map<String, dynamic> _sponsorship =
                       _sponsorships.firstWhere((item) => item['pk'] == value);
