@@ -65,6 +65,7 @@ class ApplicationProvider with ChangeNotifier {
         'message': 'failed',
         'errors': jsonDecode(response.body)
       };
+      print(response.body);
     }
 
     return result;
