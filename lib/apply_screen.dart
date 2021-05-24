@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/services/sponsorship.dart';
+import 'package:geopro/widgets/app_drawer.dart';
 import 'package:geopro/widgets/application_form.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +16,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
       appBar: AppBar(
         title: Text('Sponsorship Application'),
       ),
+      drawer: AppDrawer(),
       body: FutureBuilder(
         future: Provider.of<SponsorshipProvider>(context).fetchSponsorships(),
         builder: (context, snapshot) {
