@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geopro/models/sponsorship.dart';
 import 'package:geopro/services/sponsorship.dart';
 import 'package:geopro/widgets/application_form.dart';
 import 'package:provider/provider.dart';
