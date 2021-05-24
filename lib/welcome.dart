@@ -3,11 +3,24 @@ import 'package:geopro/apply_screen.dart';
 import 'package:geopro/sponsorship_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
+  final drawerItems = ['Sponsorships', 'Apply Sponsorship', 'Applications'];
+
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  int _selectedDrawerIndex = 0;
+
+  _getDrawerItemWidget(int index) {
+    switch (index) {
+      case 0:
+        Navigator.pushNamed(context, '/sponsorships');
+        break;
+      default:
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
