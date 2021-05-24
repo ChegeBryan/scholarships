@@ -25,14 +25,6 @@ class SponsorshipScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Sponsorships'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () {
-              _addSponsorshipDialog(context);
-            },
-          ),
-        ],
       ),
       body: FutureBuilder(
         future: Provider.of<SponsorshipProvider>(context).fetchSponsorships(),
@@ -62,6 +54,13 @@ class SponsorshipScreen extends StatelessWidget {
           return Center(
             child: CircularProgressIndicator(),
           );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        tooltip: 'Add scholarship',
+        child: Icon(Icons.add),
+        onPressed: () {
+          _addSponsorshipDialog(context);
         },
       ),
     );
