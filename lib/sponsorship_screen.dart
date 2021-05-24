@@ -47,6 +47,7 @@ class SponsorshipScreen extends StatelessWidget {
           Navigator.pushNamed(context, '/addSponsorship');
         }
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
