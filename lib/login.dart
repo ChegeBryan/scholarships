@@ -20,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: <Widget>[
               LoginForm(),
               FormBottomActions(
-                message: 'Dont have account?',
+                message: 'Don\'t have account?',
                 action: () {
                   Navigator.pushReplacementNamed(context, '/register');
                 },

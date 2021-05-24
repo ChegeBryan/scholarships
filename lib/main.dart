@@ -5,6 +5,7 @@ import 'package:geopro/services/application.dart';
 import 'package:geopro/services/auth.dart';
 import 'package:geopro/services/sponsorship.dart';
 import 'package:geopro/welcome.dart';
+import 'package:geopro/add_sponsorship_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
           '/login': (context) => LoginScreen(),
           '/register': (context) => RegisterScreen(),
           '/welcome': (context) => WelcomeScreen(),
+          '/addSponsorship': (context) => AddSponsorshipScreen(),
         },
       ),
     );

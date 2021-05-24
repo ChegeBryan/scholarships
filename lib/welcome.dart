@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/apply_screen.dart';
 import 'package:geopro/sponsorship_screen.dart';
-import 'package:provider/provider.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
