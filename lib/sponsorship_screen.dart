@@ -1,24 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/services/sponsorship.dart';
-import 'package:geopro/add_sponsorship_screen.dart';
 import 'package:provider/provider.dart';
 
 class SponsorshipScreen extends StatelessWidget {
-/*  Future<void> _addSponsorshipDialog(BuildContext context) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false,
-      useRootNavigator: false,
-      builder: (BuildContext context) {
-        return Dialog(
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            child: AddSponsorshipForm(),
-          ),
-        );
-      },
-    );
-  } */
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +44,7 @@ class SponsorshipScreen extends StatelessWidget {
         tooltip: 'Add scholarship',
         child: Icon(Icons.add),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AddSponsorshipScreen()),
-          );
+          Navigator.pushNamed(context, '/addSponsorship');
         }
       ),
     );
