@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:geopro/services/sponsorship.dart';
 
 class AddSponsorshipForm extends StatefulWidget {
   @override
@@ -14,6 +16,8 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
 
   @override
   Widget build(BuildContext context) {
+    SponsorshipProvider sponsorshipProvider = Provider.of<SponsorshipProvider>(context);
+
     return Form(
       key: _formKey,
       autovalidate: _autovalidate,
@@ -79,7 +83,17 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
-                  } else {
+                    sponsorshipProvider.addSponsorship(_name.text, _description.text)
+                    .then((response) {
+                      if(response['status']) {
+                        Navigator.of(context).pop();
+                      }
+                      else {
+                        print(response['message']);
+                      }
+                    });
+                  }
+                  else {
                     setState(() {
                       _autovalidate = true;
                     });

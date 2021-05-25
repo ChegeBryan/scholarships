@@ -7,12 +7,14 @@ import 'package:geopro/services/api.dart';
 import 'package:geopro/services/auth.dart';
 import 'package:http/http.dart';
 
+import 'api.dart';
+
 class SponsorshipProvider with ChangeNotifier {
   AuthProvider auth;
 
   SponsorshipProvider(this.auth);
 
-  // get sponsorhsip list
+  // get sponsorship list
   Future<List<Sponsorship>> fetchSponsorships() async {
     Response response = await get(
       ApiUrl.sponsorship,
@@ -31,4 +33,33 @@ class SponsorshipProvider with ChangeNotifier {
       print(response.body);
     }
   }
+
+  // add a new sponsorship
+  Future<Map<String, dynamic>> addSponsorship(String name, String description) async {
+    var result;
+    
+    final Map<String, dynamic> data = {
+      'name': name,
+      'description': description,
+    };
+    
+    Response response = await post(
+        ApiUrl.sponsorship,
+      body: jsonEncode(data),
+      headers: {
+          'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${auth.token}',
+      },
+    );
+
+    if(response.statusCode == 201) {
+      result = {'status': true, 'message': 'Added sponsorship successfully'};
+      print(jsonDecode(response.body));
+    }
+    else {
+      result = {'status': false, 'message': jsonDecode(response.body)};
+    }
+    return result;
+  }
+
 }
