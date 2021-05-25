@@ -134,7 +134,7 @@ class _RegisterFormState extends State<RegisterForm> {
 
                   successMessage.then((response) {
                     if (response['status']) {
-                      Navigator.pushReplacementNamed(context, '/welcome');
+                      Navigator.pushReplacementNamed(context, '/sponsorships');
                     } else {
                       Map<String, dynamic> responseErrors = {};
                       var errorFields = response['message'].keys;

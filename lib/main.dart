@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:geopro/apply_screen.dart';
 import 'package:geopro/login.dart';
 import 'package:geopro/register.dart';
 import 'package:geopro/services/application.dart';
 import 'package:geopro/services/auth.dart';
 import 'package:geopro/services/sponsorship.dart';
-import 'package:geopro/welcome.dart';
+import 'package:geopro/sponsorship_screen.dart';
 import 'package:geopro/add_sponsorship_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -37,8 +38,9 @@ class MyApp extends StatelessWidget {
         routes: {
           '/login': (context) => LoginScreen(),
           '/register': (context) => RegisterScreen(),
-          '/welcome': (context) => WelcomeScreen(),
           '/addSponsorship': (context) => AddSponsorshipScreen(),
+          '/sponsorships': (context) => SponsorshipScreen(),
+          '/apply': (context) => ApplyScreen(),
         },
       ),
     );

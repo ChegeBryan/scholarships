@@ -66,7 +66,8 @@ class _LoginFormState extends State<LoginForm> {
 
                       successMessage.then((response) {
                         if (response['status']) {
-                          Navigator.pushReplacementNamed(context, '/welcome');
+                          Navigator.pushReplacementNamed(
+                              context, '/sponsorships');
                         } else {
                           Scaffold.of(context).showSnackBar(SnackBar(
                               content: Text(response['message']

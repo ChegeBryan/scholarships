@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/services/sponsorship.dart';
+import 'package:geopro/widgets/app_drawer.dart';
 import 'package:provider/provider.dart';
 
 class SponsorshipScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Sponsorships'),
       ),
+      drawer: AppDrawer(),
       body: FutureBuilder(
         future: Provider.of<SponsorshipProvider>(context).fetchSponsorships(),
         builder: (context, snapshot) {
@@ -41,12 +42,11 @@ class SponsorshipScreen extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        tooltip: 'Add scholarship',
-        child: Icon(Icons.add),
-        onPressed: () {
-          Navigator.pushNamed(context, '/addSponsorship');
-        }
-      ),
+          tooltip: 'Add scholarship',
+          child: Icon(Icons.add),
+          onPressed: () {
+            Navigator.pushNamed(context, '/addSponsorship');
+          }),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
