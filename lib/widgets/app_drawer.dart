@@ -18,6 +18,12 @@ class AppDrawer extends StatelessWidget {
                     'https://randomuser.me/api/portraits/women/0.jpg'),
               ),
               margin: const EdgeInsets.all(0.0),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/app_drawer.jpg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
             Expanded(
               child: Container(
