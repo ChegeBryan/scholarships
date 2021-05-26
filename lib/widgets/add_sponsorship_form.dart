@@ -71,42 +71,34 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
           SizedBox(
             height: 8.0,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              FlatButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text('Cancel'),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            child: FlatButton(
+              onPressed: () {
+                if (_formKey.currentState.validate()) {
+                  _formKey.currentState.save();
+                  sponsorshipProvider
+                      .addSponsorship(_name.text, _description.text)
+                      .then((response) {
+                    if (response['status']) {
+                      Navigator.of(context).pop();
+                    } else {
+                      print(response['message']);
+                    }
+                  });
+                } else {
+                  setState(() {
+                    _autovalidate = true;
+                  });
+                }
+              },
+              child: Text(
+                'Submit',
+                style: TextStyle(fontSize: 16.0),
               ),
-              FlatButton(
-                onPressed: () {
-                  if (_formKey.currentState.validate()) {
-                    _formKey.currentState.save();
-                    sponsorshipProvider
-                        .addSponsorship(_name.text, _description.text)
-                        .then((response) {
-                      if (response['status']) {
-                        Navigator.of(context).pop();
-                      } else {
-                        print(response['message']);
-                      }
-                    });
-                  } else {
-                    setState(() {
-                      _autovalidate = true;
-                    });
-                  }
-                },
-                child: Text(
-                  'Submit',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-                textColor: Colors.white,
-                color: Theme.of(context).primaryColor,
-              ),
-            ],
+              textColor: Colors.white,
+              color: Theme.of(context).primaryColor,
+            ),
           ),
         ],
       ),
