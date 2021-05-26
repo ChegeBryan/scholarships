@@ -86,7 +86,7 @@ class _LoginFormState extends State<LoginForm> {
                     "Sign in",
                     style: TextStyle(color: Colors.white),
                   ),
-                  color: Colors.blue,
+                  color: Theme.of(context).primaryColor,
                 ),
         ],
       ),

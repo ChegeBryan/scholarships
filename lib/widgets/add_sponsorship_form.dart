@@ -16,7 +16,8 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
 
   @override
   Widget build(BuildContext context) {
-    SponsorshipProvider sponsorshipProvider = Provider.of<SponsorshipProvider>(context);
+    SponsorshipProvider sponsorshipProvider =
+        Provider.of<SponsorshipProvider>(context);
 
     return Form(
       key: _formKey,
@@ -83,17 +84,16 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
-                    sponsorshipProvider.addSponsorship(_name.text, _description.text)
-                    .then((response) {
-                      if(response['status']) {
+                    sponsorshipProvider
+                        .addSponsorship(_name.text, _description.text)
+                        .then((response) {
+                      if (response['status']) {
                         Navigator.of(context).pop();
-                      }
-                      else {
+                      } else {
                         print(response['message']);
                       }
                     });
-                  }
-                  else {
+                  } else {
                     setState(() {
                       _autovalidate = true;
                     });
