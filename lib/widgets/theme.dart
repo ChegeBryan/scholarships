@@ -16,6 +16,6 @@ class AppTheme {
     );
   }
 
-  static const _primaryColor = Color(0xFF262626);
+  static const _primaryColor = Color(0xFF142AA6);
   static const _accentColor = Colors.white;
 }
