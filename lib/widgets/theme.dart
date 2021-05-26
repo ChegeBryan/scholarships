@@ -5,6 +5,7 @@ class AppTheme {
     return ThemeData(
       primaryColor: _primaryColor,
       accentColor: _accentColor,
+      cursorColor: _primaryColor,
     );
   }
 
@@ -13,6 +14,7 @@ class AppTheme {
       brightness: Brightness.dark,
       primaryColor: _primaryColor,
       accentColor: _accentColor,
+      cursorColor: _primaryColor,
     );
   }
 
