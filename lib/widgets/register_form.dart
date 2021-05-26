@@ -157,7 +157,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 "Register",
                 style: TextStyle(color: Colors.white),
               ),
-              color: Colors.blue,
+              color: Theme.of(context).primaryColor,
             ),
           ],
         ));

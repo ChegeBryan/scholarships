@@ -7,6 +7,7 @@ import 'package:geopro/services/auth.dart';
 import 'package:geopro/services/sponsorship.dart';
 import 'package:geopro/sponsorship_screen.dart';
 import 'package:geopro/add_sponsorship_screen.dart';
+import 'package:geopro/widgets/theme.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
@@ -31,9 +32,8 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: AppTheme.light(),
+        darkTheme: AppTheme.dark(),
         home: LoginScreen(),
         routes: {
           '/login': (context) => LoginScreen(),
