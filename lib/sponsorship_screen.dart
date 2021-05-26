@@ -27,7 +27,16 @@ class SponsorshipScreen extends StatelessWidget {
                 trailing: Wrap(
                   spacing: 8,
                   children: <Widget>[
-                    IconButton(icon: Icon(Icons.edit), onPressed: () {}),
+                    IconButton(icon: Icon(Icons.edit), onPressed: () {
+                      Navigator.pushNamed(
+                          context,
+                          '/addSponsorship',
+                          arguments: {
+                            'name': snapshot.data[index].name,
+                            'description': snapshot.data[index].description
+                          },
+                      );
+                    }),
                     IconButton(icon: Icon(Icons.delete), onPressed: () {}),
                   ],
                 ),

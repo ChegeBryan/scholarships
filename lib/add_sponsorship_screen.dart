@@ -9,13 +9,15 @@ class AddSponsorshipScreen extends StatefulWidget {
 class _AddSponsorshipScreenState extends State<AddSponsorshipScreen> {
   @override
   Widget build(BuildContext context) {
+    final Map arguments = ModalRoute.of(context).settings.arguments as Map;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Sponsorship'),
+        title: Text(arguments != null ? 'Edit Sponsorship' : 'Add Sponsorship'),
       ),
       body: Container(
         padding: const EdgeInsets.all(16),
-        child: AddSponsorshipForm(),
+        child: arguments != null ? AddSponsorshipForm(name: arguments['name'], description: arguments['description']) : AddSponsorshipForm(),
       ),
     );
   }

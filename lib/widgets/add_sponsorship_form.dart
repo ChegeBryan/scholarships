@@ -3,6 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:geopro/services/sponsorship.dart';
 
 class AddSponsorshipForm extends StatefulWidget {
+  final String name;
+  final String description;
+
+  const AddSponsorshipForm({Key key, this.name, this.description}) : super(key: key);
+
   @override
   _AddSponsorshipFormState createState() => _AddSponsorshipFormState();
 }
@@ -11,8 +16,15 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
   final _formKey = GlobalKey<FormState>();
   bool _autovalidate = false;
 
-  final TextEditingController _name = TextEditingController();
-  final TextEditingController _description = TextEditingController();
+  TextEditingController _name;
+  TextEditingController _description;
+
+  @override
+  void initState() {
+    super.initState();
+    _name = TextEditingController(text: widget.name);
+    _description = TextEditingController(text: widget.description);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +36,8 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Text(
-            'Add Sponsorship',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-              color: Theme.of(context).primaryColor,
-            ),
-          ),
           SizedBox(
-            height: 8.0,
+            height: 30.0,
           ),
           TextFormField(
             controller: _name,
