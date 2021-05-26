@@ -17,5 +17,5 @@ class AppTheme {
   }
 
   static const _primaryColor = Color(0xFF142AA6);
-  static const _accentColor = Colors.white;
+  static const _accentColor = Color(0xFFF2295F);
 }
