@@ -17,7 +17,7 @@ class _AddSponsorshipScreenState extends State<AddSponsorshipScreen> {
       ),
       body: Container(
         padding: const EdgeInsets.all(16),
-        child: arguments != null ? AddSponsorshipForm(name: arguments['name'], description: arguments['description']) : AddSponsorshipForm(),
+        child: arguments != null ? AddSponsorshipForm(name: arguments['name'], description: arguments['description'], id: arguments['id'],) : AddSponsorshipForm(),
       ),
     );
   }

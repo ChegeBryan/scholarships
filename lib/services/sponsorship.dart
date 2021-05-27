@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:geopro/models/sponsorship.dart';
 import 'package:geopro/services/api.dart';
 import 'package:geopro/services/auth.dart';
-import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 import 'api.dart';
@@ -63,10 +62,11 @@ class SponsorshipProvider with ChangeNotifier {
     return result;
   }
 
+  // delete sponsorship
   Future<Map<String, dynamic>> deleteSponsorship(int id) async {
     var result;
 
-    final http.Response response = await http.delete(
+    Response response = await delete(
       Uri.parse('https://geoproserver.herokuapp.com/api/sponsorship/$id/'),
       headers: {
         'Content-Type': 'application/json',
@@ -78,9 +78,37 @@ class SponsorshipProvider with ChangeNotifier {
       result = {'status': true};
     }
     else {
-      result = {'status': false};
+      result = {'status': false, 'message': jsonDecode(response.body)};
     }
 
+    return result;
+  }
+
+  // update sponsorship
+  Future<Map<String, dynamic>> updateSponsorship(String name, String description, int id) async {
+    var result;
+
+    final Map<String, dynamic> data = {
+      'name': name,
+      'description': description,
+      'pk': id
+    };
+
+    Response response = await put(
+      Uri.parse('https://geoproserver.herokuapp.com/api/sponsorship/$id/'),
+      body: jsonEncode(data),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${auth.token}',
+      },
+    );
+
+    if(response.statusCode == 200) {
+      result = {'status': true, 'message': 'Sponsorship updated successfully'};
+    }
+    else {
+      result = {'status': false, 'message': jsonDecode(response.body)};
+    }
     return result;
   }
 

@@ -35,7 +35,8 @@ class SponsorshipScreen extends StatelessWidget {
                           '/addSponsorship',
                           arguments: {
                             'name': snapshot.data[index].name,
-                            'description': snapshot.data[index].description
+                            'description': snapshot.data[index].description,
+                            'id': snapshot.data[index].id
                           },
                       );
                     }),
@@ -45,6 +46,12 @@ class SponsorshipScreen extends StatelessWidget {
                         if(response['status']) {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: const Text('Sponsorship deleted'),
+                            duration: const Duration(seconds: 1),
+                          ));
+                        }
+                        else {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: const Text('Sponsorship has not been deleted'),
                             duration: const Duration(seconds: 1),
                           ));
                         }
