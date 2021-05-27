@@ -22,8 +22,8 @@ class SponsorshipScreen extends StatelessWidget {
             }
             return ListView.separated(
               itemBuilder: (BuildContext context, int index) => ListTile(
-                title: Text(snapshot.data[index].name),
-                subtitle: Text(snapshot.data[index].description),
+                title: Text('${snapshot.data[index].name}'),
+                subtitle: Text('${snapshot.data[index].description}'),
                 trailing: Wrap(
                   spacing: 8,
                   children: <Widget>[
