@@ -7,6 +7,7 @@ class ApiUrl {
 
   // sponsorship URLs
   static const String sponsorship = baseUrl + '/sponsorship/';
+  static const String deleteSponsorship = baseUrl + '/sponsorship/id/';
 
   // sponsorship application
   static const String apply = baseUrl + '/apply/';

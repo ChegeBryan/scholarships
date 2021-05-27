@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:geopro/models/sponsorship.dart';
 import 'package:geopro/services/api.dart';
 import 'package:geopro/services/auth.dart';
+import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 import 'api.dart';
@@ -59,6 +60,27 @@ class SponsorshipProvider with ChangeNotifier {
     else {
       result = {'status': false, 'message': jsonDecode(response.body)};
     }
+    return result;
+  }
+
+  Future<Map<String, dynamic>> deleteSponsorship(int id) async {
+    var result;
+
+    final http.Response response = await http.delete(
+      Uri.parse('https://geoproserver.herokuapp.com/api/sponsorship/$id/'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${auth.token}',
+      },
+    );
+
+    if(response.statusCode == 204) {
+      result = {'status': true};
+    }
+    else {
+      result = {'status': false};
+    }
+
     return result;
   }
 

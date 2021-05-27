@@ -75,35 +75,47 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
           SizedBox(
             height: 8.0,
           ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            child: FlatButton(
-              onPressed: () {
-                if (_formKey.currentState.validate()) {
-                  _formKey.currentState.save();
-                  sponsorshipProvider
-                      .addSponsorship(_name.text, _description.text)
-                      .then((response) {
-                    if (response['status']) {
-                      Navigator.of(context).pop();
-                    } else {
-                      print(response['message']);
-                    }
-                  });
-                } else {
-                  setState(() {
-                    _autovalidate = true;
-                  });
-                }
-              },
-              child: Text(
-                'Submit',
-                style: TextStyle(fontSize: 16.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              FlatButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Cancel'),
               ),
-              textColor: Colors.white,
-              color: Theme.of(context).primaryColor,
+              FlatButton(
+                  onPressed: () {
+                    if (_formKey.currentState.validate()) {
+                      _formKey.currentState.save();
+                      sponsorshipProvider
+                          .addSponsorship(_name.text, _description.text)
+                          .then((response) {
+                        if (response['status']) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: const Text('Sponsorship added'),
+                            duration: const Duration(seconds: 1),
+                          ));
+                          Navigator.pushNamed(context, '/sponsorships');
+                        } else {
+                          print(response['message']);
+                        }
+                      });
+                    } else {
+                      setState(() {
+                        _autovalidate = true;
+                      });
+                    }
+                  },
+                child: Text(
+                  'Submit',
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                textColor: Colors.white,
+                color: Theme.of(context).primaryColor,
+              ),
+            ]
             ),
-          ),
         ],
       ),
     );

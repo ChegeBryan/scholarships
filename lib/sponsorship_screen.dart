@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 class SponsorshipScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SponsorshipProvider sponsorshipProvider = Provider.of<SponsorshipProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Sponsorships'),
@@ -37,7 +39,18 @@ class SponsorshipScreen extends StatelessWidget {
                           },
                       );
                     }),
-                    IconButton(icon: Icon(Icons.delete), onPressed: () {}),
+                    IconButton(icon: Icon(Icons.delete), onPressed: () {
+                      sponsorshipProvider.deleteSponsorship(snapshot.data[index].id)
+                      .then((response) {
+                        if(response['status']) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: const Text('Sponsorship deleted'),
+                            duration: const Duration(seconds: 1),
+                          ));
+                        }
+                      });
+                      Navigator.pushNamed(context, '/sponsorships');
+                    }),
                   ],
                 ),
               ),
@@ -59,4 +72,5 @@ class SponsorshipScreen extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
+
 }
