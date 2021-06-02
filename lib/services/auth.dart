@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:geopro/models/user.dart';
 import 'package:geopro/services/api.dart';
+import 'package:geopro/util/shared_preferences.dart';
 import 'package:http/http.dart';
 
 enum Status { LoggedIn, NotLoggedIn, Authenticating }
@@ -40,6 +41,9 @@ class AuthProvider with ChangeNotifier {
       final Map<String, dynamic> responseData = jsonDecode(res.body);
 
       User authUser = User.fromJson(responseData);
+
+      // persist user on app.
+      UserPrefences().saveUser(authUser);
 
       _loggedInStatus = Status.LoggedIn;
       _userEmail = authUser.email;
