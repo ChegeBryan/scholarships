@@ -50,7 +50,7 @@ class AuthProvider with ChangeNotifier {
       _token = authUser.token;
       notifyListeners();
 
-      result = {'status': true, 'message': 'Successful'};
+      result = {'status': true, 'message': 'Successful', 'user': authUser};
     } else {
       _loggedInStatus = Status.NotLoggedIn;
       notifyListeners();
