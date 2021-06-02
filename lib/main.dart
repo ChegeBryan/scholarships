@@ -5,6 +5,7 @@ import 'package:geopro/register.dart';
 import 'package:geopro/services/application.dart';
 import 'package:geopro/services/auth.dart';
 import 'package:geopro/services/sponsorship.dart';
+import 'package:geopro/services/user.dart';
 import 'package:geopro/sponsorship_screen.dart';
 import 'package:geopro/add_sponsorship_screen.dart';
 import 'package:geopro/util/shared_preferences.dart';
@@ -22,11 +23,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => AuthProvider(),
         ),
-        ChangeNotifierProxyProvider<AuthProvider, SponsorshipProvider>(
+        ChangeNotifierProvider(
+          create: (context) => UserProvider(),
+        ),
+        ChangeNotifierProxyProvider<UserProvider, SponsorshipProvider>(
           update: (_, auth, __) => SponsorshipProvider(auth),
           create: (context) => SponsorshipProvider(null),
         ),
-        ChangeNotifierProxyProvider<AuthProvider, ApplicationProvider>(
+        ChangeNotifierProxyProvider<UserProvider, ApplicationProvider>(
           update: (_, auth, __) => ApplicationProvider(auth),
           create: (context) => ApplicationProvider(null),
         ),
@@ -42,6 +46,7 @@ class MyApp extends StatelessWidget {
               if (snapshot.data.token == null) {
                 return LoginScreen();
               }
+              Provider.of<UserProvider>(context).setUser(snapshot.data);
               return SponsorshipScreen();
             }
             return Center(

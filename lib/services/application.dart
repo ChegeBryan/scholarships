@@ -4,10 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:geopro/models/application.dart';
 import 'package:geopro/services/api.dart';
 import 'package:geopro/services/auth.dart';
+import 'package:geopro/services/user.dart';
 import 'package:http/http.dart';
 
 class ApplicationProvider with ChangeNotifier {
-  AuthProvider auth;
+  UserProvider auth;
 
   ApplicationProvider(this.auth);
 
@@ -53,7 +54,7 @@ class ApplicationProvider with ChangeNotifier {
         body: jsonEncode(data),
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ${auth.token}',
+          'Authorization': 'Bearer ${auth.user.token}',
         });
 
     if (response.statusCode == 201) {

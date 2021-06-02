@@ -3,14 +3,17 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:geopro/models/sponsorship.dart';
+import 'package:geopro/models/user.dart';
 import 'package:geopro/services/api.dart';
 import 'package:geopro/services/auth.dart';
+import 'package:geopro/services/user.dart';
+import 'package:geopro/util/shared_preferences.dart';
 import 'package:http/http.dart';
 
 import 'api.dart';
 
 class SponsorshipProvider with ChangeNotifier {
-  AuthProvider auth;
+  UserProvider auth;
 
   SponsorshipProvider(this.auth);
 
@@ -20,7 +23,7 @@ class SponsorshipProvider with ChangeNotifier {
       ApiUrl.sponsorship,
       headers: {
         'Accept': 'application/json',
-        'Authorization': 'Bearer ${auth.token}',
+        'Authorization': 'Bearer ${auth.user.token}',
       },
     );
 
@@ -35,28 +38,28 @@ class SponsorshipProvider with ChangeNotifier {
   }
 
   // add a new sponsorship
-  Future<Map<String, dynamic>> addSponsorship(String name, String description) async {
+  Future<Map<String, dynamic>> addSponsorship(
+      String name, String description) async {
     var result;
-    
+
     final Map<String, dynamic> data = {
       'name': name,
       'description': description,
     };
-    
+
     Response response = await post(
-        ApiUrl.sponsorship,
+      ApiUrl.sponsorship,
       body: jsonEncode(data),
       headers: {
-          'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${auth.token}',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${auth.user.token}',
       },
     );
 
-    if(response.statusCode == 201) {
+    if (response.statusCode == 201) {
       result = {'status': true, 'message': 'Added sponsorship successfully'};
       print(jsonDecode(response.body));
-    }
-    else {
+    } else {
       result = {'status': false, 'message': jsonDecode(response.body)};
     }
     return result;
@@ -70,14 +73,13 @@ class SponsorshipProvider with ChangeNotifier {
       Uri.parse('https://geoproserver.herokuapp.com/api/sponsorship/$id/'),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${auth.token}',
+        'Authorization': 'Bearer ${auth.user.token}',
       },
     );
 
-    if(response.statusCode == 204) {
+    if (response.statusCode == 204) {
       result = {'status': true};
-    }
-    else {
+    } else {
       result = {'status': false, 'message': jsonDecode(response.body)};
     }
 
@@ -85,7 +87,8 @@ class SponsorshipProvider with ChangeNotifier {
   }
 
   // update sponsorship
-  Future<Map<String, dynamic>> updateSponsorship(String name, String description, int id) async {
+  Future<Map<String, dynamic>> updateSponsorship(
+      String name, String description, int id) async {
     var result;
 
     final Map<String, dynamic> data = {
@@ -99,18 +102,16 @@ class SponsorshipProvider with ChangeNotifier {
       body: jsonEncode(data),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${auth.token}',
+        'Authorization': 'Bearer ${auth.user.token}',
       },
     );
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       result = {'status': true, 'message': 'Sponsorship updated successfully'};
-    }
-    else {
+    } else {
       result = {'status': false, 'message': jsonDecode(response.body)};
       print(jsonDecode(response.body));
     }
     return result;
   }
-
 }
