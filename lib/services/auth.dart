@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:geopro/models/user.dart';
 import 'package:geopro/services/api.dart';
+import 'package:geopro/util/shared_preferences.dart';
 import 'package:http/http.dart';
 
 enum Status { LoggedIn, NotLoggedIn, Authenticating }
@@ -11,13 +12,7 @@ class AuthProvider with ChangeNotifier {
   // track authentication status
   Status _loggedInStatus = Status.NotLoggedIn;
 
-  String _userEmail;
-  String _token;
-
   Status get loggedInStatus => _loggedInStatus;
-
-  String get userEmail => _userEmail;
-  String get token => _token;
 
   Future<Map<String, dynamic>> login(String email, String password) async {
     var result;
@@ -41,12 +36,13 @@ class AuthProvider with ChangeNotifier {
 
       User authUser = User.fromJson(responseData);
 
+      // persist user on app.
+      UserPrefences().saveUser(authUser);
+
       _loggedInStatus = Status.LoggedIn;
-      _userEmail = authUser.email;
-      _token = authUser.token;
       notifyListeners();
 
-      result = {'status': true, 'message': 'Successful'};
+      result = {'status': true, 'message': 'Successful', 'user': authUser};
     } else {
       _loggedInStatus = Status.NotLoggedIn;
       notifyListeners();
@@ -78,9 +74,10 @@ class AuthProvider with ChangeNotifier {
 
       User authUser = User.fromJson(responseData);
 
+      // persist user on app.
+      UserPrefences().saveUser(authUser);
+
       _loggedInStatus = Status.LoggedIn;
-      _userEmail = authUser.email;
-      _token = authUser.token;
       notifyListeners();
 
       result = {'status': true, 'message': 'Successful', 'user': authUser};

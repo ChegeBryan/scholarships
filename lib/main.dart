@@ -5,8 +5,10 @@ import 'package:geopro/register.dart';
 import 'package:geopro/services/application.dart';
 import 'package:geopro/services/auth.dart';
 import 'package:geopro/services/sponsorship.dart';
+import 'package:geopro/services/user.dart';
 import 'package:geopro/sponsorship_screen.dart';
 import 'package:geopro/add_sponsorship_screen.dart';
+import 'package:geopro/util/shared_preferences.dart';
 import 'package:geopro/widgets/theme.dart';
 import 'package:provider/provider.dart';
 
@@ -21,11 +23,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => AuthProvider(),
         ),
-        ChangeNotifierProxyProvider<AuthProvider, SponsorshipProvider>(
+        ChangeNotifierProvider(
+          create: (context) => UserProvider(),
+        ),
+        ChangeNotifierProxyProvider<UserProvider, SponsorshipProvider>(
           update: (_, auth, __) => SponsorshipProvider(auth),
           create: (context) => SponsorshipProvider(null),
         ),
-        ChangeNotifierProxyProvider<AuthProvider, ApplicationProvider>(
+        ChangeNotifierProxyProvider<UserProvider, ApplicationProvider>(
           update: (_, auth, __) => ApplicationProvider(auth),
           create: (context) => ApplicationProvider(null),
         ),
@@ -34,7 +39,21 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: AppTheme.light(),
         darkTheme: AppTheme.dark(),
-        home: LoginScreen(),
+        home: FutureBuilder(
+          future: UserPrefences().getUser(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              if (snapshot.data.token == null) {
+                return LoginScreen();
+              }
+              Provider.of<UserProvider>(context).setUser(snapshot.data);
+              return SponsorshipScreen();
+            }
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          },
+        ),
         routes: {
           '/login': (context) => LoginScreen(),
           '/register': (context) => RegisterScreen(),

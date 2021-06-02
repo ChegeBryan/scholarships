@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/services/auth.dart';
+import 'package:geopro/services/user.dart';
 import 'package:provider/provider.dart';
 
 class LoginForm extends StatefulWidget {
@@ -82,6 +83,8 @@ class _LoginFormState extends State<LoginForm> {
 
                       successMessage.then((response) {
                         if (response['status']) {
+                          Provider.of<UserProvider>(context, listen: false)
+                              .setUser(response['user']);
                           Navigator.pushReplacementNamed(
                               context, '/sponsorships');
                         } else {

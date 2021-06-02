@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/services/auth.dart';
+import 'package:geopro/services/user.dart';
+import 'package:geopro/util/shared_preferences.dart';
 import 'package:provider/provider.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -12,7 +14,7 @@ class AppDrawer extends StatelessWidget {
           children: <Widget>[
             UserAccountsDrawerHeader(
               accountName: null,
-              accountEmail: Text(Provider.of<AuthProvider>(context).userEmail),
+              accountEmail: Text(Provider.of<UserProvider>(context).user.email),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage(
                     'https://randomuser.me/api/portraits/women/0.jpg'),
@@ -53,11 +55,15 @@ class AppDrawer extends StatelessWidget {
                     ListTile(
                       leading: Icon(Icons.exit_to_app),
                       title: Text('Logout'),
-                      onTap: () => Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        '/',
-                        (Route<dynamic> route) => false,
-                      ),
+                      onTap: () {
+                        // clear user data from local storage
+                        UserPrefences().removeUser();
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          '/',
+                          (Route<dynamic> route) => false,
+                        );
+                      },
                     )
                   ],
                 ),
