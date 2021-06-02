@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:geopro/models/application.dart';
 import 'package:geopro/services/api.dart';
-import 'package:geopro/services/auth.dart';
 import 'package:geopro/services/user.dart';
 import 'package:http/http.dart';
 
