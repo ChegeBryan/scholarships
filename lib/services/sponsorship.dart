@@ -70,7 +70,7 @@ class SponsorshipProvider with ChangeNotifier {
     var result;
 
     Response response = await delete(
-      Uri.parse('https://geoproserver.herokuapp.com/api/sponsorship/$id/'),
+      ApiUrl.sponsorship + '$id/',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ${auth.user.token}',
@@ -98,7 +98,7 @@ class SponsorshipProvider with ChangeNotifier {
     };
 
     Response response = await put(
-      Uri.parse('https://geoproserver.herokuapp.com/api/sponsorship/$id/'),
+      ApiUrl.sponsorship + '$id/',
       body: jsonEncode(data),
       headers: {
         'Content-Type': 'application/json',
