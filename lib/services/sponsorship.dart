@@ -108,6 +108,7 @@ class SponsorshipProvider with ChangeNotifier {
     }
     else {
       result = {'status': false, 'message': jsonDecode(response.body)};
+      print(jsonDecode(response.body));
     }
     return result;
   }

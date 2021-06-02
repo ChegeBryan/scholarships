@@ -19,10 +19,12 @@ class FormBottomActions extends StatelessWidget {
       children: <Widget>[
         Text(
           message,
+          style: TextStyle(color: Colors.white),
         ),
         FlatButton(
           onPressed: action,
           child: Text(actionText),
+          textColor: Colors.white,
         ),
       ],
     );
