@@ -82,6 +82,9 @@ class AuthProvider with ChangeNotifier {
 
       User authUser = User.fromJson(responseData);
 
+      // persist user on app.
+      UserPrefences().saveUser(authUser);
+
       _loggedInStatus = Status.LoggedIn;
       _userEmail = authUser.email;
       _token = authUser.token;
