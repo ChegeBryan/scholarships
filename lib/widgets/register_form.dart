@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/helpers/validators.dart';
 import 'package:geopro/services/auth.dart';
+import 'package:geopro/services/user.dart';
 import 'package:provider/provider.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -134,6 +135,8 @@ class _RegisterFormState extends State<RegisterForm> {
 
                   successMessage.then((response) {
                     if (response['status']) {
+                      Provider.of<UserProvider>(context, listen: false)
+                          .setUser(response['user']);
                       Navigator.pushReplacementNamed(context, '/sponsorships');
                     } else {
                       Map<String, dynamic> responseErrors = {};
