@@ -3,11 +3,8 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:geopro/models/sponsorship.dart';
-import 'package:geopro/models/user.dart';
 import 'package:geopro/services/api.dart';
-import 'package:geopro/services/auth.dart';
 import 'package:geopro/services/user.dart';
-import 'package:geopro/util/shared_preferences.dart';
 import 'package:http/http.dart';
 
 import 'api.dart';
