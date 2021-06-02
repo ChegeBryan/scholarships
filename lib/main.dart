@@ -7,6 +7,7 @@ import 'package:geopro/services/auth.dart';
 import 'package:geopro/services/sponsorship.dart';
 import 'package:geopro/sponsorship_screen.dart';
 import 'package:geopro/add_sponsorship_screen.dart';
+import 'package:geopro/util/shared_preferences.dart';
 import 'package:geopro/widgets/theme.dart';
 import 'package:provider/provider.dart';
 
@@ -34,7 +35,20 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: AppTheme.light(),
         darkTheme: AppTheme.dark(),
-        home: LoginScreen(),
+        home: FutureBuilder(
+          future: UserPrefences().getUser(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              if (snapshot.data.token == null) {
+                return LoginScreen();
+              }
+              return SponsorshipScreen();
+            }
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          },
+        ),
         routes: {
           '/login': (context) => LoginScreen(),
           '/register': (context) => RegisterScreen(),
