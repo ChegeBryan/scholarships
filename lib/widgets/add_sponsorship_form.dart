@@ -5,8 +5,10 @@ import 'package:geopro/services/sponsorship.dart';
 class AddSponsorshipForm extends StatefulWidget {
   final String name;
   final String description;
+  final int id;
 
-  const AddSponsorshipForm({Key key, this.name, this.description}) : super(key: key);
+  const AddSponsorshipForm({Key key, this.name, this.description, this.id})
+      : super(key: key);
 
   @override
   _AddSponsorshipFormState createState() => _AddSponsorshipFormState();
@@ -18,12 +20,14 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
 
   TextEditingController _name;
   TextEditingController _description;
+  int _id;
 
   @override
   void initState() {
     super.initState();
     _name = TextEditingController(text: widget.name);
     _description = TextEditingController(text: widget.description);
+    _id = widget.id;
   }
 
   @override
@@ -75,21 +79,54 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
           SizedBox(
             height: 8.0,
           ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            child: FlatButton(
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            FlatButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            FlatButton(
               onPressed: () {
                 if (_formKey.currentState.validate()) {
                   _formKey.currentState.save();
-                  sponsorshipProvider
-                      .addSponsorship(_name.text, _description.text)
-                      .then((response) {
-                    if (response['status']) {
-                      Navigator.of(context).pop();
-                    } else {
-                      print(response['message']);
-                    }
-                  });
+                  if (_id != null) {
+                    sponsorshipProvider
+                        .updateSponsorship(_name.text, _description.text, _id)
+                        .then((response) {
+                      if (response['status']) {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: const Text('Sponsorship updated'),
+                          duration: const Duration(seconds: 1),
+                        ));
+                        Navigator.pushNamed(context, '/sponsorships');
+                      } else {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: const Text(
+                              'There was a problem updating the sponsorship'),
+                          duration: const Duration(seconds: 1),
+                        ));
+                      }
+                    });
+                  } else {
+                    sponsorshipProvider
+                        .addSponsorship(_name.text, _description.text)
+                        .then((response) {
+                      if (response['status']) {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: const Text('Sponsorship added'),
+                          duration: const Duration(seconds: 1),
+                        ));
+                        Navigator.pushNamed(context, '/sponsorships');
+                      } else {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: const Text(
+                              'There was a problem adding the sponsorship'),
+                          duration: const Duration(seconds: 1),
+                        ));
+                      }
+                    });
+                  }
                 } else {
                   setState(() {
                     _autovalidate = true;
@@ -103,7 +140,7 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
               textColor: Colors.white,
               color: Theme.of(context).primaryColor,
             ),
-          ),
+          ]),
         ],
       ),
     );

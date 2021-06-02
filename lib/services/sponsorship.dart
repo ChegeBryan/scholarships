@@ -62,4 +62,55 @@ class SponsorshipProvider with ChangeNotifier {
     return result;
   }
 
+  // delete sponsorship
+  Future<Map<String, dynamic>> deleteSponsorship(int id) async {
+    var result;
+
+    Response response = await delete(
+      Uri.parse('https://geoproserver.herokuapp.com/api/sponsorship/$id/'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${auth.token}',
+      },
+    );
+
+    if(response.statusCode == 204) {
+      result = {'status': true};
+    }
+    else {
+      result = {'status': false, 'message': jsonDecode(response.body)};
+    }
+
+    return result;
+  }
+
+  // update sponsorship
+  Future<Map<String, dynamic>> updateSponsorship(String name, String description, int id) async {
+    var result;
+
+    final Map<String, dynamic> data = {
+      'name': name,
+      'description': description,
+      'pk': id
+    };
+
+    Response response = await put(
+      Uri.parse('https://geoproserver.herokuapp.com/api/sponsorship/$id/'),
+      body: jsonEncode(data),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${auth.token}',
+      },
+    );
+
+    if(response.statusCode == 200) {
+      result = {'status': true, 'message': 'Sponsorship updated successfully'};
+    }
+    else {
+      result = {'status': false, 'message': jsonDecode(response.body)};
+      print(jsonDecode(response.body));
+    }
+    return result;
+  }
+
 }

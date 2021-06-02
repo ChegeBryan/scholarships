@@ -34,9 +34,17 @@ class _LoginFormState extends State<LoginForm> {
           TextFormField(
             controller: _email,
             keyboardType: TextInputType.emailAddress,
+            style: TextStyle(color: Colors.white),
+            cursorColor: Colors.white,
             decoration: InputDecoration(
               labelText: 'Email',
-              border: OutlineInputBorder(),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+              ),
+              labelStyle: TextStyle(color: Colors.white),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+              ),
             ),
             validator: (value) => value.isEmpty ? 'Please enter email' : null,
           ),
@@ -45,9 +53,17 @@ class _LoginFormState extends State<LoginForm> {
           ),
           TextFormField(
             controller: _password,
+            style: TextStyle(color: Colors.white),
+            cursorColor: Colors.white,
             decoration: InputDecoration(
               labelText: 'Password',
-              border: OutlineInputBorder(),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+              ),
+              labelStyle: TextStyle(color: Colors.white),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+              ),
             ),
             obscureText: true,
             validator: (value) =>
