@@ -14,10 +14,12 @@ class SponsorshipProvider with ChangeNotifier {
 
   SponsorshipProvider(this.auth);
 
+  String sponsorshipUrl = ApiUrl.sponsorship;
+
   // get sponsorship list
   Future<List<Sponsorship>> fetchSponsorships() async {
     Response response = await get(
-      ApiUrl.sponsorship,
+      sponsorshipUrl,
       headers: {
         'Accept': 'application/json',
         'Authorization': 'Bearer ${auth.user.token}',
@@ -45,7 +47,7 @@ class SponsorshipProvider with ChangeNotifier {
     };
 
     Response response = await post(
-      ApiUrl.sponsorship,
+      sponsorshipUrl,
       body: jsonEncode(data),
       headers: {
         'Content-Type': 'application/json',
@@ -67,7 +69,7 @@ class SponsorshipProvider with ChangeNotifier {
     var result;
 
     Response response = await delete(
-      ApiUrl.sponsorship + '$id/',
+      '$sponsorshipUrl$id/',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ${auth.user.token}',
@@ -95,7 +97,7 @@ class SponsorshipProvider with ChangeNotifier {
     };
 
     Response response = await put(
-      ApiUrl.sponsorship + '$id/',
+      '$sponsorshipUrl$id/',
       body: jsonEncode(data),
       headers: {
         'Content-Type': 'application/json',
