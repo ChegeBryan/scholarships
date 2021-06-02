@@ -17,4 +17,11 @@ class UserPrefences {
 
     return User(email: email, token: token);
   }
+
+  void removeUser() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.remove("email");
+    prefs.remove("token");
+  }
 }
