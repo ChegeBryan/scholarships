@@ -11,17 +11,14 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(statusBarColor: Theme.of(context).primaryColor));
-
     return Scaffold(
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Theme.of(context).primaryColor, Color(0xFF5464BF)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter
-            ),
+                colors: [Theme.of(context).primaryColor, Color(0xFF5464BF)],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter),
           ),
           height: MediaQuery.of(context).size.height,
           padding: const EdgeInsets.all(16.0),

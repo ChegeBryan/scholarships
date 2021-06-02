@@ -98,6 +98,7 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                         Scaffold.of(context).showSnackBar(SnackBar(
                           content: const Text('Sponsorship updated'),
                           duration: const Duration(seconds: 1),
+                          backgroundColor: Colors.red,
                         ));
                         Navigator.pushNamed(context, '/sponsorships');
                       } else {
@@ -105,6 +106,7 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                           content: const Text(
                               'There was a problem updating the sponsorship'),
                           duration: const Duration(seconds: 1),
+                          backgroundColor: Colors.red,
                         ));
                       }
                     });
@@ -116,13 +118,15 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                         Scaffold.of(context).showSnackBar(SnackBar(
                           content: const Text('Sponsorship added'),
                           duration: const Duration(seconds: 1),
+                          backgroundColor: Colors.red,
                         ));
                         Navigator.pushNamed(context, '/sponsorships');
                       } else {
                         Scaffold.of(context).showSnackBar(SnackBar(
-                          content: const Text(
+                          content: Text(
                               'There was a problem adding the sponsorship'),
                           duration: const Duration(seconds: 1),
+                          backgroundColor: Colors.red,
                         ));
                       }
                     });
