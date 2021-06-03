@@ -18,6 +18,8 @@ class SponsorshipProvider with ChangeNotifier {
 
   // get sponsorship list
   Future<List<Sponsorship>> fetchSponsorships() async {
+    List sponsorshipsList;
+
     Response response = await get(
       sponsorshipUrl,
       headers: {
@@ -27,12 +29,12 @@ class SponsorshipProvider with ChangeNotifier {
     );
 
     if (response.statusCode == 200) {
-      List sponsorshipsList = jsonDecode(response.body);
+      sponsorshipsList = jsonDecode(response.body);
       return sponsorshipsList
           .map<Sponsorship>((json) => Sponsorship.fromJson(json))
           .toList();
     } else {
-      print(response.body);
+      return sponsorshipsList;
     }
   }
 
