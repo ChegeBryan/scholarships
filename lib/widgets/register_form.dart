@@ -41,9 +41,21 @@ class _RegisterFormState extends State<RegisterForm> {
             TextFormField(
               controller: _username,
               keyboardType: TextInputType.text,
+              style: TextStyle(color: Colors.white),
+              cursorColor: Colors.white,
               decoration: InputDecoration(
+                prefixIcon: Icon(
+                  Icons.person,
+                  color: Colors.white,
+                ),
                 labelText: 'Username',
-                border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+                labelStyle: TextStyle(color: Colors.white),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
               ),
               validator: (value) {
                 if (value.isEmpty) {
@@ -65,9 +77,21 @@ class _RegisterFormState extends State<RegisterForm> {
             TextFormField(
               controller: _email,
               keyboardType: TextInputType.emailAddress,
+              style: TextStyle(color: Colors.white),
+              cursorColor: Colors.white,
               decoration: InputDecoration(
+                prefixIcon: Icon(
+                  Icons.email,
+                  color: Colors.white,
+                ),
                 labelText: 'Email',
-                border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+                labelStyle: TextStyle(color: Colors.white),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
               ),
               validator: (value) {
                 if (value.isEmpty) {
@@ -88,9 +112,21 @@ class _RegisterFormState extends State<RegisterForm> {
             ),
             TextFormField(
               controller: _password,
+              style: TextStyle(color: Colors.white),
+              cursorColor: Colors.white,
               decoration: InputDecoration(
+                prefixIcon: Icon(
+                  Icons.lock,
+                  color: Colors.white,
+                ),
                 labelText: 'Password',
-                border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+                labelStyle: TextStyle(color: Colors.white),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
               ),
               obscureText: true,
               validator: (value) {
@@ -113,9 +149,21 @@ class _RegisterFormState extends State<RegisterForm> {
             TextFormField(
               controller: _confirmPassword,
               autocorrect: false,
+              style: TextStyle(color: Colors.white),
+              cursorColor: Colors.white,
               decoration: InputDecoration(
+                prefixIcon: Icon(
+                  Icons.lock,
+                  color: Colors.white,
+                ),
                 labelText: 'Confirm Password',
-                border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+                labelStyle: TextStyle(color: Colors.white),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
               ),
               obscureText: true,
               textAlignVertical: TextAlignVertical.center,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:geopro/widgets/form_bottom_actions.dart';
 import 'package:geopro/widgets/register_form.dart';
 
@@ -13,6 +14,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Color(0xFF5464BF), Theme.of(context).primaryColor],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter),
+          ),
           height: MediaQuery.of(context).size.height,
           padding: const EdgeInsets.all(16.0),
           child: Column(

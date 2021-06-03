@@ -38,6 +38,10 @@ class _LoginFormState extends State<LoginForm> {
             style: TextStyle(color: Colors.white),
             cursorColor: Colors.white,
             decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.email,
+                color: Colors.white,
+              ),
               labelText: 'Email',
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.white),
@@ -57,6 +61,10 @@ class _LoginFormState extends State<LoginForm> {
             style: TextStyle(color: Colors.white),
             cursorColor: Colors.white,
             decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.lock,
+                color: Colors.white,
+              ),
               labelText: 'Password',
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.white),
