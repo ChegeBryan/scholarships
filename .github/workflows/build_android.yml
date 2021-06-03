@@ -37,7 +37,8 @@ jobs:
       - run: flutter analyze .
 
       # Run widget tests for our flutter project.
-      - run: flutter test
+      # uncomment to run tests
+      # - run: flutter test
 
       # Build apk.
       - run: flutter build apk --split-per-abi
