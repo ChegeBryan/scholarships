@@ -21,9 +21,9 @@ class _ApplyScreenState extends State<ApplyScreen> {
         future: Provider.of<SponsorshipProvider>(context).fetchSponsorships(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            if (!snapshot.hasData) {
+            if (!snapshot.hasData || snapshot.data.isEmpty) {
               return Center(
-                child: Text('No sponsorships available.'),
+                child: Text('No sponsorships available for application.'),
               );
             }
             return ApplicationForm(
