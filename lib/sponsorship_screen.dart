@@ -18,8 +18,8 @@ class SponsorshipScreen extends StatelessWidget {
         future: Provider.of<SponsorshipProvider>(context).fetchSponsorships(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            if (!snapshot.hasData) {
-              Center(
+            if (!snapshot.hasData || snapshot.data.isEmpty) {
+              return Center(
                 child: Text('No sponsorships available'),
               );
             }

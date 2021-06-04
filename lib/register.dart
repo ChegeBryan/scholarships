@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:geopro/widgets/form_bottom_actions.dart';
 import 'package:geopro/widgets/register_form.dart';
 
@@ -11,6 +10,9 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
+        .copyWith(statusBarColor: Theme.of(context).primaryColor));
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
