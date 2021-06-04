@@ -85,6 +85,17 @@ class _ApplicationFormState extends State<ApplicationForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(bottom: 12.0),
+              child: Text(
+                'Sponsporship',
+                style: TextStyle(
+                  color: Colors.grey[600],
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
             DropdownButtonFormField(
               value: _dropdownValue,
               items: _sponsorships
@@ -106,9 +117,22 @@ class _ApplicationFormState extends State<ApplicationForm> {
               ),
               isDense: true,
             ),
-            Divider(),
-            SizedBox(
-              height: 8.0,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Contact Details',
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Divider(),
+                ],
+              ),
             ),
             TextFormField(
               controller: _firstName,
@@ -209,12 +233,22 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 return null;
               },
             ),
-            SizedBox(
-              height: 8.0,
-            ),
-            Divider(),
-            SizedBox(
-              height: 8.0,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'School Details',
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Divider(),
+                ],
+              ),
             ),
             TextFormField(
               controller: _schoolName,
@@ -301,12 +335,22 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 ),
               ],
             ),
-            SizedBox(
-              height: 8.0,
-            ),
-            Divider(),
-            SizedBox(
-              height: 8.0,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Documents Upload',
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Divider(),
+                ],
+              ),
             ),
             TextFormField(
               controller: _coverLetter,
@@ -357,7 +401,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
               },
             ),
             SizedBox(
-              height: 8.0,
+              height: 16.0,
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width,
