@@ -55,6 +55,25 @@ class _ApplicationFormState extends State<ApplicationForm> {
   final TextEditingController _nationalId = TextEditingController();
 
   @override
+  void dispose() {
+    // clean controller when widget is removed from the widget tree
+    _firstName.dispose();
+    _lastName.dispose();
+    _mobile.dispose();
+    _country.dispose();
+    _city.dispose();
+    _schoolName.dispose();
+    _degree.dispose();
+    _coverLetter.dispose();
+    _start.dispose();
+    _to.dispose();
+    _postalCode.dispose();
+    _birthCertificate.dispose();
+    _nationalId.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     ApplicationProvider application = Provider.of<ApplicationProvider>(context);
 
