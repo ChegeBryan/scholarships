@@ -1,0 +1,11 @@
+// ignore: sdk_version_extension_methods
+extension CapExtension on String {
+  String get inCaps =>
+      this.length > 0 ? '${this[0].toUpperCase()}${this.substring(1)}' : '';
+  String get allInCaps => this.toUpperCase();
+  String get capitalizeFirstofEach => this
+      .replaceAll(RegExp(' +'), ' ')
+      .split(" ")
+      .map((str) => str.inCaps)
+      .join(" ");
+}
