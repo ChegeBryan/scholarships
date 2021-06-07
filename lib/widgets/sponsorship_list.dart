@@ -7,7 +7,7 @@ import 'package:geopro/helpers/string_extensions.dart';
 
 class SponsorshipListScreen extends StatelessWidget {
   // laucnhes sponsorship details modal
-  showSponsorShipDetails(context, snapshot, index) {
+  showSponsorshipDetails(context, snapshot, index) {
     return showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -151,7 +151,7 @@ class SponsorshipListScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(24.0),
                           ),
                           child: InkWell(
-                            onTap: () => showSponsorShipDetails(
+                            onTap: () => showSponsorshipDetails(
                                 context, snapshot, index),
                             customBorder: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(24.0),
@@ -211,7 +211,7 @@ class SponsorshipListScreen extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    onPressed: () => showSponsorShipDetails(
+                                    onPressed: () => showSponsorshipDetails(
                                         context, snapshot, index),
                                   )
                                 ],
