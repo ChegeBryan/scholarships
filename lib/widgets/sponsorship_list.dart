@@ -55,6 +55,7 @@ class SponsorshipListScreen extends StatelessWidget {
                     textColor: Colors.white,
                     shape: StadiumBorder(),
                     onPressed: () {
+                      Navigator.pop(context);
                       Navigator.pushNamed(
                         context,
                         '/apply',
