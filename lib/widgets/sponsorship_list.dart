@@ -6,6 +6,82 @@ import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:geopro/helpers/string_extensions.dart';
 
 class SponsorshipListScreen extends StatelessWidget {
+  // laucnhes sponsorship details modal
+  showSponsorShipDetails(context, snapshot, index) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.all(24.0),
+          height: MediaQuery.of(context).size.height * .5,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                snapshot.data[index].name.toString().inCaps,
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                'Description',
+                style: TextStyle(
+                  color: Colors.grey[600],
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    snapshot.data[index].description,
+                    softWrap: true,
+                    style: TextStyle(
+                      height: 1.5,
+                      fontSize: 18.0,
+                    ),
+                  ),
+                ),
+              ),
+              Align(
+                child: Container(
+                  width: MediaQuery.of(context).size.width * .75,
+                  child: FlatButton(
+                    textColor: Colors.white,
+                    shape: StadiumBorder(),
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/apply',
+                        arguments: {
+                          'id': snapshot.data[index].id,
+                          'name': snapshot.data[index].name,
+                        },
+                      );
+                    },
+                    child: Text('Apply Now'),
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24.0),
+          topRight: Radius.circular(24.0),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,9 +150,8 @@ class SponsorshipListScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(24.0),
                           ),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(context, '/apply');
-                            },
+                            onTap: () => showSponsorShipDetails(
+                                context, snapshot, index),
                             customBorder: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(24.0),
                             ),
@@ -135,9 +210,8 @@ class SponsorshipListScreen extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    onPressed: () {
-                                      Navigator.pushNamed(context, '/apply');
-                                    },
+                                    onPressed: () => showSponsorShipDetails(
+                                        context, snapshot, index),
                                   )
                                 ],
                               ),
