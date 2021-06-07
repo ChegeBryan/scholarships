@@ -67,14 +67,14 @@ class SponsorshipListScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(24.0),
                           color: Color(0xFFE9EAF2),
                         ),
-                        child: InkWell(
-                          onTap: () {},
-                          child: Card(
-                            clipBehavior: Clip.none,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(24.0),
-                            ),
+                        child: Card(
+                          clipBehavior: Clip.none,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24.0),
+                          ),
+                          child: InkWell(
+                            onTap: () {},
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 18.0),
