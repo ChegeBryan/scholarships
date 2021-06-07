@@ -77,6 +77,9 @@ class SponsorshipListScreen extends StatelessWidget {
                             onTap: () {
                               Navigator.pushNamed(context, '/apply');
                             },
+                            customBorder: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(24.0),
+                            ),
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 18.0),
