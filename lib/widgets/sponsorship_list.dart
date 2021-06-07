@@ -17,9 +17,25 @@ class SponsorshipListScreen extends StatelessWidget {
       drawer: AppDrawer(),
       body: Column(
         children: <Widget>[
-          ClipPath(
-            clipper: WaveClipperOne(),
-            child: Image.asset('assets/student_graduate.jpg'),
+          Stack(
+            children: <Widget>[
+              ClipPath(
+                clipper: WaveClipperOne(),
+                child: Image.asset('assets/student_graduate.jpg'),
+              ),
+              Positioned.fill(
+                child: Align(
+                  child: Text(
+                    'Sponsorships',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           Expanded(
             child: FutureBuilder(
@@ -33,6 +49,7 @@ class SponsorshipListScreen extends StatelessWidget {
                     );
                   }
                   return ListView.builder(
+                    shrinkWrap: true,
                     padding: EdgeInsets.all(4),
                     itemCount: snapshot.data.length,
                     itemBuilder: (BuildContext context, int index) {
