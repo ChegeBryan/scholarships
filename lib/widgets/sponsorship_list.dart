@@ -112,15 +112,20 @@ class SponsorshipListScreen extends StatelessWidget {
                                       vertical: 12.0,
                                     ),
                                     child: Row(
-                                      mainAxisSize: MainAxisSize.min,
+                                      textBaseline: TextBaseline.alphabetic,
                                       children: <Widget>[
-                                        Text('View Sponsorship'),
+                                        Text(
+                                          'View Sponsorship',
+                                          style: TextStyle(
+                                            fontSize: 16.0,
+                                          ),
+                                        ),
                                         Padding(
                                           padding:
-                                              const EdgeInsets.only(left: 8.0),
+                                              const EdgeInsets.only(left: 6.0),
                                           child: Icon(
                                             Icons.arrow_forward_ios,
-                                            size: 16.0,
+                                            size: 12.0,
                                           ),
                                         ),
                                       ],
