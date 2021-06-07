@@ -94,6 +94,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 color: Theme.of(context).primaryColor,
               ),
             ),
+            // TODO: Add a dialog that allows you to change selected sponsorsip
             Padding(
               padding: const EdgeInsets.only(bottom: 12.0),
               child: Column(children: <Widget>[]),
