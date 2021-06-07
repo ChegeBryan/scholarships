@@ -74,7 +74,9 @@ class SponsorshipListScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(24.0),
                           ),
                           child: InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.pushNamed(context, '/apply');
+                            },
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 18.0),
@@ -130,7 +132,9 @@ class SponsorshipListScreen extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, '/apply');
+                                    },
                                   )
                                 ],
                               ),
