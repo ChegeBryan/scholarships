@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Geopro Sponsorship',
         theme: AppTheme.light(),
         darkTheme: AppTheme.dark(),
         home: FutureBuilder(
