@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:geopro/services/sponsorship.dart';
-import 'package:geopro/widgets/app_drawer.dart';
 import 'package:geopro/widgets/application_form.dart';
-import 'package:provider/provider.dart';
 
 class ApplyScreen extends StatefulWidget {
   @override
@@ -12,28 +9,16 @@ class ApplyScreen extends StatefulWidget {
 class _ApplyScreenState extends State<ApplyScreen> {
   @override
   Widget build(BuildContext context) {
+    final Map<String, dynamic> args =
+        ModalRoute.of(context).settings.arguments as Map;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Sponsorship Application'),
       ),
-      drawer: AppDrawer(),
-      body: FutureBuilder(
-        future: Provider.of<SponsorshipProvider>(context).fetchSponsorships(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (!snapshot.hasData || snapshot.data.isEmpty) {
-              return Center(
-                child: Text('No sponsorships available for application.'),
-              );
-            }
-            return ApplicationForm(
-              sponsorshipList: snapshot.data,
-            );
-          }
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        },
+      body: ApplicationForm(
+        sponsorshipId: args['id'],
+        name: args['name'],
       ),
     );
   }

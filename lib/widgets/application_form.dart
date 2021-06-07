@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/application_details.dart';
-import 'package:geopro/models/sponsorship.dart';
 import 'package:geopro/services/application.dart';
 import 'package:provider/provider.dart';
 
 class ApplicationForm extends StatefulWidget {
-  final List<Sponsorship> sponsorshipList;
+  final String name;
+  final int sponsorshipId;
 
-  const ApplicationForm({Key key, this.sponsorshipList}) : super(key: key);
+  const ApplicationForm({
+    Key key,
+    this.name,
+    this.sponsorshipId,
+  }) : super(key: key);
 
   @override
   _ApplicationFormState createState() => _ApplicationFormState();
@@ -16,9 +20,6 @@ class ApplicationForm extends StatefulWidget {
 class _ApplicationFormState extends State<ApplicationForm> {
   final _formKey = GlobalKey<FormState>();
   bool _autovalidate = false;
-  List<Map<String, dynamic>> _sponsorships;
-  var _dropdownValue;
-  String _sponsorshipId;
 
   void _showApplicationDetails(BuildContext context, data) {
     Navigator.push(
@@ -28,15 +29,6 @@ class _ApplicationFormState extends State<ApplicationForm> {
         fullscreenDialog: true,
       ),
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _sponsorships = widget.sponsorshipList
-        .map((sponsorship) => sponsorship.toJson())
-        .toList();
-    _dropdownValue = _sponsorships[0];
   }
 
   // form input fields controllers
@@ -85,37 +77,26 @@ class _ApplicationFormState extends State<ApplicationForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12.0),
-              child: Text(
-                'Sponsporship',
-                style: TextStyle(
-                  color: Colors.grey[600],
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                ),
+            Text(
+              'Sponsporship',
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            DropdownButtonFormField(
-              value: _dropdownValue,
-              items: _sponsorships
-                  .map<DropdownMenuItem<Map<String, dynamic>>>((value) {
-                return DropdownMenuItem<Map<String, dynamic>>(
-                  value: value,
-                  child: Text(value['name']),
-                );
-              }).toList(),
-              onChanged: (value) {
-                setState(() {
-                  _dropdownValue = value;
-                  _sponsorshipId = value['pk'].toString();
-                });
-              },
-              decoration: InputDecoration(
-                labelText: "Sponsorship",
-                border: OutlineInputBorder(),
+            Text(
+              widget.name,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                height: 2.0,
+                fontSize: 16.0,
+                color: Theme.of(context).primaryColor,
               ),
-              isDense: true,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 12.0),
+              child: Column(children: <Widget>[]),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -411,7 +392,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                     _formKey.currentState.save();
                     Future<Map<String, dynamic>> response =
                         application.addApplication(
-                            sponsorshipId: _sponsorshipId,
+                            sponsorshipId: widget.sponsorshipId.toString(),
                             firstName: _firstName.text,
                             lastName: _lastName.text,
                             country: _country.text,
