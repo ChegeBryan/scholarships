@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
                 return LoginScreen();
               }
               Provider.of<UserProvider>(context).setUser(snapshot.data);
-              return SponsorshipScreen();
+              return SponsorshipListScreen();
             }
             return Center(
               child: CircularProgressIndicator(),
