@@ -29,8 +29,15 @@ class SponsorshipListScreen extends StatelessWidget {
                     'Sponsorships',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 24.0,
+                      fontSize: 28.0,
                       fontWeight: FontWeight.bold,
+                      shadows: <Shadow>[
+                        Shadow(
+                          offset: Offset(1.0, 3.0),
+                          blurRadius: 3.0,
+                          color: Colors.black,
+                        ),
+                      ],
                     ),
                   ),
                 ),
