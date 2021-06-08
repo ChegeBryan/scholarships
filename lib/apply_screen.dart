@@ -19,6 +19,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
       body: ApplicationForm(
         sponsorshipId: args['id'],
         name: args['name'],
+        sponsorships: args['sponsorships'],
       ),
     );
   }

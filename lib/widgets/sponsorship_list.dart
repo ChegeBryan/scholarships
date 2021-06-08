@@ -62,6 +62,7 @@ class SponsorshipListScreen extends StatelessWidget {
                         arguments: {
                           'id': snapshot.data[index].id,
                           'name': snapshot.data[index].name,
+                          'sponsorships': snapshot.data,
                         },
                       );
                     },

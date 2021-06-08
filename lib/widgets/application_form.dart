@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/application_details.dart';
+import 'package:geopro/models/sponsorship.dart';
 import 'package:geopro/services/application.dart';
 import 'package:provider/provider.dart';
+import 'package:geopro/helpers/string_extensions.dart';
 
 class ApplicationForm extends StatefulWidget {
   final String name;
   final int sponsorshipId;
+  final List<Sponsorship> sponsorships;
 
   const ApplicationForm({
     Key key,
     this.name,
     this.sponsorshipId,
+    this.sponsorships,
   }) : super(key: key);
 
   @override
@@ -20,6 +24,15 @@ class ApplicationForm extends StatefulWidget {
 class _ApplicationFormState extends State<ApplicationForm> {
   final _formKey = GlobalKey<FormState>();
   bool _autovalidate = false;
+  int _sponsorshipId;
+  String _sponsorshipName;
+
+  @override
+  void initState() {
+    _sponsorshipId = widget.sponsorshipId;
+    _sponsorshipName = widget.name.inCaps;
+    super.initState();
+  }
 
   void _showApplicationDetails(BuildContext context, data) {
     Navigator.push(
@@ -29,6 +42,44 @@ class _ApplicationFormState extends State<ApplicationForm> {
         fullscreenDialog: true,
       ),
     );
+  }
+
+  Future<void> _changeSponsorship() async {
+    Sponsorship sponsorship = await showDialog<Sponsorship>(
+      context: context,
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          title: const Text('Change sponsorship'),
+          children: <Widget>[
+            for (var sponsorship in widget.sponsorships)
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.pop(context, sponsorship);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(
+                    sponsorship.name.inCaps,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ),
+          ],
+        );
+      },
+    );
+    if (sponsorship != null) {
+      setState(() {
+        _sponsorshipId = sponsorship.id;
+        _sponsorshipName = sponsorship.name;
+      });
+    }
   }
 
   // form input fields controllers
@@ -85,16 +136,35 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
-              widget.name,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                height: 2.0,
-                fontSize: 16.0,
-                color: Theme.of(context).primaryColor,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.baseline,
+              textBaseline: TextBaseline.alphabetic,
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    _sponsorshipName.inCaps,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      height: 2.0,
+                      fontSize: 16.0,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                FlatButton(
+                  onPressed: () => _changeSponsorship(),
+                  child: Text(
+                    'Change Sponsorship',
+                    style: TextStyle(
+                      color: Theme.of(context).accentColor,
+                      fontSize: 14.0,
+                    ),
+                  ),
+                )
+              ],
             ),
-            // TODO: Add a dialog that allows you to change selected sponsorsip
             Padding(
               padding: const EdgeInsets.only(bottom: 12.0),
               child: Column(children: <Widget>[]),
@@ -393,7 +463,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                     _formKey.currentState.save();
                     Future<Map<String, dynamic>> response =
                         application.addApplication(
-                            sponsorshipId: widget.sponsorshipId.toString(),
+                            sponsorshipId: _sponsorshipId.toString(),
                             firstName: _firstName.text,
                             lastName: _lastName.text,
                             country: _country.text,
