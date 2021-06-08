@@ -132,95 +132,97 @@ class SponsorshipListScreen extends StatelessWidget {
                       child: Text('No sponsorships available'),
                     );
                   }
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.all(4),
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        margin: const EdgeInsets.all(18.0),
-                        padding: const EdgeInsets.all(6.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(24.0),
-                          color: Color(0xFFE9EAF2),
-                        ),
-                        child: Card(
-                          clipBehavior: Clip.none,
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
+                  return Scrollbar(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      padding: EdgeInsets.all(4),
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          margin: const EdgeInsets.all(18.0),
+                          padding: const EdgeInsets.all(6.0),
+                          decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(24.0),
+                            color: Color(0xFFE9EAF2),
                           ),
-                          child: InkWell(
-                            onTap: () => showSponsorshipDetails(
-                                context, snapshot, index),
-                            customBorder: RoundedRectangleBorder(
+                          child: Card(
+                            clipBehavior: Clip.none,
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(24.0),
                             ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 18.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      top: 12.0,
-                                    ),
-                                    child: Text(
-                                      snapshot.data[index].name
-                                          .toString()
-                                          .inCaps,
-                                      style: TextStyle(
-                                        color: Theme.of(context).primaryColor,
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.bold,
+                            child: InkWell(
+                              onTap: () => showSponsorshipDetails(
+                                  context, snapshot, index),
+                              customBorder: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(24.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 18.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 12.0,
                                       ),
+                                      child: Text(
+                                        snapshot.data[index].name
+                                            .toString()
+                                            .inCaps,
+                                        style: TextStyle(
+                                          color: Theme.of(context).primaryColor,
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                    Text(
+                                      snapshot.data[index].description,
+                                      softWrap: true,
+                                      maxLines: 3,
                                       overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        height: 2.0,
+                                        fontSize: 18.0,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    snapshot.data[index].description,
-                                    softWrap: true,
-                                    maxLines: 3,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      height: 2.0,
-                                      fontSize: 18.0,
-                                    ),
-                                  ),
-                                  FlatButton(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 12.0,
-                                    ),
-                                    child: Row(
-                                      textBaseline: TextBaseline.alphabetic,
-                                      children: <Widget>[
-                                        Text(
-                                          'View Sponsorship',
-                                          style: TextStyle(
-                                            fontSize: 16.0,
+                                    FlatButton(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0,
+                                      ),
+                                      child: Row(
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: <Widget>[
+                                          Text(
+                                            'View Sponsorship',
+                                            style: TextStyle(
+                                              fontSize: 16.0,
+                                            ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 6.0),
-                                          child: Icon(
-                                            Icons.arrow_forward_ios,
-                                            size: 12.0,
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 6.0),
+                                            child: Icon(
+                                              Icons.arrow_forward_ios,
+                                              size: 12.0,
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    onPressed: () => showSponsorshipDetails(
-                                        context, snapshot, index),
-                                  )
-                                ],
+                                        ],
+                                      ),
+                                      onPressed: () => showSponsorshipDetails(
+                                          context, snapshot, index),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   );
                 }
                 return Center(
