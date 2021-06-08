@@ -111,7 +111,8 @@ class SponsorshipScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                    width: MediaQuery.of(context).size.width * 0.6,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.6,
                                     child: Padding(
                                       padding: const EdgeInsets.only(
                                         top: 12.0,
@@ -128,7 +129,8 @@ class SponsorshipScreen extends StatelessWidget {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: MediaQuery.of(context).size.width * 0.6,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.6,
                                     child: Text(
                                       snapshot.data[index].description,
                                       softWrap: true,
@@ -141,7 +143,8 @@ class SponsorshipScreen extends StatelessWidget {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: MediaQuery.of(context).size.width * 0.6,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.6,
                                     child: FlatButton(
                                       padding: const EdgeInsets.symmetric(
                                         vertical: 12.0,
@@ -153,17 +156,13 @@ class SponsorshipScreen extends StatelessWidget {
                                             'View Sponsorship',
                                             style: TextStyle(
                                                 fontSize: 16.0,
-                                                color: Colors.grey
-                                            ),
+                                                color: Colors.grey),
                                           ),
                                           Padding(
-                                            padding:
-                                            const EdgeInsets.only(left: 6.0),
-                                            child: Icon(
-                                                Icons.arrow_forward_ios,
-                                                size: 12.0,
-                                                color: Colors.grey
-                                            ),
+                                            padding: const EdgeInsets.only(
+                                                left: 6.0),
+                                            child: Icon(Icons.arrow_forward_ios,
+                                                size: 12.0, color: Colors.grey),
                                           ),
                                         ],
                                       ),

@@ -206,18 +206,14 @@ class SponsorshipListScreen extends StatelessWidget {
                                           Text(
                                             'View Sponsorship',
                                             style: TextStyle(
-                                              fontSize: 16.0,
-                                                color: Colors.grey
-                                            ),
+                                                fontSize: 16.0,
+                                                color: Colors.grey),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 6.0),
-                                            child: Icon(
-                                              Icons.arrow_forward_ios,
-                                              size: 12.0,
-                                                color: Colors.grey
-                                            ),
+                                            child: Icon(Icons.arrow_forward_ios,
+                                                size: 12.0, color: Colors.grey),
                                           ),
                                         ],
                                       ),
