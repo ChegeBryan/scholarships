@@ -7,7 +7,7 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * .7,
+      width: MediaQuery.of(context).size.width,
       child: Drawer(
         child: Column(
           children: <Widget>[
