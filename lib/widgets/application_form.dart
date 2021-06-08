@@ -52,7 +52,12 @@ class _ApplicationFormState extends State<ApplicationForm> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
           ),
-          title: const Text('Change sponsorship'),
+          title: Text(
+            'Change sponsorship',
+            style: TextStyle(
+              color: Theme.of(context).accentColor,
+            ),
+          ),
           children: <Widget>[
             for (var sponsorship in widget.sponsorships)
               SimpleDialogOption(
