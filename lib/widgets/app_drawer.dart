@@ -43,14 +43,6 @@ class AppDrawer extends StatelessWidget {
                         ),
                         Divider(),
                         ListTile(
-                          leading: Icon(Icons.mode_edit),
-                          title: Text('Apply for Sponsorship'),
-                          onTap: () =>
-                              Navigator.pushReplacementNamed(context, '/apply'),
-                          selected:
-                              ModalRoute.of(context).settings.name == '/apply',
-                        ),
-                        ListTile(
                           leading: Icon(Icons.settings),
                           title: Text('Manage Sponsorships'),
                           onTap: () => Navigator.pushReplacementNamed(
