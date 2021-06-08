@@ -3,14 +3,8 @@ name: Build APK
 # Triggers the workflow on push or pull request events but only for the main branch
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    tags:
+      - v*
 
 jobs:
   build:
@@ -43,8 +37,9 @@ jobs:
       # Build apk.
       - run: flutter build apk --split-per-abi
 
-      # Upload generated apk to the artifacts.
-      - uses: actions/upload-artifact@v2
+      # Release generated APK.
+      - uses: ncipollo/release-action@v1
         with:
           name: release-apk
-          path: build/app/outputs/apk/release/*.apk
+          artifacts: build/app/outputs/apk/release/*.apk
+          token: ${{ secrets.ACTIONS_TOKEN }}
