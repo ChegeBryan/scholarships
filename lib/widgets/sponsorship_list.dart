@@ -53,6 +53,7 @@ class SponsorshipListScreen extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * .75,
                   child: FlatButton(
                     textColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
                     shape: StadiumBorder(),
                     onPressed: () {
                       Navigator.pop(context);
@@ -66,7 +67,12 @@ class SponsorshipListScreen extends StatelessWidget {
                         },
                       );
                     },
-                    child: Text('Apply Now'),
+                    child: Text(
+                      'Apply Now',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                      ),
+                    ),
                     color: Theme.of(context).primaryColor,
                   ),
                 ),
