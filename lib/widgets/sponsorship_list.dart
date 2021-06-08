@@ -92,6 +92,7 @@ class SponsorshipListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SponsorshipProvider sponsorshipProvider = Provider.of<SponsorshipProvider>(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -167,63 +168,118 @@ class SponsorshipListScreen extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 18.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: <Widget>[
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 12.0,
-                                      ),
-                                      child: Text(
-                                        snapshot.data[index].name
-                                            .toString()
-                                            .inCaps,
-                                        style: TextStyle(
-                                          color: Theme.of(context).primaryColor,
-                                          fontSize: 20.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                    Text(
-                                      snapshot.data[index].description,
-                                      softWrap: true,
-                                      maxLines: 3,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        height: 2.0,
-                                        fontSize: 18.0,
-                                      ),
-                                    ),
-                                    FlatButton(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 12.0,
-                                      ),
-                                      child: Row(
-                                        textBaseline: TextBaseline.alphabetic,
-                                        children: <Widget>[
-                                          Text(
-                                            'View Sponsorship',
-                                            style: TextStyle(
-                                              fontSize: 16.0,
-                                            ),
-                                          ),
-                                          Padding(
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        SizedBox(
+                                          width: MediaQuery.of(context).size.width * 0.6,
+                                          child: Padding(
                                             padding: const EdgeInsets.only(
-                                                left: 6.0),
-                                            child: Icon(
-                                              Icons.arrow_forward_ios,
-                                              size: 12.0,
+                                              top: 12.0,
+                                            ),
+                                            child: Text(
+                                              snapshot.data[index].name
+                                                  .toString()
+                                                  .inCaps,
+                                              style: TextStyle(
+                                                color: Theme.of(context).primaryColor,
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                      onPressed: () => showSponsorshipDetails(
-                                          context, snapshot, index),
-                                    )
+                                        ),
+                                        SizedBox(
+                                          width: MediaQuery.of(context).size.width * 0.6,
+                                          child: Text(
+                                            snapshot.data[index].description,
+                                            softWrap: true,
+                                            maxLines: 3,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              height: 2.0,
+                                              fontSize: 18.0,
+                                            ),
+                                          ),
+                                        ),
+
+                                        FlatButton(
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 12.0,
+                                          ),
+                                          child: Row(
+                                            textBaseline: TextBaseline.alphabetic,
+                                            children: <Widget>[
+                                              Text(
+                                                'View Sponsorship',
+                                                style: TextStyle(
+                                                  fontSize: 16.0,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 6.0),
+                                                child: Icon(
+                                                  Icons.arrow_forward_ios,
+                                                  size: 12.0,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          onPressed: () => showSponsorshipDetails(
+                                              context, snapshot, index),
+                                        )
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        IconButton(
+                                            icon: Icon(Icons.edit),
+                                            onPressed: () {
+                                              Navigator.pushNamed(
+                                                context,
+                                                '/addSponsorship',
+                                                arguments: {
+                                                  'name': snapshot.data[index].name,
+                                                  'description':
+                                                  snapshot.data[index].description,
+                                                  'id': snapshot.data[index].id
+                                                },
+                                              );
+                                            }),
+                                        IconButton(
+                                            icon: Icon(Icons.delete),
+                                            onPressed: () {
+                                              sponsorshipProvider
+                                                  .deleteSponsorship(snapshot.data[index].id)
+                                                  .then((response) {
+                                                if (response['status']) {
+                                                  Scaffold.of(context).showSnackBar(SnackBar(
+                                                    content:
+                                                    const Text('Sponsorship deleted'),
+                                                    duration: const Duration(seconds: 1),
+                                                  ));
+                                                } else {
+                                                  Scaffold.of(context).showSnackBar(SnackBar(
+                                                    content: const Text(
+                                                        'Sponsorship has not been deleted'),
+                                                    duration: const Duration(seconds: 1),
+                                                  ));
+                                                }
+                                              });
+                                              Navigator.pushNamed(context, '/sponsorships');
+                                            }),
+                                      ],
+                                    ),
+
                                   ],
                                 ),
+
                               ),
                             ),
                           ),
@@ -240,6 +296,13 @@ class SponsorshipListScreen extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+          tooltip: 'Add scholarship',
+          child: Icon(Icons.add),
+          onPressed: () {
+            Navigator.pushNamed(context, '/addSponsorship');
+          }),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

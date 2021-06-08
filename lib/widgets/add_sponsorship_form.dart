@@ -45,6 +45,7 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
             height: 30.0,
           ),
           TextFormField(
+            maxLength: null,
             controller: _name,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
@@ -66,9 +67,11 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
               labelText: 'Description',
+              alignLabelWithHint: true,
               border: OutlineInputBorder(),
             ),
             maxLines: null,
+            minLines: 3,
             validator: (value) {
               if (value.isEmpty) {
                 return 'Please provide description';
