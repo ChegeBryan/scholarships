@@ -14,7 +14,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.1.0 <3.0.0'
+  sdk: '>=2.3.0 <3.0.0'
 
 dependencies:
   flutter:
@@ -26,6 +26,7 @@ dependencies:
   provider: ^4.0.0
   http: ^0.12.1
   shared_preferences: ^0.5.12+4
+  flutter_custom_clippers: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -43,6 +44,7 @@ flutter:
 
   assets:
     - assets/app_drawer.jpg
+    - assets/student_graduate.jpg
 
   fonts:
     - family: Lato

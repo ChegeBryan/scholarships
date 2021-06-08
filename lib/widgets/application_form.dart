@@ -3,11 +3,19 @@ import 'package:geopro/application_details.dart';
 import 'package:geopro/models/sponsorship.dart';
 import 'package:geopro/services/application.dart';
 import 'package:provider/provider.dart';
+import 'package:geopro/helpers/string_extensions.dart';
 
 class ApplicationForm extends StatefulWidget {
-  final List<Sponsorship> sponsorshipList;
+  final String name;
+  final int sponsorshipId;
+  final List<Sponsorship> sponsorships;
 
-  const ApplicationForm({Key key, this.sponsorshipList}) : super(key: key);
+  const ApplicationForm({
+    Key key,
+    this.name,
+    this.sponsorshipId,
+    this.sponsorships,
+  }) : super(key: key);
 
   @override
   _ApplicationFormState createState() => _ApplicationFormState();
@@ -16,9 +24,15 @@ class ApplicationForm extends StatefulWidget {
 class _ApplicationFormState extends State<ApplicationForm> {
   final _formKey = GlobalKey<FormState>();
   bool _autovalidate = false;
-  List<Map<String, dynamic>> _sponsorships;
-  var _dropdownValue;
-  String _sponsorshipId;
+  int _sponsorshipId;
+  String _sponsorshipName;
+
+  @override
+  void initState() {
+    _sponsorshipId = widget.sponsorshipId;
+    _sponsorshipName = widget.name.inCaps;
+    super.initState();
+  }
 
   void _showApplicationDetails(BuildContext context, data) {
     Navigator.push(
@@ -30,13 +44,47 @@ class _ApplicationFormState extends State<ApplicationForm> {
     );
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _sponsorships = widget.sponsorshipList
-        .map((sponsorship) => sponsorship.toJson())
-        .toList();
-    _dropdownValue = _sponsorships[0];
+  Future<void> _changeSponsorship() async {
+    Sponsorship sponsorship = await showDialog<Sponsorship>(
+      context: context,
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          title: Text(
+            'Change sponsorship',
+            style: TextStyle(
+              color: Theme.of(context).accentColor,
+            ),
+          ),
+          children: <Widget>[
+            for (var sponsorship in widget.sponsorships)
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.pop(context, sponsorship);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(
+                    sponsorship.name.inCaps,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ),
+          ],
+        );
+      },
+    );
+    if (sponsorship != null) {
+      setState(() {
+        _sponsorshipId = sponsorship.id;
+        _sponsorshipName = sponsorship.name;
+      });
+    }
   }
 
   // form input fields controllers
@@ -55,6 +103,25 @@ class _ApplicationFormState extends State<ApplicationForm> {
   final TextEditingController _nationalId = TextEditingController();
 
   @override
+  void dispose() {
+    // clean controller when widget is removed from the widget tree
+    _firstName.dispose();
+    _lastName.dispose();
+    _mobile.dispose();
+    _country.dispose();
+    _city.dispose();
+    _schoolName.dispose();
+    _degree.dispose();
+    _coverLetter.dispose();
+    _start.dispose();
+    _to.dispose();
+    _postalCode.dispose();
+    _birthCertificate.dispose();
+    _nationalId.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     ApplicationProvider application = Provider.of<ApplicationProvider>(context);
 
@@ -66,30 +133,63 @@ class _ApplicationFormState extends State<ApplicationForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            DropdownButtonFormField(
-              value: _dropdownValue,
-              items: _sponsorships
-                  .map<DropdownMenuItem<Map<String, dynamic>>>((value) {
-                return DropdownMenuItem<Map<String, dynamic>>(
-                  value: value,
-                  child: Text(value['name']),
-                );
-              }).toList(),
-              onChanged: (value) {
-                setState(() {
-                  _dropdownValue = value;
-                  _sponsorshipId = value['pk'].toString();
-                });
-              },
-              decoration: InputDecoration(
-                labelText: "Sponsorship",
-                border: OutlineInputBorder(),
+            Text(
+              'Sponsporship',
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
               ),
-              isDense: true,
             ),
-            Divider(),
-            SizedBox(
-              height: 8.0,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.baseline,
+              textBaseline: TextBaseline.alphabetic,
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    _sponsorshipName.inCaps,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      height: 2.0,
+                      fontSize: 16.0,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                FlatButton(
+                  onPressed: () => _changeSponsorship(),
+                  child: Text(
+                    'Change Sponsorship',
+                    style: TextStyle(
+                      color: Theme.of(context).accentColor,
+                      fontSize: 14.0,
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 12.0),
+              child: Column(children: <Widget>[]),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Contact Details',
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Divider(),
+                ],
+              ),
             ),
             TextFormField(
               controller: _firstName,
@@ -190,12 +290,22 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 return null;
               },
             ),
-            SizedBox(
-              height: 8.0,
-            ),
-            Divider(),
-            SizedBox(
-              height: 8.0,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'School Details',
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Divider(),
+                ],
+              ),
             ),
             TextFormField(
               controller: _schoolName,
@@ -282,12 +392,22 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 ),
               ],
             ),
-            SizedBox(
-              height: 8.0,
-            ),
-            Divider(),
-            SizedBox(
-              height: 8.0,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Documents Upload',
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Divider(),
+                ],
+              ),
             ),
             TextFormField(
               controller: _coverLetter,
@@ -338,7 +458,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
               },
             ),
             SizedBox(
-              height: 8.0,
+              height: 16.0,
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -348,7 +468,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                     _formKey.currentState.save();
                     Future<Map<String, dynamic>> response =
                         application.addApplication(
-                            sponsorshipId: _sponsorshipId,
+                            sponsorshipId: _sponsorshipId.toString(),
                             firstName: _firstName.text,
                             lastName: _lastName.text,
                             country: _country.text,
