@@ -43,8 +43,9 @@ jobs:
       # Build apk.
       - run: flutter build apk --split-per-abi
 
-      # Upload generated apk to the artifacts.
-      - uses: actions/upload-artifact@v2
+      # Release generated APK.
+      - uses: ncipollo/release-action@v1
         with:
           name: release-apk
-          path: build/app/outputs/apk/release/*.apk
+          artifacts: build/app/outputs/apk/release/*.apk
+          token: ${{ secrets.ACTIONS_TOKEN }}
