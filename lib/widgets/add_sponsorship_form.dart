@@ -103,7 +103,7 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                           duration: const Duration(seconds: 1),
                           backgroundColor: Colors.red,
                         ));
-                        Navigator.pushNamed(context, '/sponsorships');
+                        Navigator.pushNamed(context, '/manage/sponsorships');
                       } else {
                         Scaffold.of(context).showSnackBar(SnackBar(
                           content: const Text(
@@ -123,7 +123,7 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                           duration: const Duration(seconds: 1),
                           backgroundColor: Colors.red,
                         ));
-                        Navigator.pushNamed(context, '/sponsorships');
+                        Navigator.pushNamed(context, '/manage/sponsorships');
                       } else {
                         Scaffold.of(context).showSnackBar(SnackBar(
                           content: Text(
