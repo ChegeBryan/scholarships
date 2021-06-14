@@ -63,6 +63,9 @@ class AuthProvider with ChangeNotifier {
       'password': password,
     };
 
+    _loggedInStatus = Status.Authenticating;
+    notifyListeners();
+
     Response res = await post(
       ApiUrl.register,
       body: jsonEncode(data),
@@ -82,6 +85,8 @@ class AuthProvider with ChangeNotifier {
 
       result = {'status': true, 'message': 'Successful', 'user': authUser};
     } else {
+      _loggedInStatus = Status.LoggedIn;
+      notifyListeners();
       result = {'status': false, 'message': jsonDecode(res.body)};
     }
 
