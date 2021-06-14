@@ -172,7 +172,6 @@ class _ApplicationFormState extends State<ApplicationForm> {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 12.0),
-              child: Column(children: <Widget>[]),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 12.0),
