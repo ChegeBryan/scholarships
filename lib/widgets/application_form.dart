@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/application_details.dart';
+import 'package:geopro/helpers/string_extensions.dart';
 import 'package:geopro/models/sponsorship.dart';
 import 'package:geopro/services/application.dart';
 import 'package:provider/provider.dart';
-import 'package:geopro/helpers/string_extensions.dart';
 
 class ApplicationForm extends StatefulWidget {
   final String name;
@@ -134,7 +134,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'Sponsporship',
+              'Sponsorship',
               style: TextStyle(
                 color: Colors.grey[600],
                 fontSize: 18.0,
@@ -460,53 +460,55 @@ class _ApplicationFormState extends State<ApplicationForm> {
             SizedBox(
               height: 16.0,
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: FlatButton(
-                onPressed: () {
-                  if (_formKey.currentState.validate()) {
-                    _formKey.currentState.save();
-                    Future<Map<String, dynamic>> response =
-                        application.addApplication(
-                            sponsorshipId: _sponsorshipId.toString(),
-                            firstName: _firstName.text,
-                            lastName: _lastName.text,
-                            country: _country.text,
-                            city: _city.text,
-                            postalCode: _postalCode.text,
-                            mobile: _mobile.text,
-                            schoolName: _schoolName.text,
-                            degree: _degree.text,
-                            start: _start.text,
-                            to: _to.text,
-                            birthCertificate: _birthCertificate.text,
-                            nationalId: _nationalId.text,
-                            coverLetter: _coverLetter.text);
-                    response.then((res) {
-                      if (res['status']) {
-                        _showApplicationDetails(context, res['data']);
-                      } else {
-                        Scaffold.of(context).showSnackBar(
-                          SnackBar(
-                              content: Text(res['errors'][0]),
-                              backgroundColor: Colors.red),
-                        );
-                      }
-                    });
-                  } else {
-                    setState(() {
-                      _autovalidate = true;
-                    });
-                  }
-                },
-                child: Text(
-                  'Submit',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-                textColor: Colors.white,
-                color: Theme.of(context).primaryColor,
-              ),
-            )
+            application.submissionStatus == Status.Submitting
+                ? Center(child: CircularProgressIndicator())
+                : SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: FlatButton(
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          _formKey.currentState.save();
+                          Future<Map<String, dynamic>> response =
+                              application.addApplication(
+                                  sponsorshipId: _sponsorshipId.toString(),
+                                  firstName: _firstName.text,
+                                  lastName: _lastName.text,
+                                  country: _country.text,
+                                  city: _city.text,
+                                  postalCode: _postalCode.text,
+                                  mobile: _mobile.text,
+                                  schoolName: _schoolName.text,
+                                  degree: _degree.text,
+                                  start: _start.text,
+                                  to: _to.text,
+                                  birthCertificate: _birthCertificate.text,
+                                  nationalId: _nationalId.text,
+                                  coverLetter: _coverLetter.text);
+                          response.then((res) {
+                            if (res['status']) {
+                              _showApplicationDetails(context, res['data']);
+                            } else {
+                              Scaffold.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Text(res['errors'][0]),
+                                    backgroundColor: Colors.red),
+                              );
+                            }
+                          });
+                        } else {
+                          setState(() {
+                            _autovalidate = true;
+                          });
+                        }
+                      },
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(fontSize: 16.0),
+                      ),
+                      textColor: Colors.white,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  )
           ],
         ),
       ),
