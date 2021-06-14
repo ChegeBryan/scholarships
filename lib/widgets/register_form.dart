@@ -12,6 +12,7 @@ class RegisterForm extends StatefulWidget {
 class _RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
   bool _autovalidate = false;
+  bool _obscureText = true;
 
   Map<String, dynamic> errors = {};
 
@@ -112,12 +113,24 @@ class _RegisterFormState extends State<RegisterForm> {
             ),
             TextFormField(
               controller: _password,
+              obscureText: _obscureText,
               style: TextStyle(color: Colors.white),
               cursorColor: Colors.white,
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.lock,
                   color: Colors.white,
+                ),
+                suffixIcon: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _obscureText = !_obscureText;
+                    });
+                  },
+                  child: Icon(
+                    _obscureText ? Icons.visibility : Icons.visibility_off,
+                    color: Colors.white,
+                  ),
                 ),
                 labelText: 'Password',
                 enabledBorder: OutlineInputBorder(
@@ -128,7 +141,6 @@ class _RegisterFormState extends State<RegisterForm> {
                   borderSide: BorderSide(color: Colors.white),
                 ),
               ),
-              obscureText: true,
               validator: (value) {
                 if (value.isEmpty) {
                   return 'Please enter password';
@@ -148,6 +160,7 @@ class _RegisterFormState extends State<RegisterForm> {
             ),
             TextFormField(
               controller: _confirmPassword,
+              obscureText: _obscureText,
               autocorrect: false,
               style: TextStyle(color: Colors.white),
               cursorColor: Colors.white,
@@ -155,6 +168,17 @@ class _RegisterFormState extends State<RegisterForm> {
                 prefixIcon: Icon(
                   Icons.lock,
                   color: Colors.white,
+                ),
+                suffixIcon: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _obscureText = !_obscureText;
+                    });
+                  },
+                  child: Icon(
+                    _obscureText ? Icons.visibility : Icons.visibility_off,
+                    color: Colors.white,
+                  ),
                 ),
                 labelText: 'Confirm Password',
                 enabledBorder: OutlineInputBorder(
@@ -165,7 +189,6 @@ class _RegisterFormState extends State<RegisterForm> {
                   borderSide: BorderSide(color: Colors.white),
                 ),
               ),
-              obscureText: true,
               textAlignVertical: TextAlignVertical.center,
               validator: (value) =>
                   value != _password.text ? 'Password does not match' : null,
