@@ -173,7 +173,9 @@ class _RegisterFormState extends State<RegisterForm> {
             SizedBox(
               height: 16.0,
             ),
-            FlatButton(
+            auth.loggedInStatus == Status.Authenticating
+                ? CircularProgressIndicator()
+                : FlatButton(
               onPressed: () {
                 if (_formKey.currentState.validate()) {
                   _formKey.currentState.save();
@@ -211,6 +213,6 @@ class _RegisterFormState extends State<RegisterForm> {
               color: Theme.of(context).primaryColor,
             ),
           ],
-        ));
+        ),);
   }
 }
