@@ -6,12 +6,18 @@ import 'package:geopro/services/api.dart';
 import 'package:geopro/services/user.dart';
 import 'package:http/http.dart';
 
+enum Status { Submitting, NotSubmitted, Submitted }
+
 class ApplicationProvider with ChangeNotifier {
   UserProvider auth;
 
   ApplicationProvider(this.auth);
 
   String applicationUrl = ApiUrl.apply;
+
+  Status _submissionStatus = Status.NotSubmitted;
+
+  Status get submissionStatus => _submissionStatus;
 
   //Save sponsorship application
   Future<Map<String, dynamic>> addApplication({
@@ -49,6 +55,9 @@ class ApplicationProvider with ChangeNotifier {
       nationalId: nationalId,
     ).toJson();
 
+    _submissionStatus = Status.Submitting;
+    notifyListeners();
+
     Response response = await post("$applicationUrl$sponsorshipId/",
         body: jsonEncode(data),
         headers: {
@@ -58,8 +67,15 @@ class ApplicationProvider with ChangeNotifier {
 
     if (response.statusCode == 201) {
       Map<String, dynamic> application = jsonDecode(response.body);
+
+      _submissionStatus = Status.Submitted;
+      notifyListeners();
+
       result = {'status': true, 'message': 'success', 'data': application};
     } else {
+      _submissionStatus = Status.NotSubmitted;
+      notifyListeners();
+
       result = {
         'status': false,
         'message': 'failed',
