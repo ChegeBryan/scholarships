@@ -385,10 +385,15 @@ class _ApplicationFormState extends State<ApplicationForm> {
                       decoration: InputDecoration(
                         labelText: 'To',
                         border: OutlineInputBorder(),
+                        errorMaxLines: 2,
                       ),
                       validator: (value) {
                         if (value.isEmpty) {
                           return 'Please provide year';
+                        } else if (int.tryParse(value) == null) {
+                          return 'Please provide an year value';
+                        } else if (int.parse(value) < DateTime.now().year) {
+                          return 'Year cannot be in the past';
                         }
                         return null;
                       },
