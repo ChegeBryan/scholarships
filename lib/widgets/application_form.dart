@@ -481,6 +481,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 : SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: FlatButton(
+                      padding: const EdgeInsets.symmetric(vertical: 12.0),
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           _formKey.currentState.save();
