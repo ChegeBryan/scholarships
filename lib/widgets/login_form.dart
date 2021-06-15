@@ -12,6 +12,7 @@ class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
   bool _autovalidate = false;
   Map<String, dynamic> errors = {};
+  bool _obscureText = true;
 
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
@@ -58,12 +59,24 @@ class _LoginFormState extends State<LoginForm> {
           ),
           TextFormField(
             controller: _password,
+            obscureText: _obscureText,
             style: TextStyle(color: Colors.white),
             cursorColor: Colors.white,
             decoration: InputDecoration(
               prefixIcon: Icon(
                 Icons.lock,
                 color: Colors.white,
+              ),
+              suffixIcon: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+                child: Icon(
+                  _obscureText ? Icons.visibility : Icons.visibility_off,
+                  color: Colors.white,
+                ),
               ),
               labelText: 'Password',
               enabledBorder: OutlineInputBorder(
@@ -74,7 +87,6 @@ class _LoginFormState extends State<LoginForm> {
                 borderSide: BorderSide(color: Colors.white),
               ),
             ),
-            obscureText: true,
             validator: (value) =>
                 value.isEmpty ? 'Please enter password' : null,
           ),
