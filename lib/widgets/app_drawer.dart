@@ -8,7 +8,7 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width * 0.75,
       child: Drawer(
         child: Column(
           children: <Widget>[
@@ -96,7 +96,7 @@ class AppDrawer extends StatelessWidget {
                       ],
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width * .75,
+                      width: MediaQuery.of(context).size.width * .7,
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
                       child: FlatButton(
                         onPressed: () {
