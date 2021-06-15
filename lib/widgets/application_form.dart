@@ -508,8 +508,11 @@ class _ApplicationFormState extends State<ApplicationForm> {
                             } else {
                               Scaffold.of(context).showSnackBar(
                                 SnackBar(
-                                    content: Text(res['errors'][0]),
-                                    backgroundColor: Colors.red),
+                                  content: Text(res['errors']['error']
+                                          .toString() +
+                                      ' Try changing the sponsorship you are applying for.'),
+                                  backgroundColor: Colors.red,
+                                ),
                               );
                             }
                           });
