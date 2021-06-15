@@ -4,6 +4,7 @@ import 'package:geopro/helpers/string_extensions.dart';
 import 'package:geopro/models/sponsorship.dart';
 import 'package:geopro/services/application.dart';
 import 'package:provider/provider.dart';
+import 'package:validators/validators.dart';
 
 class ApplicationForm extends StatefulWidget {
   final String name;
@@ -397,7 +398,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    'Documents Upload',
+                    'Documents URLs',
                     style: TextStyle(
                       color: Colors.grey[600],
                       fontSize: 18.0,
@@ -418,6 +419,8 @@ class _ApplicationFormState extends State<ApplicationForm> {
               validator: (value) {
                 if (value.isEmpty) {
                   return 'Please provide cover letter';
+                } else if (!isURL(value)) {
+                  return 'PLease provide a valid URL';
                 }
                 return null;
               },
@@ -435,6 +438,8 @@ class _ApplicationFormState extends State<ApplicationForm> {
               validator: (value) {
                 if (value.isEmpty) {
                   return 'Please provide birth certificate';
+                } else if (!isURL(value)) {
+                  return 'Please provide a valid URL';
                 }
                 return null;
               },
@@ -452,6 +457,8 @@ class _ApplicationFormState extends State<ApplicationForm> {
               validator: (value) {
                 if (value.isEmpty) {
                   return 'Please provide national Id';
+                } else if (!isURL(value)) {
+                  return 'Please provide a valid URL';
                 }
                 return null;
               },
@@ -469,20 +476,21 @@ class _ApplicationFormState extends State<ApplicationForm> {
                           _formKey.currentState.save();
                           Future<Map<String, dynamic>> response =
                               application.addApplication(
-                                  sponsorshipId: _sponsorshipId.toString(),
-                                  firstName: _firstName.text,
-                                  lastName: _lastName.text,
-                                  country: _country.text,
-                                  city: _city.text,
-                                  postalCode: _postalCode.text,
-                                  mobile: _mobile.text,
-                                  schoolName: _schoolName.text,
-                                  degree: _degree.text,
-                                  start: _start.text,
-                                  to: _to.text,
-                                  birthCertificate: _birthCertificate.text,
-                                  nationalId: _nationalId.text,
-                                  coverLetter: _coverLetter.text);
+                            sponsorshipId: _sponsorshipId.toString(),
+                            firstName: _firstName.text,
+                            lastName: _lastName.text,
+                            country: _country.text,
+                            city: _city.text,
+                            postalCode: _postalCode.text,
+                            mobile: _mobile.text,
+                            schoolName: _schoolName.text,
+                            degree: _degree.text,
+                            start: _start.text,
+                            to: _to.text,
+                            birthCertificate: _birthCertificate.text,
+                            nationalId: _nationalId.text,
+                            coverLetter: _coverLetter.text,
+                          );
                           response.then((res) {
                             if (res['status']) {
                               _showApplicationDetails(context, res['data']);
