@@ -93,6 +93,15 @@ class AppDrawer extends StatelessWidget {
                           selected: ModalRoute.of(context).settings.name ==
                               '/manage/sponsorships',
                         ),
+                        Divider(),
+                        ListTile(
+                          leading: Icon(Icons.question_answer),
+                          title: Text('Frequently Asked Questions'),
+                          onTap: () =>
+                              Navigator.pushReplacementNamed(context, '/faqs'),
+                          selected:
+                              ModalRoute.of(context).settings.name == '/faqs',
+                        ),
                       ],
                     ),
                     Container(

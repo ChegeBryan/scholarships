@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/apply_screen.dart';
+import 'package:geopro/faq_screen.dart';
 import 'package:geopro/login.dart';
 import 'package:geopro/register.dart';
 import 'package:geopro/services/application.dart';
@@ -62,6 +63,7 @@ class MyApp extends StatelessWidget {
           '/sponsorships': (context) => SponsorshipListScreen(),
           '/manage/sponsorships': (context) => SponsorshipScreen(),
           '/apply': (context) => ApplyScreen(),
+          '/faqs': (context) => FaqScreen(),
         },
       ),
     );
