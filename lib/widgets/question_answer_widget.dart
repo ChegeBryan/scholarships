@@ -51,17 +51,19 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      widget.question,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                      softWrap: true,
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontFamily: 'Avenir',
-                        fontWeight: FontWeight.bold,
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: Text(
+                        widget.question,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                        softWrap: true,
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontFamily: 'Avenir',
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
