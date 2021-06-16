@@ -1,0 +1,3 @@
+class FaqCategory {
+  String category;
+}
