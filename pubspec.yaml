@@ -46,9 +46,14 @@ flutter:
   assets:
     - assets/app_drawer.jpg
     - assets/student_graduate.jpg
+    - assets/background.jpeg
 
   fonts:
     - family: Lato
       fonts:
         - asset: fonts/Lato-Regular.ttf
         - asset: fonts/Lato-Bold.ttf
+    - family: Avenir
+      fonts:
+        - asset: fonts/AvenirLTStd-Black-MediumBold.otf
+        - asset: fonts/AvenirLTStd-MediumRegular.otf
