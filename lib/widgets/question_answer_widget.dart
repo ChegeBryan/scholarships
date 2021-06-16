@@ -89,12 +89,22 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
                       height: 1.5,
                     ),
                   ),
-                  Row(
-                    children: <Widget>[
-                      for (var screenshot in widget.screenshots)
-                        Image.asset('assets/$screenshot')
-                    ],
-                  )
+                  Container(
+                    height: 120.0,
+                    padding: const EdgeInsets.only(top: 16.0),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext context, int index) =>
+                          Container(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: Image.asset(
+                          'assets/${widget.screenshots[index]}',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      itemCount: widget.screenshots.length,
+                    ),
+                  ),
                 ],
               ),
             ),
