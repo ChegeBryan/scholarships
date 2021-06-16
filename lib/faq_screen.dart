@@ -1,7 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geopro/models/faq.dart';
 import 'package:geopro/widgets/app_drawer.dart';
 import 'package:geopro/widgets/category_card.dart';
+import 'package:lorem_ipsum/lorem_ipsum.dart';
+
+Faq faq = Faq(
+  question: loremIpsum(paragraphs: 1, words: 16),
+  answer: loremIpsum(paragraphs: 2, words: 100),
+  images: ['image1.jpg', 'image2.jpg'],
+);
 
 class FaqScreen extends StatefulWidget {
   @override
