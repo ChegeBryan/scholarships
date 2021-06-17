@@ -1,3 +1,5 @@
-class FaqCategory {
-  String category;
+abstract class FaqCategory {
+  final String category;
+
+  FaqCategory({this.category});
 }
