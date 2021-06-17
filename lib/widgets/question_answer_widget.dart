@@ -94,18 +94,11 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
                     height: 120.0,
                     padding: const EdgeInsets.only(top: 16.0),
                     child: ListView.builder(
+                      shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (BuildContext context, int index) =>
                           Container(
                         padding: const EdgeInsets.only(right: 10.0),
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                              'assets/${widget.screenshots[index]}',
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
                         child: GestureDetector(
                           onTap: () async {
                             await showDialog(
@@ -115,6 +108,10 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
                               ),
                             );
                           },
+                          child: Image.asset(
+                            'assets/${widget.screenshots[index]}',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                       itemCount: widget.screenshots.length,
