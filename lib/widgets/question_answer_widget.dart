@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geopro/widgets/image_dialog.dart';
 
 class QuestionAnswerWidget extends StatefulWidget {
   final String question;
@@ -97,9 +98,23 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
                       itemBuilder: (BuildContext context, int index) =>
                           Container(
                         padding: const EdgeInsets.only(right: 10.0),
-                        child: Image.asset(
-                          'assets/${widget.screenshots[index]}',
-                          fit: BoxFit.cover,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(
+                              'assets/${widget.screenshots[index]}',
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        child: GestureDetector(
+                          onTap: () async {
+                            await showDialog(
+                              context: context,
+                              builder: (_) => ImageDialog(
+                                image: widget.screenshots[index],
+                              ),
+                            );
+                          },
                         ),
                       ),
                       itemCount: widget.screenshots.length,
