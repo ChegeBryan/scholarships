@@ -49,7 +49,7 @@ class _FaqScreenState extends State<FaqScreen> {
     Widget searchBox = Center(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color(0xFFEBEAEA),
           borderRadius: BorderRadius.circular(16.0),
         ),
         width: MediaQuery.of(context).size.width * 0.9,
