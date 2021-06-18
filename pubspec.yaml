@@ -45,6 +45,7 @@ flutter:
   assets:
     - assets/app_drawer.jpg
     - assets/student_graduate.jpg
+    - assets/background.jpeg
 
   fonts:
     - family: Lato
