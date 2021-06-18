@@ -7,6 +7,8 @@ class AppTheme {
       accentColor: _accentColor,
       cursorColor: _primaryColor,
       fontFamily: 'Avenir',
+      scaffoldBackgroundColor: _bgColor,
+      backgroundColor: _bgColor,
     );
   }
 
@@ -22,4 +24,5 @@ class AppTheme {
 
   static const _primaryColor = Color(0xFF1E22AA);
   static const _accentColor = Color(0xFFE40046);
+  static const _bgColor = Color(0xFFF2F3F8);
 }
