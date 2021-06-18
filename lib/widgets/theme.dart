@@ -7,6 +7,8 @@ class AppTheme {
       accentColor: _accentColor,
       cursorColor: _primaryColor,
       fontFamily: 'Lato',
+      scaffoldBackgroundColor: _bgColor,
+      backgroundColor: _bgColor,
     );
   }
 
@@ -22,4 +24,5 @@ class AppTheme {
 
   static const _primaryColor = Color(0xFF142AA6);
   static const _accentColor = Color(0xFFF2295F);
+  static const _bgColor = Color(0xFFF2F3F8);
 }
