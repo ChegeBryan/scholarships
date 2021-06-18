@@ -57,3 +57,8 @@ flutter:
       fonts:
         - asset: fonts/AvenirLTStd-Black-MediumBold.otf
         - asset: fonts/AvenirLTStd-MediumRegular.otf
+        - asset: fonts/Avenir/AvenirLTStd-Book.otf
+        - asset: fonts/Avenir/AvenirLTStd-Medium.otf
+        - asset: fonts/Avenir/AvenirLTStd-Heavy.otf
+        - asset: fonts/Avenir/AvenirLTStd-Light.otf
+        - asset: fonts/Avenir/AvenirLTStd-Roman.otf
