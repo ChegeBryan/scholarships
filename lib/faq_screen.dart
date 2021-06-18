@@ -52,7 +52,6 @@ class _FaqScreenState extends State<FaqScreen> {
           color: Colors.white,
           borderRadius: BorderRadius.circular(16.0),
         ),
-        // color: Colors.white,
         width: MediaQuery.of(context).size.width * 0.9,
         margin: EdgeInsets.fromLTRB(0, 0, 0, 14.0),
         child: TextField(
