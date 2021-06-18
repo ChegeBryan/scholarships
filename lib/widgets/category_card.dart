@@ -14,15 +14,13 @@ class CategoryCard extends StatefulWidget {
 }
 
 class _CategoryCardState extends State<CategoryCard> {
-  bool _isPressed = false;
-
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 0.0, horizontal: 6.0),
       child: FlatButton(
         onPressed: widget.onSelect,
-        color: widget.isSelected ? Color(0xff1E22AA) : Colors.transparent,
+        color: widget.isSelected ? Color(0xff1E22AA) : Colors.white70,
         padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 1.0),
         child: Text(
           widget.categoryName,
