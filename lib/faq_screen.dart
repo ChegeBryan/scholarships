@@ -22,11 +22,11 @@ class _FaqScreenState extends State<FaqScreen> {
   @override
   Widget build(BuildContext context) {
     Widget appBar = SliverAppBar(
-      titleSpacing: 0.0,
       pinned: false,
       floating: true,
       expandedHeight: 150.0,
       flexibleSpace: FlexibleSpaceBar(
+        titlePadding: EdgeInsets.fromLTRB(18.0, 0, 0, 0),
         title: ConstrainedBox(
           constraints: BoxConstraints(
             maxWidth: MediaQuery.of(context).size.width * 0.7,
@@ -65,7 +65,7 @@ class _FaqScreenState extends State<FaqScreen> {
             ),
             hintText: 'What do you want to know?',
             hintStyle: TextStyle(
-              color: Color(0xffE3E3E3),
+              color: Color(0xff9E9E9E),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16.0),
