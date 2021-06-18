@@ -17,6 +17,8 @@ class _FaqScreenState extends State<FaqScreen> {
     'Category 5'
   ];
 
+  int currentSelectedCategory;
+
   @override
   Widget build(BuildContext context) {
     Widget appBar = SliverAppBar(
@@ -83,7 +85,20 @@ class _FaqScreenState extends State<FaqScreen> {
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
-                  return CategoryCard(categoryName: categories[index]);
+                  return CategoryCard(
+                    categoryName: categories[index],
+                    index: index,
+                    isSelected: currentSelectedCategory == index,
+                    onSelect: () {
+                      setState(() {
+                        if (currentSelectedCategory != index) {
+                          currentSelectedCategory = index;
+                        } else {
+                          currentSelectedCategory = null;
+                        }
+                      });
+                    },
+                  );
                 },
               ),
             ),
