@@ -58,6 +58,7 @@ class _FaqScreenState extends State<FaqScreen> {
           autofocus: false,
           cursorColor: Color(0xff3A5160),
           decoration: InputDecoration(
+            contentPadding: EdgeInsets.all(10.0),
             prefixIcon: Icon(
               Icons.search,
               color: Color(0xff9E9E9E),
