@@ -24,19 +24,20 @@ class _FaqScreenState extends State<FaqScreen> {
     Widget appBar = SliverAppBar(
       pinned: false,
       floating: true,
-      expandedHeight: 250.0,
+      expandedHeight: 200.0,
       flexibleSpace: FlexibleSpaceBar(
         title: Text(
-          'Frequently Asked \n Questions',
+          'Frequently Asked \n Questions:',
           style: TextStyle(
+              color: Color(0xff3A5160),
               fontWeight: FontWeight.bold,
               fontSize: 24.0,
               fontFamily: 'AvenirLTStd-MediumRegular',
               letterSpacing: 1.0),
         ),
         centerTitle: true,
-        background: Image.asset('assets/background.jpeg', fit: BoxFit.cover),
       ),
+      backgroundColor: Color(0xFFF2F3F8),
     );
 
     Widget searchBox = Center(
@@ -72,6 +73,7 @@ class _FaqScreenState extends State<FaqScreen> {
     );
 
     return Scaffold(
+      backgroundColor: Color(0xFFF2F3F8),
       drawer: AppDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
