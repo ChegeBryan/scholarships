@@ -22,26 +22,37 @@ class _FaqScreenState extends State<FaqScreen> {
   @override
   Widget build(BuildContext context) {
     Widget appBar = SliverAppBar(
+      titleSpacing: 0.0,
       pinned: false,
       floating: true,
-      expandedHeight: 200.0,
+      expandedHeight: 150.0,
       flexibleSpace: FlexibleSpaceBar(
-        title: Text(
-          'Frequently Asked \n Questions:',
-          style: TextStyle(
-              color: Color(0xff3A5160),
-              fontWeight: FontWeight.bold,
-              fontSize: 24.0,
-              fontFamily: 'AvenirLTStd-MediumRegular',
-              letterSpacing: 1.0),
+        title: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: MediaQuery.of(context).size.width * 0.7,
+          ),
+          child: Text(
+            'Frequently Asked Questions:',
+            style: TextStyle(
+                color: Color(0xff3A5160),
+                fontWeight: FontWeight.bold,
+                fontSize: 24.0,
+                fontFamily: 'AvenirLTStd-MediumRegular',
+                letterSpacing: 1.0),
+          ),
         ),
-        centerTitle: true,
       ),
-      backgroundColor: Color(0xFFF2F3F8),
+      backgroundColor: Theme.of(context).backgroundColor,
+      iconTheme: IconThemeData(color: Color(0xff3A5160)),
     );
 
     Widget searchBox = Center(
       child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        // color: Colors.white,
         width: MediaQuery.of(context).size.width * 0.9,
         margin: EdgeInsets.fromLTRB(0, 0, 0, 14.0),
         child: TextField(
@@ -54,14 +65,14 @@ class _FaqScreenState extends State<FaqScreen> {
             ),
             hintText: 'What do you want to know?',
             hintStyle: TextStyle(
-              color: Color(0xff9E9E9E),
+              color: Color(0xffE3E3E3),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16.0),
-              borderSide: BorderSide(color: Color(0xff9E9E9E)),
+              borderSide: BorderSide(color: Colors.transparent),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0xff9E9E9E)),
+              borderSide: BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.circular(16.0),
             ),
           ),
@@ -73,7 +84,7 @@ class _FaqScreenState extends State<FaqScreen> {
     );
 
     return Scaffold(
-      backgroundColor: Color(0xFFF2F3F8),
+      backgroundColor: Theme.of(context).backgroundColor,
       drawer: AppDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
