@@ -108,8 +108,8 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
                               ),
                             );
                           },
-                          child: Image.asset(
-                            'assets/${widget.screenshots[index]}',
+                          child: Image.network(
+                            widget.screenshots[index],
                             fit: BoxFit.cover,
                           ),
                         ),

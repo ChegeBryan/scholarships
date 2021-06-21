@@ -12,7 +12,7 @@ class ImageDialog extends StatelessWidget {
         height: 200,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/$image'),
+            image: NetworkImage(image),
             fit: BoxFit.cover,
           ),
         ),
