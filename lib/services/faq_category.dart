@@ -1,6 +1,6 @@
 import 'package:geopro/models/faq_category.dart';
 
-List faq_categories = [
+List<Map<String, dynamic>> faq_categories = [
   {'category': 'ticketing'},
   {'category': 'safety'},
   {'category': 'casuals'},
