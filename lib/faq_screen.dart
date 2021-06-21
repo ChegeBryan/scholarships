@@ -115,6 +115,8 @@ class _FaqScreenState extends State<FaqScreen> {
                         } else {
                           currentSelectedCategory = null;
                         }
+                        faqs = FaqList().getFaqsByCategory(
+                            categories[index].category.toLowerCase());
                       });
                     },
                   );
