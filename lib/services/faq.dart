@@ -88,4 +88,12 @@ class FaqList {
   List<Faq> getFaqs() {
     return faqs.map((json) => Faq.fromJson(json)).toList();
   }
+
+  List<Faq> getFaqsByCategory(String category) {
+    List filtered = faqs
+        .where((item) => item['category'].toLowerCase() == category)
+        .toList();
+
+    return filtered.map((json) => Faq.fromJson(json)).toList();
+  }
 }
