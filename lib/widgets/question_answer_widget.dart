@@ -95,7 +95,6 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
                     height: 120.0,
                     padding: const EdgeInsets.only(top: 16.0),
                     child: ListView.builder(
-                      shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (BuildContext context, int index) =>
                           Container(
