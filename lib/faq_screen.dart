@@ -29,10 +29,9 @@ class _FaqScreenState extends State<FaqScreen> {
   Widget build(BuildContext context) {
     Widget appBar = SliverAppBar(
       pinned: false,
-      floating: true,
-      expandedHeight: 150.0,
+      expandedHeight: 80.0,
       flexibleSpace: FlexibleSpaceBar(
-        titlePadding: EdgeInsets.fromLTRB(18.0, 0, 0, 0),
+        titlePadding: EdgeInsets.fromLTRB(42.0, 0, 0, 0),
         title: ConstrainedBox(
           constraints: BoxConstraints(
             maxWidth: MediaQuery.of(context).size.width * 0.7,
@@ -42,7 +41,7 @@ class _FaqScreenState extends State<FaqScreen> {
             style: TextStyle(
                 color: Color(0xff3A5160),
                 fontWeight: FontWeight.bold,
-                fontSize: 24.0,
+                fontSize: 16.0,
                 fontFamily: 'AvenirLTStd-MediumRegular',
                 letterSpacing: 1.0),
           ),
