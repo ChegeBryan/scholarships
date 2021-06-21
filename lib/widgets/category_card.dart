@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geopro/helpers/string_extensions.dart';
 
 class CategoryCard extends StatefulWidget {
   final String categoryName;
@@ -23,7 +24,7 @@ class _CategoryCardState extends State<CategoryCard> {
         color: widget.isSelected ? Color(0xff1E22AA) : Colors.white,
         padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 1.0),
         child: Text(
-          widget.categoryName,
+          widget.categoryName.inCaps,
           style: TextStyle(
               color: widget.isSelected ? Colors.white : Color(0xff3A5160),
               fontWeight: FontWeight.bold),
