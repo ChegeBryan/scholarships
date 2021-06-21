@@ -15,9 +15,15 @@ class FaqScreen extends StatefulWidget {
 class _FaqScreenState extends State<FaqScreen> {
   List<FaqCategory> categories = FaqCategoryList().getFaqCategories();
 
-  List<Faq> faqs = FaqList().getFaqs();
+  List<Faq> faqs;
 
   int currentSelectedCategory;
+
+  @override
+  void initState() {
+    faqs = FaqList().getFaqs();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
