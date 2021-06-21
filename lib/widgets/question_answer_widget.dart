@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:geopro/widgets/image_dialog.dart';
+import 'package:geopro/widgets/screenshots_viewer_wrapper.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class QuestionAnswerWidget extends StatefulWidget {
@@ -21,6 +21,7 @@ class QuestionAnswerWidget extends StatefulWidget {
 class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
   bool _answerVisible = false;
   IconData _questionIcon = Icons.keyboard_arrow_down;
+  bool verticalGallery = false;
 
   void _toggleAnswer() {
     setState(() {
@@ -29,6 +30,22 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
           ? _questionIcon = Icons.keyboard_arrow_up
           : _questionIcon = Icons.keyboard_arrow_down;
     });
+  }
+
+  void open(BuildContext context, final int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ScreenshotsViewerWrapper(
+          screenshots: widget.screenshots,
+          backgroundDecoration: const BoxDecoration(
+            color: Colors.black,
+          ),
+          initialIndex: index,
+          scrollDirection: verticalGallery ? Axis.vertical : Axis.horizontal,
+        ),
+      ),
+    );
   }
 
   @override
@@ -103,13 +120,8 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
                           height: 120,
                           width: 120,
                           child: GestureDetector(
-                            onTap: () async {
-                              await showDialog(
-                                context: context,
-                                builder: (_) => ImageDialog(
-                                  image: widget.screenshots[index],
-                                ),
-                              );
+                            onTap: () {
+                              open(context, index);
                             },
                             child: Stack(
                               children: <Widget>[
