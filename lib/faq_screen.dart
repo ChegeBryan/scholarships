@@ -112,11 +112,12 @@ class _FaqScreenState extends State<FaqScreen> {
                       setState(() {
                         if (currentSelectedCategory != index) {
                           currentSelectedCategory = index;
+                          faqs = FaqList().getFaqsByCategory(
+                              categories[index].category.toLowerCase());
                         } else {
                           currentSelectedCategory = null;
+                          faqs = FaqList().getFaqs();
                         }
-                        faqs = FaqList().getFaqsByCategory(
-                            categories[index].category.toLowerCase());
                       });
                     },
                   );
