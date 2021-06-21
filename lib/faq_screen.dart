@@ -1,7 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geopro/models/faq.dart';
+import 'package:geopro/models/faq_category.dart';
+import 'package:geopro/services/faq.dart';
+import 'package:geopro/services/faq_category.dart';
 import 'package:geopro/widgets/app_drawer.dart';
 import 'package:geopro/widgets/category_card.dart';
+import 'package:geopro/widgets/question_answer_widget.dart';
 
 class FaqScreen extends StatefulWidget {
   @override
@@ -9,15 +13,17 @@ class FaqScreen extends StatefulWidget {
 }
 
 class _FaqScreenState extends State<FaqScreen> {
-  List<String> categories = [
-    'Ticketing',
-    'Safety',
-    'Casuals',
-    'Category 4',
-    'Category 5'
-  ];
+  List<FaqCategory> categories = FaqCategoryList().getFaqCategories();
+
+  List<Faq> faqs;
 
   int currentSelectedCategory;
+
+  @override
+  void initState() {
+    faqs = FaqList().getFaqs();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,15 +105,18 @@ class _FaqScreenState extends State<FaqScreen> {
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
                   return CategoryCard(
-                    categoryName: categories[index],
+                    categoryName: categories[index].category,
                     index: index,
                     isSelected: currentSelectedCategory == index,
                     onSelect: () {
                       setState(() {
                         if (currentSelectedCategory != index) {
                           currentSelectedCategory = index;
+                          faqs = FaqList().getFaqsByCategory(
+                              categories[index].category.toLowerCase());
                         } else {
                           currentSelectedCategory = null;
+                          faqs = FaqList().getFaqs();
                         }
                       });
                     },
@@ -121,6 +130,18 @@ class _FaqScreenState extends State<FaqScreen> {
               searchBox,
             ]),
           ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return QuestionAnswerWidget(
+                  question: faqs[index].question,
+                  answer: faqs[index].answer,
+                  screenshots: faqs[index].images,
+                );
+              },
+              childCount: faqs.length,
+            ),
+          )
         ],
       ),
     );

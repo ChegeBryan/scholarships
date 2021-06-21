@@ -10,4 +10,7 @@ class ApiUrl {
 
   // sponsorship application
   static const String apply = baseUrl + '/apply/';
+
+  // Fake FAQS url:
+  static const String faqs = 'http://myjson.dit.upm.es/api/bins/x6w';
 }
