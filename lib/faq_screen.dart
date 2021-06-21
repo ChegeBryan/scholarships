@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:geopro/models/faq_category.dart';
 import 'package:geopro/services/faq.dart';
+import 'package:geopro/services/faq_category.dart';
 import 'package:geopro/widgets/app_drawer.dart';
 import 'package:geopro/widgets/category_card.dart';
 
@@ -11,13 +13,7 @@ class FaqScreen extends StatefulWidget {
 }
 
 class _FaqScreenState extends State<FaqScreen> {
-  List<String> categories = [
-    'Ticketing',
-    'Safety',
-    'Casuals',
-    'Category 4',
-    'Category 5'
-  ];
+  List<FaqCategory> categories = FaqCategoryList().getFaqCategories();
 
   int currentSelectedCategory;
 
@@ -101,7 +97,7 @@ class _FaqScreenState extends State<FaqScreen> {
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
                   return CategoryCard(
-                    categoryName: categories[index],
+                    categoryName: categories[index].category,
                     index: index,
                     isSelected: currentSelectedCategory == index,
                     onSelect: () {
