@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:geopro/models/faq.dart';
 import 'package:geopro/models/faq_category.dart';
 import 'package:geopro/services/faq.dart';
 import 'package:geopro/services/faq_category.dart';
 import 'package:geopro/widgets/app_drawer.dart';
 import 'package:geopro/widgets/category_card.dart';
-
-final faqs = FaqList().getFaqs();
+import 'package:geopro/widgets/question_answer_widget.dart';
 
 class FaqScreen extends StatefulWidget {
   @override
@@ -14,6 +14,8 @@ class FaqScreen extends StatefulWidget {
 
 class _FaqScreenState extends State<FaqScreen> {
   List<FaqCategory> categories = FaqCategoryList().getFaqCategories();
+
+  List<Faq> faqs = FaqList().getFaqs();
 
   int currentSelectedCategory;
 
@@ -119,6 +121,18 @@ class _FaqScreenState extends State<FaqScreen> {
               searchBox,
             ]),
           ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return QuestionAnswerWidget(
+                  question: faqs[index].question,
+                  answer: faqs[index].answer,
+                  screenshots: faqs[index].images,
+                );
+              },
+              childCount: faqs.length,
+            ),
+          )
         ],
       ),
     );
