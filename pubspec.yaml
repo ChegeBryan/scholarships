@@ -29,6 +29,7 @@ dependencies:
   flutter_custom_clippers: ^1.1.2
   validators: ^2.0.1
   lorem_ipsum: ^0.0.1
+  transparent_image: ^1.0.0
 
 dev_dependencies:
   flutter_test:

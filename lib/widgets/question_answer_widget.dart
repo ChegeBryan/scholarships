@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/widgets/image_dialog.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class QuestionAnswerWidget extends StatefulWidget {
   final String question;
@@ -99,18 +100,33 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
                       itemBuilder: (BuildContext context, int index) =>
                           Container(
                         padding: const EdgeInsets.only(right: 10.0),
-                        child: GestureDetector(
-                          onTap: () async {
-                            await showDialog(
-                              context: context,
-                              builder: (_) => ImageDialog(
-                                image: widget.screenshots[index],
-                              ),
-                            );
-                          },
-                          child: Image.network(
-                            widget.screenshots[index],
-                            fit: BoxFit.cover,
+                        child: SizedBox(
+                          height: 120,
+                          width: 120,
+                          child: GestureDetector(
+                            onTap: () async {
+                              await showDialog(
+                                context: context,
+                                builder: (_) => ImageDialog(
+                                  image: widget.screenshots[index],
+                                ),
+                              );
+                            },
+                            child: Stack(
+                              children: <Widget>[
+                                Center(child: CircularProgressIndicator()),
+                                Center(
+                                  child: Card(
+                                    clipBehavior: Clip.antiAlias,
+                                    child: FadeInImage.memoryNetwork(
+                                      placeholder: kTransparentImage,
+                                      image: widget.screenshots[index],
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
