@@ -4,7 +4,7 @@ class Faq {
   final String question;
   final String answer;
   final List<String> images;
-  final FaqCategory category;
+  final String category;
 
   Faq({this.question, this.answer, this.images, this.category});
 
@@ -12,5 +12,5 @@ class Faq {
       : question = json['question'],
         answer = json['answer'],
         images = json['images'],
-        category = FaqCategory.fromJson(json['category']);
+        category = json['category'];
 }
