@@ -6,7 +6,7 @@ class AppTheme {
       primaryColor: _primaryColor,
       accentColor: _accentColor,
       cursorColor: _primaryColor,
-      fontFamily: 'Lato',
+      fontFamily: 'Avenir',
     );
   }
 
@@ -16,7 +16,7 @@ class AppTheme {
       primaryColor: _primaryColor,
       accentColor: _accentColor,
       cursorColor: _primaryColor,
-      fontFamily: 'Lato',
+      fontFamily: 'Avenir',
     );
   }
 
