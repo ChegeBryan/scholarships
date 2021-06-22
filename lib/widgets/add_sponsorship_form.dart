@@ -42,41 +42,56 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           SizedBox(
-            height: 30.0,
+            height: 20.0,
           ),
-          TextFormField(
-            controller: _name,
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-              labelText: 'Name',
-              border: OutlineInputBorder(),
+          Material(
+            elevation: 6.0,
+            shadowColor: Colors.grey,
+            borderRadius: BorderRadius.circular(3.0),
+            child: TextFormField(
+              textCapitalization: TextCapitalization.sentences,
+              controller: _name,
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                labelText: 'Name',
+                contentPadding: EdgeInsets.all(12.0),
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+              ),
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please provide name';
+                }
+                return null;
+              },
             ),
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please provide name';
-              }
-              return null;
-            },
           ),
           SizedBox(
-            height: 8.0,
+            height: 12.0,
           ),
-          TextFormField(
-            controller: _description,
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-              labelText: 'Description',
-              alignLabelWithHint: true,
-              border: OutlineInputBorder(),
+          Material(
+            elevation: 6.0,
+            shadowColor: Colors.grey,
+            borderRadius: BorderRadius.circular(3.0),
+            child: TextFormField(
+              textCapitalization: TextCapitalization.sentences,
+              controller: _description,
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                labelText: 'Description',
+                contentPadding: EdgeInsets.all(12.0),
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+              ),
+              maxLines: null,
+              minLines: 3,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Please provide description';
+                }
+                return null;
+              },
             ),
-            maxLines: null,
-            minLines: 3,
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please provide description';
-              }
-              return null;
-            },
           ),
           SizedBox(
             height: 8.0,
