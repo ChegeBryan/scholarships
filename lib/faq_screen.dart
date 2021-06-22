@@ -25,6 +25,31 @@ class _FaqScreenState extends State<FaqScreen> {
     super.initState();
   }
 
+  void filterByQuestions(String query) {
+    List<Faq> startingSearchList = List<Faq>();
+    startingSearchList.addAll(faqs);
+    if (query.isNotEmpty) {
+      List<Faq> filteredListData = List<Faq>();
+      startingSearchList.forEach((item) {
+        if (item.question.toLowerCase().contains(query.toLowerCase())) {
+          filteredListData.add(item);
+        }
+      });
+      setState(() {
+        faqs.clear();
+        faqs.addAll(filteredListData);
+      });
+      return;
+    } else {
+      setState(() {
+        faqs.clear();
+        faqs = FaqList().getFaqs();
+      });
+    }
+  }
+
+  TextEditingController _query = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Widget appBar = SliverAppBar(
@@ -60,6 +85,7 @@ class _FaqScreenState extends State<FaqScreen> {
         width: MediaQuery.of(context).size.width * 0.9,
         margin: EdgeInsets.fromLTRB(0, 0, 0, 14.0),
         child: TextField(
+          controller: _query,
           autofocus: false,
           cursorColor: Color(0xff3A5160),
           decoration: InputDecoration(
@@ -84,6 +110,9 @@ class _FaqScreenState extends State<FaqScreen> {
           style: TextStyle(
             color: Color(0xff3A5160),
           ),
+          onChanged: (value) {
+            filterByQuestions(value);
+          },
         ),
       ),
     );
