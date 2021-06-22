@@ -203,7 +203,7 @@ class SponsorshipScreen extends StatelessWidget {
                                               content: const Text(
                                                   'Sponsorship deleted'),
                                               duration:
-                                                  const Duration(seconds: 1),
+                                                  const Duration(seconds: 2),
                                             ));
                                           } else {
                                             Scaffold.of(context)
@@ -211,7 +211,7 @@ class SponsorshipScreen extends StatelessWidget {
                                               content: const Text(
                                                   'Sponsorship has not been deleted'),
                                               duration:
-                                                  const Duration(seconds: 1),
+                                                  const Duration(seconds: 2),
                                             ));
                                           }
                                         });

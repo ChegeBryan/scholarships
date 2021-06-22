@@ -73,6 +73,7 @@ class SponsorshipProvider with ChangeNotifier {
       addedStatus = Status.NotAdded;
       notifyListeners();
       result = {'status': false, 'message': jsonDecode(response.body)};
+      print(jsonDecode(response.body)["name"][0]);
     }
     return result;
   }

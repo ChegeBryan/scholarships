@@ -7,7 +7,7 @@ class AddSponsorshipForm extends StatefulWidget {
   final String description;
   final int id;
 
-  const AddSponsorshipForm({Key key, this.name, this.description, this.id})
+  AddSponsorshipForm({Key key, this.name, this.description, this.id})
       : super(key: key);
 
   @override
@@ -45,7 +45,6 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
             height: 30.0,
           ),
           TextFormField(
-            maxLength: null,
             controller: _name,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
@@ -103,17 +102,16 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                               .then((response) {
                             if (response['status']) {
                               Scaffold.of(context).showSnackBar(SnackBar(
-                                content: const Text('Sponsorship updated'),
-                                duration: const Duration(seconds: 1),
+                                content: Text('Sponsorship updated'),
+                                duration: Duration(seconds: 2),
                                 backgroundColor: Colors.red,
                               ));
                               Navigator.pushNamed(
                                   context, '/manage/sponsorships');
                             } else {
                               Scaffold.of(context).showSnackBar(SnackBar(
-                                content: const Text(
-                                    'There was a problem updating the sponsorship'),
-                                duration: const Duration(seconds: 1),
+                                content: Text(response['message']["name"][0]),
+                                duration: Duration(seconds: 2),
                                 backgroundColor: Colors.red,
                               ));
                             }
@@ -124,17 +122,16 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                               .then((response) {
                             if (response['status']) {
                               Scaffold.of(context).showSnackBar(SnackBar(
-                                content: const Text('Sponsorship added'),
-                                duration: const Duration(seconds: 1),
+                                content: Text('Sponsorship added'),
+                                duration: Duration(seconds: 2),
                                 backgroundColor: Colors.red,
                               ));
                               Navigator.pushNamed(
                                   context, '/manage/sponsorships');
                             } else {
                               Scaffold.of(context).showSnackBar(SnackBar(
-                                content: Text(
-                                    'There was a problem adding the sponsorship'),
-                                duration: const Duration(seconds: 1),
+                                content: Text(response['message']["name"][0]),
+                                duration: Duration(seconds: 2),
                                 backgroundColor: Colors.red,
                               ));
                             }
