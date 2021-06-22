@@ -123,7 +123,14 @@ class SponsorshipListScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(6.0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(24.0),
-                          color: Color(0xFFE9EAF2),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              spreadRadius: 1,
+                              blurRadius: 10,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
                         ),
                         child: Card(
                           clipBehavior: Clip.none,
