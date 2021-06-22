@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:geopro/services/sponsorship.dart';
+import 'package:provider/provider.dart';
 
 class AddSponsorshipForm extends StatefulWidget {
   final String name;
@@ -21,6 +21,33 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
   TextEditingController _name;
   TextEditingController _description;
   int _id;
+
+  Material buildTextInputField(TextEditingController controller, String label,
+      String validatorErrorMessage, int minimumLines) {
+    return Material(
+      elevation: 6.0,
+      borderRadius: BorderRadius.circular(10.0),
+      child: TextFormField(
+        textCapitalization: TextCapitalization.sentences,
+        controller: controller,
+        keyboardType: TextInputType.text,
+        minLines: minimumLines,
+        maxLines: null,
+        decoration: InputDecoration(
+          labelText: label,
+          contentPadding: EdgeInsets.all(12.0),
+          border: InputBorder.none,
+          focusedBorder: InputBorder.none,
+        ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return validatorErrorMessage;
+          }
+          return null;
+        },
+      ),
+    );
+  }
 
   @override
   void initState() {
@@ -44,55 +71,12 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
           SizedBox(
             height: 20.0,
           ),
-          Material(
-            elevation: 6.0,
-            shadowColor: Colors.grey,
-            borderRadius: BorderRadius.circular(3.0),
-            child: TextFormField(
-              textCapitalization: TextCapitalization.sentences,
-              controller: _name,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                labelText: 'Name',
-                contentPadding: EdgeInsets.all(12.0),
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-              ),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please provide name';
-                }
-                return null;
-              },
-            ),
-          ),
+          buildTextInputField(_name, 'Name', 'Please provide name', 1),
           SizedBox(
             height: 12.0,
           ),
-          Material(
-            elevation: 6.0,
-            shadowColor: Colors.grey,
-            borderRadius: BorderRadius.circular(3.0),
-            child: TextFormField(
-              textCapitalization: TextCapitalization.sentences,
-              controller: _description,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                labelText: 'Description',
-                contentPadding: EdgeInsets.all(12.0),
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-              ),
-              maxLines: null,
-              minLines: 3,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please provide description';
-                }
-                return null;
-              },
-            ),
-          ),
+          buildTextInputField(
+              _description, 'Description', 'Please provide description', 3),
           SizedBox(
             height: 8.0,
           ),
