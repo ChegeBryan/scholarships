@@ -9,7 +9,12 @@ import 'package:http/http.dart';
 
 import 'api.dart';
 
+enum Status { Added, Adding, NotAdded, Updated, Updating, NotUpdated }
+
 class SponsorshipProvider with ChangeNotifier {
+  Status addedStatus;
+  Status updatedStatus;
+
   UserProvider auth;
 
   SponsorshipProvider(this.auth);
@@ -48,6 +53,9 @@ class SponsorshipProvider with ChangeNotifier {
       'description': description,
     };
 
+    addedStatus = Status.Adding;
+    notifyListeners();
+
     Response response = await post(
       sponsorshipUrl,
       body: jsonEncode(data),
@@ -58,9 +66,12 @@ class SponsorshipProvider with ChangeNotifier {
     );
 
     if (response.statusCode == 201) {
+      addedStatus = Status.Added;
+      notifyListeners();
       result = {'status': true, 'message': 'Added sponsorship successfully'};
-      print(jsonDecode(response.body));
     } else {
+      addedStatus = Status.NotAdded;
+      notifyListeners();
       result = {'status': false, 'message': jsonDecode(response.body)};
     }
     return result;
@@ -98,6 +109,9 @@ class SponsorshipProvider with ChangeNotifier {
       'pk': id
     };
 
+    updatedStatus = Status.Updating;
+    notifyListeners();
+
     Response response = await put(
       '$sponsorshipUrl$id/',
       body: jsonEncode(data),
@@ -108,10 +122,13 @@ class SponsorshipProvider with ChangeNotifier {
     );
 
     if (response.statusCode == 200) {
+      updatedStatus = Status.Updated;
+      notifyListeners();
       result = {'status': true, 'message': 'Sponsorship updated successfully'};
     } else {
+      updatedStatus = Status.NotUpdated;
+      notifyListeners();
       result = {'status': false, 'message': jsonDecode(response.body)};
-      print(jsonDecode(response.body));
     }
     return result;
   }

@@ -89,64 +89,70 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
               },
               child: Text('Cancel'),
             ),
-            FlatButton(
-              onPressed: () {
-                if (_formKey.currentState.validate()) {
-                  _formKey.currentState.save();
-                  if (_id != null) {
-                    sponsorshipProvider
-                        .updateSponsorship(_name.text, _description.text, _id)
-                        .then((response) {
-                      if (response['status']) {
-                        Scaffold.of(context).showSnackBar(SnackBar(
-                          content: const Text('Sponsorship updated'),
-                          duration: const Duration(seconds: 1),
-                          backgroundColor: Colors.red,
-                        ));
-                        Navigator.pushNamed(context, '/manage/sponsorships');
+            sponsorshipProvider.addedStatus == Status.Adding ||
+                    sponsorshipProvider.updatedStatus == Status.Updating
+                ? CircularProgressIndicator()
+                : FlatButton(
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        _formKey.currentState.save();
+                        if (_id != null) {
+                          sponsorshipProvider
+                              .updateSponsorship(
+                                  _name.text, _description.text, _id)
+                              .then((response) {
+                            if (response['status']) {
+                              Scaffold.of(context).showSnackBar(SnackBar(
+                                content: const Text('Sponsorship updated'),
+                                duration: const Duration(seconds: 1),
+                                backgroundColor: Colors.red,
+                              ));
+                              Navigator.pushNamed(
+                                  context, '/manage/sponsorships');
+                            } else {
+                              Scaffold.of(context).showSnackBar(SnackBar(
+                                content: const Text(
+                                    'There was a problem updating the sponsorship'),
+                                duration: const Duration(seconds: 1),
+                                backgroundColor: Colors.red,
+                              ));
+                            }
+                          });
+                        } else {
+                          sponsorshipProvider
+                              .addSponsorship(_name.text, _description.text)
+                              .then((response) {
+                            if (response['status']) {
+                              Scaffold.of(context).showSnackBar(SnackBar(
+                                content: const Text('Sponsorship added'),
+                                duration: const Duration(seconds: 1),
+                                backgroundColor: Colors.red,
+                              ));
+                              Navigator.pushNamed(
+                                  context, '/manage/sponsorships');
+                            } else {
+                              Scaffold.of(context).showSnackBar(SnackBar(
+                                content: Text(
+                                    'There was a problem adding the sponsorship'),
+                                duration: const Duration(seconds: 1),
+                                backgroundColor: Colors.red,
+                              ));
+                            }
+                          });
+                        }
                       } else {
-                        Scaffold.of(context).showSnackBar(SnackBar(
-                          content: const Text(
-                              'There was a problem updating the sponsorship'),
-                          duration: const Duration(seconds: 1),
-                          backgroundColor: Colors.red,
-                        ));
+                        setState(() {
+                          _autovalidate = true;
+                        });
                       }
-                    });
-                  } else {
-                    sponsorshipProvider
-                        .addSponsorship(_name.text, _description.text)
-                        .then((response) {
-                      if (response['status']) {
-                        Scaffold.of(context).showSnackBar(SnackBar(
-                          content: const Text('Sponsorship added'),
-                          duration: const Duration(seconds: 1),
-                          backgroundColor: Colors.red,
-                        ));
-                        Navigator.pushNamed(context, '/manage/sponsorships');
-                      } else {
-                        Scaffold.of(context).showSnackBar(SnackBar(
-                          content: Text(
-                              'There was a problem adding the sponsorship'),
-                          duration: const Duration(seconds: 1),
-                          backgroundColor: Colors.red,
-                        ));
-                      }
-                    });
-                  }
-                } else {
-                  setState(() {
-                    _autovalidate = true;
-                  });
-                }
-              },
-              child: Text(
-                'Submit',
-                style: TextStyle(fontSize: 16.0),
-              ),
-              textColor: Colors.white,
-              color: Theme.of(context).primaryColor,
-            ),
+                    },
+                    child: Text(
+                      'Submit',
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                    textColor: Colors.white,
+                    color: Theme.of(context).primaryColor,
+                  ),
           ]),
         ],
       ),
