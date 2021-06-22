@@ -131,560 +131,563 @@ class _ApplicationFormState extends State<ApplicationForm> {
       child: Form(
         key: _formKey,
         autovalidate: _autovalidate,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              'Sponsorship',
-              style: TextStyle(
-                color: Colors.grey[600],
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.baseline,
-              textBaseline: TextBaseline.alphabetic,
-              children: <Widget>[
-                Expanded(
-                  child: Text(
-                    _sponsorshipName.inCaps,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      height: 2.0,
-                      fontSize: 16.0,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                FlatButton(
-                  onPressed: () => _changeSponsorship(),
-                  child: Text(
-                    'Change Sponsorship',
-                    style: TextStyle(
-                      color: Theme.of(context).accentColor,
-                      fontSize: 14.0,
-                    ),
-                  ),
-                )
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12.0),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Contact Details',
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Divider(),
-                ],
-              ),
-            ),
-            Material(
-              elevation: 6,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: TextFormField(
-                controller: _firstName,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  labelText: 'First Name',
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  errorBorder: InputBorder.none,
-                  contentPadding:
-                      const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide first name';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            Material(
-              elevation: 6.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: TextFormField(
-                controller: _lastName,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  labelText: 'Last Name',
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide last name';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            Material(
-              elevation: 6.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: TextFormField(
-                controller: _mobile,
-                keyboardType: TextInputType.phone,
-                decoration: InputDecoration(
-                  labelText: 'Phone Number',
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide phone number';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            Material(
-              elevation: 6.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: TextFormField(
-                controller: _country,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  labelText: 'Country',
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide your country';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            Material(
-              elevation: 6.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: TextFormField(
-                controller: _city,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  labelText: 'City',
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide your city';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            Material(
-              elevation: 6.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: TextFormField(
-                controller: _postalCode,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  labelText: 'Postal Code',
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide postal code';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'School Details',
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Divider(),
-                ],
-              ),
-            ),
-            Material(
-              elevation: 6.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: TextFormField(
-                controller: _schoolName,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  labelText: 'School Name',
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide your school';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            Material(
-              elevation: 6.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: TextFormField(
-                controller: _degree,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  labelText: 'Degree',
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide degree';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                'Year',
+        child: Theme(
+          data: Theme.of(context).copyWith(hintColor: Colors.grey.shade400),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Sponsorship',
                 style: TextStyle(
-                  color: Colors.grey[700],
+                  color: Colors.grey[600],
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Material(
-                      elevation: 6.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: TextFormField(
-                        controller: _start,
-                        keyboardType: TextInputType.datetime,
-                        decoration: InputDecoration(
-                          labelText: 'Start',
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                          contentPadding:
-                              const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
-                          errorMaxLines: 2,
-                        ),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please provide year';
-                          } else if (int.tryParse(value) == null) {
-                            return 'Please provide an year value';
-                          } else if (int.parse(value) > DateTime.now().year) {
-                            return 'Start year cannot be in the future';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Material(
-                      elevation: 6.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: TextFormField(
-                        controller: _to,
-                        keyboardType: TextInputType.datetime,
-                        decoration: InputDecoration(
-                          labelText: 'To',
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                          contentPadding:
-                              const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
-                          errorMaxLines: 2,
-                        ),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please provide year';
-                          } else if (int.tryParse(value) == null) {
-                            return 'Please provide an year value';
-                          } else if (int.parse(value) < DateTime.now().year) {
-                            return 'Year cannot be in the past';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.baseline,
+                textBaseline: TextBaseline.alphabetic,
                 children: <Widget>[
-                  Text(
-                    'Documents URLs',
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
+                  Expanded(
+                    child: Text(
+                      _sponsorshipName.inCaps,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        height: 2.0,
+                        fontSize: 16.0,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  Divider(),
-                ],
-              ),
-            ),
-            Material(
-              elevation: 6.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: TextFormField(
-                controller: _coverLetter,
-                keyboardType: TextInputType.url,
-                decoration: InputDecoration(
-                  labelText: 'Cover letter',
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide cover letter';
-                  } else if (!isURL(value)) {
-                    return 'PLease provide a valid URL';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            Material(
-              elevation: 6.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: TextFormField(
-                controller: _birthCertificate,
-                keyboardType: TextInputType.url,
-                decoration: InputDecoration(
-                  labelText: 'Birth Certificate',
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide birth certificate';
-                  } else if (!isURL(value)) {
-                    return 'Please provide a valid URL';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            Material(
-              elevation: 6.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: TextFormField(
-                controller: _nationalId,
-                keyboardType: TextInputType.url,
-                decoration: InputDecoration(
-                  labelText: 'National Id',
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  contentPadding:
-                      const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please provide national Id';
-                  } else if (!isURL(value)) {
-                    return 'Please provide a valid URL';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            SizedBox(
-              height: 16.0,
-            ),
-            application.submissionStatus == Status.Submitting
-                ? Center(child: CircularProgressIndicator())
-                : Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                  FlatButton(
+                    onPressed: () => _changeSponsorship(),
+                    child: Text(
+                      'Change Sponsorship',
+                      style: TextStyle(
+                        color: Theme.of(context).accentColor,
+                        fontSize: 14.0,
                       ),
-                      elevation: 6.0,
-                      padding: const EdgeInsets.symmetric(vertical: 12.0),
-                      onPressed: () {
-                        if (_formKey.currentState.validate()) {
-                          _formKey.currentState.save();
-                          Future<Map<String, dynamic>> response =
-                              application.addApplication(
-                            sponsorshipId: _sponsorshipId.toString(),
-                            firstName: _firstName.text,
-                            lastName: _lastName.text,
-                            country: _country.text,
-                            city: _city.text,
-                            postalCode: _postalCode.text,
-                            mobile: _mobile.text,
-                            schoolName: _schoolName.text,
-                            degree: _degree.text,
-                            start: _start.text,
-                            to: _to.text,
-                            birthCertificate: _birthCertificate.text,
-                            nationalId: _nationalId.text,
-                            coverLetter: _coverLetter.text,
-                          );
-                          response.then((res) {
-                            if (res['status']) {
-                              _showApplicationDetails(context, res['data']);
-                            } else {
-                              Scaffold.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(res['errors']['error']
-                                          .toString() +
-                                      ' Try changing the sponsorship you are applying for.'),
-                                  backgroundColor: Colors.red,
-                                ),
-                              );
-                            }
-                          });
-                        } else {
-                          setState(() {
-                            _autovalidate = true;
-                          });
-                        }
-                      },
-                      child: Text(
-                        'Submit',
-                        style: TextStyle(fontSize: 16.0),
-                      ),
-                      textColor: Colors.white,
-                      color: Theme.of(context).primaryColor,
                     ),
                   )
-          ],
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12.0),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Contact Details',
+                      style: TextStyle(
+                        color: Colors.grey[600],
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Divider(),
+                  ],
+                ),
+              ),
+              Material(
+                elevation: 6,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: TextFormField(
+                  controller: _firstName,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    labelText: 'First Name',
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    contentPadding:
+                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide first name';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              Material(
+                elevation: 6.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: TextFormField(
+                  controller: _lastName,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    labelText: 'Last Name',
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding:
+                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide last name';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              Material(
+                elevation: 6.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: TextFormField(
+                  controller: _mobile,
+                  keyboardType: TextInputType.phone,
+                  decoration: InputDecoration(
+                    labelText: 'Phone Number',
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding:
+                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide phone number';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              Material(
+                elevation: 6.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: TextFormField(
+                  controller: _country,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    labelText: 'Country',
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding:
+                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide your country';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              Material(
+                elevation: 6.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: TextFormField(
+                  controller: _city,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    labelText: 'City',
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding:
+                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide your city';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              Material(
+                elevation: 6.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: TextFormField(
+                  controller: _postalCode,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    labelText: 'Postal Code',
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding:
+                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide postal code';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'School Details',
+                      style: TextStyle(
+                        color: Colors.grey[600],
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Divider(),
+                  ],
+                ),
+              ),
+              Material(
+                elevation: 6.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: TextFormField(
+                  controller: _schoolName,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    labelText: 'School Name',
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding:
+                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide your school';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              Material(
+                elevation: 6.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: TextFormField(
+                  controller: _degree,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    labelText: 'Degree',
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding:
+                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide degree';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Text(
+                  'Year',
+                  style: TextStyle(
+                    color: Colors.grey[700],
+                  ),
+                ),
+              ),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Material(
+                        elevation: 6.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: TextFormField(
+                          controller: _start,
+                          keyboardType: TextInputType.datetime,
+                          decoration: InputDecoration(
+                            labelText: 'Start',
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            contentPadding: const EdgeInsets.fromLTRB(
+                                10.0, 8.0, 10.0, 10.0),
+                            errorMaxLines: 2,
+                          ),
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Please provide year';
+                            } else if (int.tryParse(value) == null) {
+                              return 'Please provide an year value';
+                            } else if (int.parse(value) > DateTime.now().year) {
+                              return 'Start year cannot be in the future';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Material(
+                        elevation: 6.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: TextFormField(
+                          controller: _to,
+                          keyboardType: TextInputType.datetime,
+                          decoration: InputDecoration(
+                            labelText: 'To',
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            contentPadding: const EdgeInsets.fromLTRB(
+                                10.0, 8.0, 10.0, 10.0),
+                            errorMaxLines: 2,
+                          ),
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Please provide year';
+                            } else if (int.tryParse(value) == null) {
+                              return 'Please provide an year value';
+                            } else if (int.parse(value) < DateTime.now().year) {
+                              return 'Year cannot be in the past';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Documents URLs',
+                      style: TextStyle(
+                        color: Colors.grey[600],
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Divider(),
+                  ],
+                ),
+              ),
+              Material(
+                elevation: 6.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: TextFormField(
+                  controller: _coverLetter,
+                  keyboardType: TextInputType.url,
+                  decoration: InputDecoration(
+                    labelText: 'Cover letter',
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding:
+                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide cover letter';
+                    } else if (!isURL(value)) {
+                      return 'PLease provide a valid URL';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              Material(
+                elevation: 6.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: TextFormField(
+                  controller: _birthCertificate,
+                  keyboardType: TextInputType.url,
+                  decoration: InputDecoration(
+                    labelText: 'Birth Certificate',
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding:
+                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide birth certificate';
+                    } else if (!isURL(value)) {
+                      return 'Please provide a valid URL';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              Material(
+                elevation: 6.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: TextFormField(
+                  controller: _nationalId,
+                  keyboardType: TextInputType.url,
+                  decoration: InputDecoration(
+                    labelText: 'National Id',
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    contentPadding:
+                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please provide national Id';
+                    } else if (!isURL(value)) {
+                      return 'Please provide a valid URL';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              application.submissionStatus == Status.Submitting
+                  ? Center(child: CircularProgressIndicator())
+                  : Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        elevation: 6.0,
+                        padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        onPressed: () {
+                          if (_formKey.currentState.validate()) {
+                            _formKey.currentState.save();
+                            Future<Map<String, dynamic>> response =
+                                application.addApplication(
+                              sponsorshipId: _sponsorshipId.toString(),
+                              firstName: _firstName.text,
+                              lastName: _lastName.text,
+                              country: _country.text,
+                              city: _city.text,
+                              postalCode: _postalCode.text,
+                              mobile: _mobile.text,
+                              schoolName: _schoolName.text,
+                              degree: _degree.text,
+                              start: _start.text,
+                              to: _to.text,
+                              birthCertificate: _birthCertificate.text,
+                              nationalId: _nationalId.text,
+                              coverLetter: _coverLetter.text,
+                            );
+                            response.then((res) {
+                              if (res['status']) {
+                                _showApplicationDetails(context, res['data']);
+                              } else {
+                                Scaffold.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(res['errors']['error']
+                                            .toString() +
+                                        ' Try changing the sponsorship you are applying for.'),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                              }
+                            });
+                          } else {
+                            setState(() {
+                              _autovalidate = true;
+                            });
+                          }
+                        },
+                        child: Text(
+                          'Submit',
+                          style: TextStyle(fontSize: 16.0),
+                        ),
+                        textColor: Colors.white,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    )
+            ],
+          ),
         ),
       ),
     );
