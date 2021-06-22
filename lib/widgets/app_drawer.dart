@@ -101,12 +101,13 @@ class AppDrawer extends StatelessWidget {
                       child: FlatButton(
                         onPressed: () {
                           // clear user data from local storage
-                          UserPrefences().removeUser();
-                          Navigator.pushNamedAndRemoveUntil(
-                            context,
-                            '/',
-                            (Route<dynamic> route) => false,
-                          );
+                          UserPrefences().removeUser().then(
+                                (value) => Navigator.pushNamedAndRemoveUntil(
+                                  context,
+                                  '/',
+                                  (Route<dynamic> route) => false,
+                                ),
+                              );
                         },
                         textColor: Colors.white,
                         shape: StadiumBorder(),

@@ -6,7 +6,7 @@ class AppTheme {
       primaryColor: _primaryColor,
       accentColor: _accentColor,
       cursorColor: _primaryColor,
-      fontFamily: 'Lato',
+      fontFamily: 'Avenir',
     );
   }
 
@@ -16,10 +16,10 @@ class AppTheme {
       primaryColor: _primaryColor,
       accentColor: _accentColor,
       cursorColor: _primaryColor,
-      fontFamily: 'Lato',
+      fontFamily: 'Avenir',
     );
   }
 
-  static const _primaryColor = Color(0xFF142AA6);
-  static const _accentColor = Color(0xFFF2295F);
+  static const _primaryColor = Color(0xFF1E22AA);
+  static const _accentColor = Color(0xFFE40046);
 }
