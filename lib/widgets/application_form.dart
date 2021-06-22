@@ -198,25 +198,28 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: TextFormField(
-                  controller: _firstName,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    labelText: 'First Name',
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    errorBorder: InputBorder.none,
-                    contentPadding:
-                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                child: Container(
+                  height: 48.0,
+                  child: TextFormField(
+                    controller: _firstName,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      labelText: 'First Name',
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please provide first name';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please provide first name';
-                    }
-                    return null;
-                  },
                 ),
               ),
               SizedBox(
@@ -227,24 +230,27 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: TextFormField(
-                  controller: _lastName,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    labelText: 'Last Name',
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding:
-                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                child: Container(
+                  height: 48.0,
+                  child: TextFormField(
+                    controller: _lastName,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      labelText: 'Last Name',
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please provide last name';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please provide last name';
-                    }
-                    return null;
-                  },
                 ),
               ),
               SizedBox(
@@ -255,24 +261,27 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: TextFormField(
-                  controller: _mobile,
-                  keyboardType: TextInputType.phone,
-                  decoration: InputDecoration(
-                    labelText: 'Phone Number',
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding:
-                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                child: Container(
+                  height: 48.0,
+                  child: TextFormField(
+                    controller: _mobile,
+                    keyboardType: TextInputType.phone,
+                    decoration: InputDecoration(
+                      labelText: 'Phone Number',
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please provide phone number';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please provide phone number';
-                    }
-                    return null;
-                  },
                 ),
               ),
               SizedBox(
@@ -283,24 +292,27 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: TextFormField(
-                  controller: _country,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    labelText: 'Country',
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding:
-                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                child: Container(
+                  height: 48.0,
+                  child: TextFormField(
+                    controller: _country,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      labelText: 'Country',
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please provide your country';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please provide your country';
-                    }
-                    return null;
-                  },
                 ),
               ),
               SizedBox(
@@ -311,24 +323,27 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: TextFormField(
-                  controller: _city,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    labelText: 'City',
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding:
-                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                child: Container(
+                  height: 48.0,
+                  child: TextFormField(
+                    controller: _city,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      labelText: 'City',
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please provide your city';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please provide your city';
-                    }
-                    return null;
-                  },
                 ),
               ),
               SizedBox(
@@ -339,24 +354,27 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: TextFormField(
-                  controller: _postalCode,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    labelText: 'Postal Code',
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding:
-                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                child: Container(
+                  height: 48.0,
+                  child: TextFormField(
+                    controller: _postalCode,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      labelText: 'Postal Code',
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please provide postal code';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please provide postal code';
-                    }
-                    return null;
-                  },
                 ),
               ),
               SizedBox(
@@ -384,24 +402,27 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: TextFormField(
-                  controller: _schoolName,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    labelText: 'School Name',
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding:
-                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                child: Container(
+                  height: 48.0,
+                  child: TextFormField(
+                    controller: _schoolName,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      labelText: 'School Name',
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please provide your school';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please provide your school';
-                    }
-                    return null;
-                  },
                 ),
               ),
               SizedBox(
@@ -412,24 +433,27 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: TextFormField(
-                  controller: _degree,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    labelText: 'Degree',
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding:
-                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                child: Container(
+                  height: 48.0,
+                  child: TextFormField(
+                    controller: _degree,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      labelText: 'Degree',
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please provide degree';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please provide degree';
-                    }
-                    return null;
-                  },
                 ),
               ),
               SizedBox(
@@ -454,29 +478,33 @@ class _ApplicationFormState extends State<ApplicationForm> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
-                        child: TextFormField(
-                          controller: _start,
-                          keyboardType: TextInputType.datetime,
-                          decoration: InputDecoration(
-                            labelText: 'Start',
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
-                            contentPadding: const EdgeInsets.fromLTRB(
-                                10.0, 8.0, 10.0, 10.0),
-                            errorMaxLines: 2,
+                        child: Container(
+                          height: 48.0,
+                          child: TextFormField(
+                            controller: _start,
+                            keyboardType: TextInputType.datetime,
+                            decoration: InputDecoration(
+                              labelText: 'Start',
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                              contentPadding: const EdgeInsets.fromLTRB(
+                                  10.0, 8.0, 10.0, 10.0),
+                              errorMaxLines: 2,
+                            ),
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please provide year';
+                              } else if (int.tryParse(value) == null) {
+                                return 'Please provide an year value';
+                              } else if (int.parse(value) >
+                                  DateTime.now().year) {
+                                return 'Start year cannot be in the future';
+                              }
+                              return null;
+                            },
                           ),
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'Please provide year';
-                            } else if (int.tryParse(value) == null) {
-                              return 'Please provide an year value';
-                            } else if (int.parse(value) > DateTime.now().year) {
-                              return 'Start year cannot be in the future';
-                            }
-                            return null;
-                          },
                         ),
                       ),
                     ),
@@ -489,29 +517,33 @@ class _ApplicationFormState extends State<ApplicationForm> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
-                        child: TextFormField(
-                          controller: _to,
-                          keyboardType: TextInputType.datetime,
-                          decoration: InputDecoration(
-                            labelText: 'To',
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
-                            contentPadding: const EdgeInsets.fromLTRB(
-                                10.0, 8.0, 10.0, 10.0),
-                            errorMaxLines: 2,
+                        child: Container(
+                          height: 48.0,
+                          child: TextFormField(
+                            controller: _to,
+                            keyboardType: TextInputType.datetime,
+                            decoration: InputDecoration(
+                              labelText: 'To',
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                              contentPadding: const EdgeInsets.fromLTRB(
+                                  10.0, 8.0, 10.0, 10.0),
+                              errorMaxLines: 2,
+                            ),
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please provide year';
+                              } else if (int.tryParse(value) == null) {
+                                return 'Please provide an year value';
+                              } else if (int.parse(value) <
+                                  DateTime.now().year) {
+                                return 'Year cannot be in the past';
+                              }
+                              return null;
+                            },
                           ),
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'Please provide year';
-                            } else if (int.tryParse(value) == null) {
-                              return 'Please provide an year value';
-                            } else if (int.parse(value) < DateTime.now().year) {
-                              return 'Year cannot be in the past';
-                            }
-                            return null;
-                          },
                         ),
                       ),
                     ),
@@ -543,26 +575,29 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: TextFormField(
-                  controller: _coverLetter,
-                  keyboardType: TextInputType.url,
-                  decoration: InputDecoration(
-                    labelText: 'Cover letter',
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding:
-                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                child: Container(
+                  height: 48.0,
+                  child: TextFormField(
+                    controller: _coverLetter,
+                    keyboardType: TextInputType.url,
+                    decoration: InputDecoration(
+                      labelText: 'Cover letter',
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please provide cover letter';
+                      } else if (!isURL(value)) {
+                        return 'PLease provide a valid URL';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please provide cover letter';
-                    } else if (!isURL(value)) {
-                      return 'PLease provide a valid URL';
-                    }
-                    return null;
-                  },
                 ),
               ),
               SizedBox(
@@ -573,26 +608,29 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: TextFormField(
-                  controller: _birthCertificate,
-                  keyboardType: TextInputType.url,
-                  decoration: InputDecoration(
-                    labelText: 'Birth Certificate',
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding:
-                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                child: Container(
+                  height: 48.0,
+                  child: TextFormField(
+                    controller: _birthCertificate,
+                    keyboardType: TextInputType.url,
+                    decoration: InputDecoration(
+                      labelText: 'Birth Certificate',
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please provide birth certificate';
+                      } else if (!isURL(value)) {
+                        return 'Please provide a valid URL';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please provide birth certificate';
-                    } else if (!isURL(value)) {
-                      return 'Please provide a valid URL';
-                    }
-                    return null;
-                  },
                 ),
               ),
               SizedBox(
@@ -603,26 +641,29 @@ class _ApplicationFormState extends State<ApplicationForm> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: TextFormField(
-                  controller: _nationalId,
-                  keyboardType: TextInputType.url,
-                  decoration: InputDecoration(
-                    labelText: 'National Id',
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding:
-                        const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                child: Container(
+                  height: 48.0,
+                  child: TextFormField(
+                    controller: _nationalId,
+                    keyboardType: TextInputType.url,
+                    decoration: InputDecoration(
+                      labelText: 'National Id',
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please provide national Id';
+                      } else if (!isURL(value)) {
+                        return 'Please provide a valid URL';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please provide national Id';
-                    } else if (!isURL(value)) {
-                      return 'Please provide a valid URL';
-                    }
-                    return null;
-                  },
                 ),
               ),
               SizedBox(
