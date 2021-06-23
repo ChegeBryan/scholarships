@@ -28,6 +28,9 @@ dependencies:
   shared_preferences: ^0.5.12+4
   flutter_custom_clippers: ^1.1.2
   validators: ^2.0.1
+  lorem_ipsum: ^0.0.1
+  transparent_image: ^1.0.0
+  photo_view: ^0.9.1
 
 dev_dependencies:
   flutter_test:
@@ -46,9 +49,19 @@ flutter:
   assets:
     - assets/app_drawer.jpg
     - assets/student_graduate.jpg
+    - assets/background.jpeg
 
   fonts:
     - family: Lato
       fonts:
         - asset: fonts/Lato-Regular.ttf
         - asset: fonts/Lato-Bold.ttf
+    - family: Avenir
+      fonts:
+        - asset: fonts/AvenirLTStd-Black-MediumBold.otf
+        - asset: fonts/AvenirLTStd-MediumRegular.otf
+        - asset: fonts/Avenir/AvenirLTStd-Book.otf
+        - asset: fonts/Avenir/AvenirLTStd-Medium.otf
+        - asset: fonts/Avenir/AvenirLTStd-Heavy.otf
+        - asset: fonts/Avenir/AvenirLTStd-Light.otf
+        - asset: fonts/Avenir/AvenirLTStd-Roman.otf
