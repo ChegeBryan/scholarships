@@ -1,5 +1,3 @@
-import 'package:geopro/models/faq_category.dart';
-
 class Faq {
   final String question;
   final String answer;
