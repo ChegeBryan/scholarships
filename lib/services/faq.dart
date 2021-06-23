@@ -29,27 +29,6 @@ List faqs = [
     "category": "Safety"
   },
   {
-    "question": "How to fill a JHA and add attendees?",
-    "answer":
-        "Tortor pretium viverra suspendisse potenti nullam ac. Convallis aenean et tortor at risus viverra. Augue ut lectus arcu bibendum at varius vel pharetra. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Tempus iaculis urna id volutpat lacus laoreet. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. Euismod elementum nisi quis eleifend quam. Ut aliquam purus sit amet luctus venenatis lectus magna fringilla. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Nulla facilisi morbi tempus iaculis. Dictum fusce ut placerat orci nulla pellentesque dignissim. Mattis aliquam faucibus purus in massa. Et malesuada fames ac turpis egestas maecenas pharetra convallis. Ipsum nunc aliquet bibendum enim facilisis gravida.",
-    "images": [],
-    "category": "Safety"
-  },
-  {
-    "question": "How to upload PPE and SSEs?",
-    "answer":
-        "Tortor pretium viverra suspendisse potenti nullam ac. Convallis aenean et tortor at risus viverra. Augue ut lectus arcu bibendum at varius vel pharetra. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Tempus iaculis urna id volutpat lacus laoreet. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. Euismod elementum nisi quis eleifend quam. Ut aliquam purus sit amet luctus venenatis lectus magna fringilla. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Nulla facilisi morbi tempus iaculis. Dictum fusce ut placerat orci nulla pellentesque dignissim. Mattis aliquam faucibus purus in massa. Et malesuada fames ac turpis egestas maecenas pharetra convallis. Ipsum nunc aliquet bibendum enim facilisis gravida.",
-    "images": [],
-    "category": "Safety"
-  },
-  {
-    "question": "How to upload certificates?",
-    "answer":
-        "Tortor pretium viverra suspendisse potenti nullam ac. Convallis aenean et tortor at risus viverra. Augue ut lectus arcu bibendum at varius vel pharetra. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Tempus iaculis urna id volutpat lacus laoreet. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. Euismod elementum nisi quis eleifend quam. Ut aliquam purus sit amet luctus venenatis lectus magna fringilla. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Nulla facilisi morbi tempus iaculis. Dictum fusce ut placerat orci nulla pellentesque dignissim. Mattis aliquam faucibus purus in massa. Et malesuada fames ac turpis egestas maecenas pharetra convallis. Ipsum nunc aliquet bibendum enim facilisis gravida.",
-    "images": [],
-    "category": "Safety"
-  },
-  {
     "question": "How to capture casuals and their photos?",
     "answer":
         "STEPS:\n1. You can access the casual module by either going to the dashboard and clicking the casual icon. Or open the side menu, click on the casuals, then the casual reports.\n2. To add a new casual. Click on the ➕ button on the bottom right of the screen.\n3. Click on the ➕ button on the upper right of the screen, to add the casual details.\n4. A pop window will appear. Fill the details and click the save button below the pop-up window that will redirect you to the casual report page. Then click the save button again on the casual report page on the button right corner.",
