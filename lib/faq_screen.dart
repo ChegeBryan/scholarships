@@ -62,9 +62,7 @@ class _FaqScreenState extends State<FaqScreen> {
           style: TextStyle(
             color: Color(0xFF3A5160),
             fontWeight: FontWeight.bold,
-            fontSize: 16.0,
             fontFamily: 'AvenirLTStd-MediumRegular',
-            // letterSpacing: 1.0,
           ),
         ),
       ),
