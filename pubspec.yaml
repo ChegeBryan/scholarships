@@ -52,10 +52,6 @@ flutter:
     - assets/background.jpeg
 
   fonts:
-    - family: Lato
-      fonts:
-        - asset: fonts/Lato-Regular.ttf
-        - asset: fonts/Lato-Bold.ttf
     - family: Avenir
       fonts:
         - asset: fonts/Avenir/AvenirLTStd-Book.otf
