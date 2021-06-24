@@ -53,22 +53,18 @@ class _FaqScreenState extends State<FaqScreen> {
   @override
   Widget build(BuildContext context) {
     Widget appBar = SliverAppBar(
-      pinned: false,
-      expandedHeight: 80.0,
+      pinned: true,
+      expandedHeight: MediaQuery.of(context).size.height * .125,
       flexibleSpace: FlexibleSpaceBar(
-        titlePadding: EdgeInsets.fromLTRB(42.0, 0, 0, 0),
-        title: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width * 0.7,
-          ),
-          child: Text(
-            'Frequently Asked Questions:',
-            style: TextStyle(
-                color: Color(0xff3A5160),
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
-                fontFamily: 'AvenirLTStd-MediumRegular',
-                letterSpacing: 1.0),
+        centerTitle: true,
+        title: Text(
+          'Frequently Asked Questions',
+          style: TextStyle(
+            color: Color(0xFF3A5160),
+            fontWeight: FontWeight.bold,
+            fontSize: 16.0,
+            fontFamily: 'AvenirLTStd-MediumRegular',
+            // letterSpacing: 1.0,
           ),
         ),
       ),
@@ -132,7 +128,7 @@ class _FaqScreenState extends State<FaqScreen> {
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
+                    padding: const EdgeInsets.only(right: 12.0),
                     child: ChoiceChip(
                       label: Text(
                         categories[index].category.inCaps,
