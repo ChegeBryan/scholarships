@@ -127,7 +127,7 @@ class _FaqScreenState extends State<FaqScreen> {
           SliverToBoxAdapter(
             child: Container(
               margin: const EdgeInsets.all(16.0),
-              height: 60.0,
+              height: 48.0,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
