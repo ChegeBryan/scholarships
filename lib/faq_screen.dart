@@ -4,7 +4,6 @@ import 'package:geopro/models/faq_category.dart';
 import 'package:geopro/services/faq.dart';
 import 'package:geopro/services/faq_category.dart';
 import 'package:geopro/widgets/app_drawer.dart';
-import 'package:geopro/widgets/category_card.dart';
 import 'package:geopro/widgets/question_answer_widget.dart';
 import 'package:geopro/helpers/string_extensions.dart';
 
