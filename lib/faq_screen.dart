@@ -61,8 +61,7 @@ class _FaqScreenState extends State<FaqScreen> {
           'Frequently Asked Questions',
           style: TextStyle(
             color: Color(0xFF3A5160),
-            fontWeight: FontWeight.bold,
-            fontFamily: 'AvenirLTStd-MediumRegular',
+            fontWeight: FontWeight.w700,
           ),
         ),
       ),
