@@ -126,8 +126,7 @@ class _FaqScreenState extends State<FaqScreen> {
           appBar,
           SliverToBoxAdapter(
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 18.0),
-              margin: EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
+              margin: const EdgeInsets.all(16.0),
               height: 60.0,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
