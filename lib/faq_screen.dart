@@ -6,6 +6,7 @@ import 'package:geopro/services/faq_category.dart';
 import 'package:geopro/widgets/app_drawer.dart';
 import 'package:geopro/widgets/category_card.dart';
 import 'package:geopro/widgets/question_answer_widget.dart';
+import 'package:geopro/helpers/string_extensions.dart';
 
 class FaqScreen extends StatefulWidget {
   @override
@@ -132,22 +133,38 @@ class _FaqScreenState extends State<FaqScreen> {
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
-                  return CategoryCard(
-                    categoryName: categories[index].category,
-                    index: index,
-                    isSelected: currentSelectedCategory == index,
-                    onSelect: () {
-                      setState(() {
-                        if (currentSelectedCategory != index) {
-                          currentSelectedCategory = index;
-                          faqs = FaqList().getFaqsByCategory(
-                              categories[index].category.toLowerCase());
-                        } else {
-                          currentSelectedCategory = null;
-                          faqs = FaqList().getFaqs();
-                        }
-                      });
-                    },
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: ChoiceChip(
+                      label: Text(
+                        categories[index].category.inCaps,
+                        style: TextStyle(
+                          color: Color(0xFF3A5160),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                      elevation: 6,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 12.0,
+                      ),
+                      selected: currentSelectedCategory == index,
+                      selectedColor: Color(0xFFEBEAEA),
+                      backgroundColor: Theme.of(context).backgroundColor,
+                      onSelected: (bool selected) {
+                        setState(() {
+                          if (currentSelectedCategory != index) {
+                            currentSelectedCategory = index;
+                            faqs = FaqList().getFaqsByCategory(
+                                categories[index].category.toLowerCase());
+                          } else {
+                            currentSelectedCategory = null;
+                            faqs = FaqList().getFaqs();
+                          }
+                        });
+                      },
+                    ),
                   );
                 },
               ),
