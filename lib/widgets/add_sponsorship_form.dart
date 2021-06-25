@@ -105,8 +105,11 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                                 duration: Duration(seconds: 2),
                                 backgroundColor: Colors.red,
                               ));
-                              Navigator.pushNamed(
-                                  context, '/manage/sponsorships');
+                              Future.delayed(Duration(seconds: 2), () {
+                                // 5 seconds over, navigate to Page2.
+                                Navigator.pushNamed(
+                                    context, '/manage/sponsorships');
+                              });
                             } else {
                               Scaffold.of(context).showSnackBar(SnackBar(
                                 content: Text(response['message']["name"][0]),
@@ -125,8 +128,11 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                                 duration: Duration(seconds: 2),
                                 backgroundColor: Colors.red,
                               ));
-                              Navigator.pushNamed(
-                                  context, '/manage/sponsorships');
+                              Future.delayed(Duration(seconds: 2), () {
+                                // 5 seconds over, navigate to Page2.
+                                Navigator.pushNamed(
+                                    context, '/manage/sponsorships');
+                              });
                             } else {
                               Scaffold.of(context).showSnackBar(SnackBar(
                                 content: Text(response['message']["name"][0]),
