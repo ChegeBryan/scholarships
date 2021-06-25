@@ -103,7 +103,6 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                               Scaffold.of(context).showSnackBar(SnackBar(
                                 content: Text('Sponsorship updated'),
                                 duration: Duration(seconds: 2),
-                                backgroundColor: Colors.red,
                               ));
                               Future.delayed(Duration(seconds: 2), () {
                                 // 5 seconds over, navigate to Page2.
@@ -126,7 +125,6 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                               Scaffold.of(context).showSnackBar(SnackBar(
                                 content: Text('Sponsorship added'),
                                 duration: Duration(seconds: 2),
-                                backgroundColor: Colors.red,
                               ));
                               Future.delayed(Duration(seconds: 2), () {
                                 // 5 seconds over, navigate to Page2.
