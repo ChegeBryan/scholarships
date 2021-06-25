@@ -1,7 +1,7 @@
 class Faq {
   final String question;
   final String answer;
-  final List<String> images;
+  final List images;
   final String category;
 
   Faq({this.question, this.answer, this.images, this.category});

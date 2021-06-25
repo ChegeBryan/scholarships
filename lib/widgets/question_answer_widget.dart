@@ -5,7 +5,7 @@ import 'package:transparent_image/transparent_image.dart';
 class QuestionAnswerWidget extends StatefulWidget {
   final String question;
   final String answer;
-  final List<String> screenshots;
+  final List screenshots;
 
   const QuestionAnswerWidget({
     Key key,
@@ -108,42 +108,43 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
                       height: 1.5,
                     ),
                   ),
-                  Container(
-                    height: 120.0,
-                    padding: const EdgeInsets.only(top: 16.0),
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (BuildContext context, int index) =>
-                          Container(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: SizedBox(
-                          height: 120,
-                          width: 120,
-                          child: GestureDetector(
-                            onTap: () {
-                              open(context, index);
-                            },
-                            child: Stack(
-                              children: <Widget>[
-                                Center(child: CircularProgressIndicator()),
-                                Center(
-                                  child: Card(
-                                    clipBehavior: Clip.antiAlias,
-                                    child: FadeInImage.memoryNetwork(
-                                      placeholder: kTransparentImage,
-                                      image: widget.screenshots[index],
-                                      fit: BoxFit.cover,
+                  if (widget.screenshots.isNotEmpty)
+                    Container(
+                      height: 120.0,
+                      padding: const EdgeInsets.only(top: 16.0),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (BuildContext context, int index) =>
+                            Container(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: SizedBox(
+                            height: 120,
+                            width: 120,
+                            child: GestureDetector(
+                              onTap: () {
+                                open(context, index);
+                              },
+                              child: Stack(
+                                children: <Widget>[
+                                  Center(child: CircularProgressIndicator()),
+                                  Center(
+                                    child: Card(
+                                      clipBehavior: Clip.antiAlias,
+                                      child: FadeInImage.memoryNetwork(
+                                        placeholder: kTransparentImage,
+                                        image: widget.screenshots[index],
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
+                        itemCount: widget.screenshots.length,
                       ),
-                      itemCount: widget.screenshots.length,
                     ),
-                  ),
                 ],
               ),
             ),
