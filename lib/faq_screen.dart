@@ -119,14 +119,14 @@ class _FaqScreenState extends State<FaqScreen> {
           SliverToBoxAdapter(
             child: Container(
               margin: const EdgeInsets.all(16.0),
-              height: 63.0,
+              height: 64.0,
               child: ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 6.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: ChoiceChip(
                       label: Text(
                         categories[index].category.inCaps,
