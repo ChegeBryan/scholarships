@@ -4,13 +4,14 @@ List faqs = [
   {
     "question": "How to create a ticket?",
     "answer":
-        "1. Click on the ticketing icon on the dashboard.\n\n2. To add a new ticket. Click on the ➕ button on the bottom right of the screen.\n\n3. Fill in all the required fields and Click on the save button on the bottom right of the screen.",
+        "1. Click on the ticketing icon on the dashboard.\n\n2. To <bold>add a new ticket</bold>. Click on the ➕ button on the bottom right of the screen.\n\n3. Fill in all the required fields and Click on the save button on the bottom right of the screen.",
     "images": [],
     "category": "Ticketing"
   },
   {
     "question": "How to start and mark a ticket as resolved?",
-    "answer": "A ticket is marked as resolved after the task is completed.",
+    "answer":
+        "A ticket is <bold>marked as resolved</bold> after the task is completed.",
     "images": [],
     "category": "Ticketing"
   },
@@ -24,21 +25,21 @@ List faqs = [
   {
     "question": "How to fill in Safety forms?",
     "answer":
-        "STEPS FOR TECHNICIANS.\n\n1. After creating a ticket. Click on safety icon on the dashboard.\n\n2. Locate the ticket number that was generated when you created a ticket and click on it.\n\n3. A list of ohs forms will be displayed under the ticket you created.\n\n4. Each form will display a green tick ✅ on the far right indicating the form has been filled. A red x ❌ icon indicating the form has not been filled.\n\n5. Click on each form one by one to fill in the details. Make sure to fill in the required fields on each form. The forms to fill as technicians: Job Hazard Analysis, Toolbox talks, Personal Protective Equipment, Site Safety Equipment, Site Safety Equipment.\n\n6. After filling the forms on step 4. Your safety officer will approve or reject any of the forms. When they reject, they will comment why it was rejected.\n\n7. When the OHS is approved, you will know be able to fill in the permit to work.\n\n\n\nSTEPS FOR SAFETY OFFICERS.\n\n1. After logging in into the app, you can access the safety module by either click the dashboard and click the safety icon. Or open the side menu, click the safety button which will display jobs/Tickets.\n\n2. Each form will display a green tick ✅ on the far right indicating the form has been filled. A red x ❌ icon indicating the form has not been filled.\n\n3. Click the on jobs/Tickets. This will open and display the OHS forms.\n\n4. Click on the technician's ticket you want. Review the OHS forms the technician filled and approve or reject (give a reason why the ohs was rejected).",
+        "<bold>STEPS FOR TECHNICIANS</bold>\n\n1. After creating a ticket. Click on <bold>safety icon</bold> on the dashboard.\n\n2. Locate the <bold>ticket number</bold> that was generated when you created a ticket and click on it.\n\n3. A list of OHS forms will be displayed under the ticket you created.\n\n4. Each form will display a <bold>green tick ✅</bold> on the far right indicating the form has been <bold>filled</bold>. A <bold>red ❌ icon</bold> indicating the form has <bold>not been filled</bold>.\n\n5. <bold>Click on each form</bold> one by one to fill in the details. Make sure to fill in the required fields on each form. The forms to fill as technicians: <bold>Job Hazard Analysis, Toolbox talks, Personal Protective Equipment, Site Safety Equipment, Site Safety Equipment</bold>.\n\n6. After filling the forms on <bold>Step 4</bold>. Your safety officer will <bold>approve or reject</bold> any of the forms. When they reject, they will comment why it was rejected.\n\n7. When the <bold>OHS is approved</bold>, you will know be able to fill in the permit to work.\n\n\n<bold>STEPS FOR SAFETY OFFICERS</bold>\n\n1. After logging in into the app, you can access the safety module by either <bold>click the dashboard and click the safety icon</bold>. Or <bold>open the side menu</bold>, click the <bold>safety button</bold> which will display jobs/Tickets.\n\n2. Each form will display a <bold>green tick ✅</bold> on the far right indicating the form has been <bold>filled</bold>. A <bold>red ❌ icon</bold> indicating the form has <bold>not been filled</bold>.\n\n3. Click on <bold>Jobs/Tickets</bold>. This will open and display the OHS forms.\n\n4. Click on the <bold>technician's ticket</bold> you want. <bold>Review</bold> the OHS forms the technician filled and <bold>approve or reject</bold> (give a reason why the ohs was rejected).",
     "images": [],
     "category": "Safety"
   },
   {
     "question": "How to capture casuals and their photos?",
     "answer":
-        "STEPS:\n\n1. You can access the casual module by either going to the dashboard and clicking the casual icon. Or open the side menu, click on the casuals, then the casual reports.\n\n2. To add a new casual. Click on the ➕ button on the bottom right of the screen.\n\n3. Click on the ➕ button on the upper right of the screen, to add the casual details.\n\n4. A pop window will appear. Fill the details and click the save button below the pop-up window that will redirect you to the casual report page. Then click the save button again on the casual report page on the button right corner.",
+        "<bold>STEPS:</bold>\n\n1. You can access the casual module by either going to the <bold>dashboard</bold> and clicking the <bold>casual icon</bold>. Or open the <bold>side menu</bold>, click on the <bold>casuals</bold>, then the <bold>casual reports</bold>.\n\n2. To <bold>add a new casual</bold>. Click on the ➕ button on the <bold>bottom right</bold> of the screen.\n\n3. Click on the ➕ button on the <bold>upper right</bold> of the screen, to <bold>add the casual details</bold>.\n\n4. A pop window will appear. Fill the details and click the <bold>save button</bold> below the pop-up window that will redirect you to the <bold>casual report page</bold>. Then click the <bold>save button</bold> again on the casual report page on the button right corner.",
     "images": [],
     "category": "Casuals"
   },
   {
     "question": "How to attach a casual report?",
     "answer":
-        "1. Whilst in the casual report page, click on the icon to your right of the bottom bar. This will redirect you to a page where to attach a casual report file.\n\n2. Click on the camera 📷 like icon, allow the Erp to access your gallery. Pick the file/image you want. Then click save the button.",
+        "1. Whilst in the <bold>casual report page</bold>, click on the <bold>icon</bold> to your <bold>right</bold> of the <bold>bottom bar</bold>. This will redirect you to a page where to attach a <bold>casual report file</bold>.\n\n2. Click on the <bold>camera 📷</bold> like icon, <bold>allow the ERP to access your gallery</bold>. Pick the file/image you want. Then click the <bold>save button.</bold>",
     "images": [],
     "category": "Casuals"
   },
