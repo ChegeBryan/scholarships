@@ -4,6 +4,9 @@ List<Map<String, dynamic>> faqCategories = [
   {'category': 'ticketing'},
   {'category': 'safety'},
   {'category': 'casuals'},
+  {'category': 'tasks'},
+  {'category': 'sites'},
+  {'category': 'projects'},
 ];
 
 class FaqCategoryList {

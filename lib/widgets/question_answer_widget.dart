@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/widgets/screenshots_viewer_wrapper.dart';
+import 'package:styled_text/styled_text.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class QuestionAnswerWidget extends StatefulWidget {
@@ -100,13 +101,15 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: <Widget>[
-                  Text(
-                    widget.answer,
+                  StyledText(
+                    text: widget.answer,
+                    styles: {'bold': TextStyle(fontWeight: FontWeight.bold)},
                     style: TextStyle(
                       fontFamily: 'Avenir',
                       fontSize: 16.0,
                       height: 1.5,
                     ),
+                    newLineAsBreaks: true,
                   ),
                   if (widget.screenshots.isNotEmpty)
                     Container(

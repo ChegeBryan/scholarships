@@ -37,7 +37,7 @@ class _CategoryCardState extends State<CategoryCard> {
                 borderRadius: BorderRadius.circular(50),
                 side: BorderSide(color: Colors.transparent)),
         color: widget.isSelected
-            ? Color(0xFFEBEAEA)
+            ? Color(0xFF1E22AA)
             : Theme.of(context).backgroundColor,
         child: InkWell(
           onTap: widget.onSelect,

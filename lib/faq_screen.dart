@@ -18,6 +18,7 @@ class _FaqScreenState extends State<FaqScreen> {
   List<Faq> faqs;
 
   int currentSelectedCategory;
+  bool isSelected = false;
 
   @override
   void initState() {
@@ -119,18 +120,21 @@ class _FaqScreenState extends State<FaqScreen> {
           SliverToBoxAdapter(
             child: Container(
               margin: const EdgeInsets.all(16.0),
-              height: 48.0,
+              height: 64.0,
               child: ListView.builder(
+                shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.only(right: 12.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: ChoiceChip(
                       label: Text(
                         categories[index].category.inCaps,
                         style: TextStyle(
-                          color: Color(0xFF3A5160),
+                          color: isSelected && currentSelectedCategory == index
+                              ? Colors.white
+                              : Color(0xFF3A5160),
                           fontWeight: FontWeight.bold,
                           fontSize: 16.0,
                         ),
@@ -141,7 +145,7 @@ class _FaqScreenState extends State<FaqScreen> {
                         vertical: 12.0,
                       ),
                       selected: currentSelectedCategory == index,
-                      selectedColor: Color(0xFFEBEAEA),
+                      selectedColor: Color(0xFF1E22AA),
                       backgroundColor: Theme.of(context).backgroundColor,
                       onSelected: (bool selected) {
                         setState(() {
@@ -149,9 +153,11 @@ class _FaqScreenState extends State<FaqScreen> {
                             currentSelectedCategory = index;
                             faqs = FaqList().getFaqsByCategory(
                                 categories[index].category.toLowerCase());
+                            isSelected = true;
                           } else {
                             currentSelectedCategory = null;
                             faqs = FaqList().getFaqs();
+                            isSelected = false;
                           }
                         });
                       },
