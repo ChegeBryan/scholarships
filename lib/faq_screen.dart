@@ -18,6 +18,7 @@ class _FaqScreenState extends State<FaqScreen> {
   List<Faq> faqs;
 
   int currentSelectedCategory;
+  bool isSelected = false;
 
   @override
   void initState() {
@@ -130,7 +131,9 @@ class _FaqScreenState extends State<FaqScreen> {
                       label: Text(
                         categories[index].category.inCaps,
                         style: TextStyle(
-                          color: Color(0xFF3A5160),
+                          color: isSelected && currentSelectedCategory == index
+                              ? Colors.white
+                              : Color(0xFF3A5160),
                           fontWeight: FontWeight.bold,
                           fontSize: 16.0,
                         ),
@@ -141,7 +144,7 @@ class _FaqScreenState extends State<FaqScreen> {
                         vertical: 12.0,
                       ),
                       selected: currentSelectedCategory == index,
-                      selectedColor: Color(0xFFEBEAEA),
+                      selectedColor: Color(0xFF1E22AA),
                       backgroundColor: Theme.of(context).backgroundColor,
                       onSelected: (bool selected) {
                         setState(() {
@@ -149,9 +152,11 @@ class _FaqScreenState extends State<FaqScreen> {
                             currentSelectedCategory = index;
                             faqs = FaqList().getFaqsByCategory(
                                 categories[index].category.toLowerCase());
+                            isSelected = true;
                           } else {
                             currentSelectedCategory = null;
                             faqs = FaqList().getFaqs();
+                            isSelected = false;
                           }
                         });
                       },
