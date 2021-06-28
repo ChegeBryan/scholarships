@@ -41,6 +41,89 @@ List faqs = [
         "1. Whilst in the casual report page, click on the icon to your right of the bottom bar. This will redirect you to a page where to attach a casual report file.\n2. Click on the camera 📷 like icon, allow the Erp to access your gallery. Pick the file/image you want. Then click save the button.",
     "images": [],
     "category": "Casuals"
+  },
+  {
+    "question": "How to create a task?",
+    "answer": "1. Access the task module on the dashboard. Or open the side "
+        "menu, (depending on which team you are in) click on Fiber drop down button"
+        " to locate the task module.\n2. Clicking on the task module will "
+        "navigate you to Task List screen. This is where all your created "
+        "tasks will be displayed. \n3. Clicking on the + button on the bottom"
+        " right of the screen, will display Delete, Complete, Generate Ticket"
+        " and Add new button. \n4. Clicking on the Add new button will "
+        "navigate you to the task form to add a new task. \n5. Fill in all "
+        "the required fields and Click on the save button on the bottom right"
+        " of the screen. \n6. Clicking on the Generate Ticket button will "
+        "generate a ticket for a task or multiple tasks that you have "
+        "selected from the list. \n7. Clicking on the Complete button will "
+        "complete a task or multiple tasks that you have selected from the "
+        "list. \n8. Clicking on the Delete button will complete a task or multiple tasks that you have selected from the list.",
+    "images": [],
+    "category": "Tasks"
+  },
+  {
+    "question": "How to create a site?",
+    "answer": "1. Access the site module on the dashboard. Or open the side "
+        "menu, (depending on which team you are in) click on Fiber drop down "
+        "button to locate the site module. \n2. Clicking on the site module "
+        "will navigate you to Sites screen. This is where all your created "
+        "sites will be displayed. \n3. On the sites screen you will notice a "
+        "bottom navigation bar. The navigation bar has labels: I.e., Open, in"
+        " Progress, on Hold, Complete, Cancelled. The labels indicate the "
+        "status of the sites. Clicking on a label will navigate you to a "
+        "specified labeled screen. \n4. Open - means a site has been created "
+        "but not yet started; in Progress - means a site has started; on Hold"
+        "- means a site has been paused/stop for some reason; Complete - means a "
+        "site has been completed; Cancelled - means a site has been cancelled"
+        " for some reason. \n5. Clicking on the + button on the bottom right "
+        "of the screen, will display Delete and Add new button. \n6. Clicking"
+        " on the Add new button will navigate you to the task form to add a "
+        "new task. \n7. Fill in all the required fields and Click on the save"
+        " button on the bottom right of the screen. \n8. The status field "
+        "will be open by default and cannot be edited until you save the site"
+        ". The saved/created site will display on the Sites: Open screen. \n9"
+        ". When and ONLY when you want to start the site, you click on the "
+        "created site again and edit the status field to In Progress and save"
+        " again. The updated site will display on the Sites: In Progress screen. "
+        "\n10. NOTE: When filling the Start date and End date on site, please confirm with the Project you have picked. The Start date and End date of site should not be behind or ahead of time of the project.",
+    "images": [],
+    "category": "Sites"
+  },
+  {
+    "question": "How to create a project?",
+    "answer": "1. Access the project module on the dashboard. Or open the side"
+        " menu, (depending on which team you are in) click on Fiber drop down"
+        " button to locate the project module. \n2. Clicking on the project's"
+        " module will navigate you to Projects screen. This is where all your"
+        " created projects will be displayed. \n3. On the projects screen you"
+        " will notice a bottom navigation bar. The navigation bar has labels:"
+        " I.e., Open, in Progress, on Hold, Complete, Cancelled. The labels "
+        "indicate the status of the projects. Clicking on a label will "
+        "navigate you to a specified labeled screen. \n4. Open - means a "
+        "project has been created but not yet started; in Progress - means a "
+        "project has started; on Hold - means a project has been paused/stop for "
+        "some reason; Complete - means a project has been completed; "
+        "Cancelled - means a project has been cancelled for some reason. \n5."
+        " To add a new project. Click on the + button on the bottom right of "
+        "the screen. \n6. Fill in all the required fields and Click on the "
+        "next button on the bottom right of the screen to save/create the "
+        "site and navigate you to the Sites screen. (If you want to add a new site,"
+        " click the Add site + button or you can leave it blank to do it "
+        "later). \n7. Click the Add site + button to add a new site. Note: "
+        "You can add multiple sites by clicking Add site + button before you "
+        "click next button. \n8. Fill in all the required fields and click on"
+        " the next button on the bottom right of the screen to save/create "
+        "the site and navigate you to the Tasks screen. \n9. Click the Add "
+        "task + button to add a new task. Note: You can add multiple tasks by"
+        " clicking Add task + button before you click next button. \n10. Fill"
+        " in all the required fields and click on the Finish button on the "
+        "bottom right of the screen to save/create the task and finish the procoess"
+        ". \n11. When and ONLY when you want to start the site, you click on "
+        "the created site again and edit the status field to In Progress and "
+        "save again. The updated site will display on the Sites: In Progress "
+        "screen. \n12. NOTE: When filling the Start date and End date on site, please confirm with the Project you have picked. The Start date and End date of site should not be behind or ahead of time of the project.",
+    "images": [],
+    "category": "Projects"
   }
 ];
 
