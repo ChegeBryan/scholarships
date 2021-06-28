@@ -191,33 +191,36 @@ class SponsorshipScreen extends StatelessWidget {
                                         );
                                       }),
                                   IconButton(
-                                      icon: Icon(Icons.delete),
-                                      onPressed: () {
-                                        sponsorshipProvider
-                                            .deleteSponsorship(
-                                                snapshot.data[index].id)
-                                            .then((response) {
-                                          if (response['status']) {
-                                            Scaffold.of(context)
-                                                .showSnackBar(SnackBar(
-                                              content: const Text(
-                                                  'Sponsorship deleted'),
-                                              duration:
-                                                  const Duration(seconds: 2),
-                                            ));
-                                          } else {
-                                            Scaffold.of(context)
-                                                .showSnackBar(SnackBar(
-                                              content: const Text(
-                                                  'Sponsorship has not been deleted'),
-                                              duration:
-                                                  const Duration(seconds: 2),
-                                            ));
-                                          }
-                                        });
+                                    icon: Icon(Icons.delete),
+                                    onPressed: () {
+                                      sponsorshipProvider
+                                          .deleteSponsorship(
+                                              snapshot.data[index].id)
+                                          .then((response) {
+                                        if (response['status']) {
+                                          Scaffold.of(context)
+                                              .showSnackBar(SnackBar(
+                                            content:
+                                                Text('Sponsorship deleted'),
+                                            duration:
+                                                const Duration(seconds: 2),
+                                          ));
+                                        } else {
+                                          Scaffold.of(context)
+                                              .showSnackBar(SnackBar(
+                                            content: Text(
+                                                'Sponsorship has not been deleted'),
+                                            duration:
+                                                const Duration(seconds: 2),
+                                          ));
+                                        }
+                                      });
+                                      Future.delayed(Duration(seconds: 2), () {
                                         Navigator.pushNamed(
                                             context, '/manage/sponsorships');
-                                      }),
+                                      });
+                                    },
+                                  ),
                                 ],
                               ),
                             ],
