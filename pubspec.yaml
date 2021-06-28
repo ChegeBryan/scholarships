@@ -28,7 +28,6 @@ dependencies:
   shared_preferences: ^0.5.12+4
   flutter_custom_clippers: ^1.1.2
   validators: ^2.0.1
-  lorem_ipsum: ^0.0.1
   transparent_image: ^1.0.0
   photo_view: ^0.9.1
 
