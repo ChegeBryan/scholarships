@@ -115,6 +115,9 @@ class _FaqScreenState extends State<FaqScreen> {
       backgroundColor: Theme.of(context).backgroundColor,
       drawer: AppDrawer(),
       body: CustomScrollView(
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
         slivers: <Widget>[
           appBar,
           SliverToBoxAdapter(
