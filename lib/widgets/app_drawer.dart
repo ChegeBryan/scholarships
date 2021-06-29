@@ -102,6 +102,15 @@ class AppDrawer extends StatelessWidget {
                           selected:
                               ModalRoute.of(context).settings.name == '/faqs',
                         ),
+                        Divider(),
+                        ListTile(
+                          leading: Icon(Icons.confirmation_number),
+                          title: Text('Tickets'),
+                          onTap: () => Navigator.pushReplacementNamed(
+                              context, '/tickets'),
+                          selected: ModalRoute.of(context).settings.name ==
+                              '/tickets',
+                        ),
                       ],
                     ),
                     Container(
