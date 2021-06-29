@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geopro/widgets/app_drawer.dart';
+import 'package:intl/intl.dart';
 
 class TicketsScreen extends StatefulWidget {
   const TicketsScreen({Key key}) : super(key: key);
@@ -41,9 +42,10 @@ class _TicketsScreenState extends State<TicketsScreen> {
                 Padding(
                   padding: const EdgeInsets.only(left: 4.0),
                   child: Text(
-                    '29 Jun',
+                    DateFormat('d MMM').format(DateTime.now()),
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
