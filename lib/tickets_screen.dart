@@ -25,37 +25,53 @@ class _TicketsScreenState extends State<TicketsScreen> {
       ),
       child: Scaffold(
         drawer: AppDrawer(),
-        appBar: AppBar(
-          title: Text('Title'),
-          elevation: 0,
-          actions: <Widget>[
-            IconButton(icon: Icon(Icons.chevron_left), onPressed: () {}),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Icon(
-                  Icons.calendar_today,
-                  size: 16,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 4.0),
-                  child: Text(
-                    DateFormat('d MMM').format(DateTime.now()),
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+        body: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              expandedHeight: 80.0,
+              pinned: true,
+              elevation: 0,
+              actions: <Widget>[
+                IconButton(icon: Icon(Icons.chevron_left), onPressed: () {}),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    Icon(
+                      Icons.calendar_today,
+                      size: 16,
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 4.0),
+                      child: Text(
+                        DateFormat('d MMM').format(DateTime.now()),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                IconButton(icon: Icon(Icons.chevron_right), onPressed: () {}),
+              ],
+              flexibleSpace: FlexibleSpaceBar(
+                title: Text(
+                  'Tickets',
+                  style: TextStyle(
+                    color: Color(0xFF3A5160),
                   ),
                 ),
-              ],
+                titlePadding: const EdgeInsetsDirectional.only(start: 16),
+              ),
             ),
-            IconButton(icon: Icon(Icons.chevron_right), onPressed: () {}),
+            SliverFillRemaining(
+              child: Center(
+                child: Text('Tickets go here.'),
+              ),
+            ),
           ],
-        ),
-        body: Center(
-          child: Text('Tickets'),
         ),
       ),
     );
