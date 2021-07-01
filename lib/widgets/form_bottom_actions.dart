@@ -14,19 +14,32 @@ class FormBottomActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          message,
-          style: TextStyle(color: Colors.white),
-        ),
-        FlatButton(
-          onPressed: action,
-          child: Text(actionText),
-          textColor: Colors.white,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(4.0, 8.0, 8.0, 8.0),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(
+            message,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16.0,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          FlatButton(
+            onPressed: action,
+            child: Text(
+              actionText,
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            textColor: Theme.of(context).accentColor,
+          ),
+        ],
+      ),
     );
   }
 }
