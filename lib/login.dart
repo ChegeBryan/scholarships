@@ -48,14 +48,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  ClipRect(
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                       child: Container(
                         padding: const EdgeInsets.all(16.0),
                         decoration: BoxDecoration(
                           color: Colors.black12.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(16.0),
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
