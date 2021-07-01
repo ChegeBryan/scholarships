@@ -45,6 +45,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         color: Colors.white,
                         fontSize: 32.0,
                         fontWeight: FontWeight.w800,
+                        shadows: [
+                          Shadow(
+                            offset: Offset(1.0, 3.0),
+                            blurRadius: 3.0,
+                            color: Colors.black,
+                          ),
+                        ],
                       ),
                     ),
                   ),
