@@ -84,7 +84,6 @@ class _LoginFormState extends State<LoginForm> {
                     },
                     child: Icon(
                       _obscureText ? Icons.visibility : Icons.visibility_off,
-                      color: Colors.white,
                     ),
                   ),
                 ),
