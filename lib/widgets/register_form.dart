@@ -200,42 +200,53 @@ class _RegisterFormState extends State<RegisterForm> {
           SizedBox(
             height: 16.0,
           ),
-          FlatButton(
-            onPressed: () {
-              if (_formKey.currentState.validate()) {
-                _formKey.currentState.save();
+          Container(
+            width: MediaQuery.of(context).size.width,
+            child: FlatButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              onPressed: () {
+                if (_formKey.currentState.validate()) {
+                  _formKey.currentState.save();
 
-                final Future<Map<String, dynamic>> successMessage =
-                    auth.register(_email.text, _username.text, _password.text);
+                  final Future<Map<String, dynamic>> successMessage = auth
+                      .register(_email.text, _username.text, _password.text);
 
-                successMessage.then((response) {
-                  if (response['status']) {
-                    Provider.of<UserProvider>(context, listen: false)
-                        .setUser(response['user']);
-                    Navigator.pushReplacementNamed(context, '/sponsorships');
-                  } else {
-                    Map<String, dynamic> responseErrors = {};
-                    var errorFields = response['message'].keys;
-                    for (var errorField in errorFields) {
-                      responseErrors.putIfAbsent(
-                          errorField, () => response['message'][errorField]);
+                  successMessage.then((response) {
+                    if (response['status']) {
+                      Provider.of<UserProvider>(context, listen: false)
+                          .setUser(response['user']);
+                      Navigator.pushReplacementNamed(context, '/sponsorships');
+                    } else {
+                      Map<String, dynamic> responseErrors = {};
+                      var errorFields = response['message'].keys;
+                      for (var errorField in errorFields) {
+                        responseErrors.putIfAbsent(
+                            errorField, () => response['message'][errorField]);
+                      }
+                      setState(() {
+                        errors = responseErrors;
+                      });
                     }
-                    setState(() {
-                      errors = responseErrors;
-                    });
-                  }
-                });
-              } else {
-                setState(() {
-                  _autovalidate = true;
-                });
-              }
-            },
-            child: Text(
-              "Register",
-              style: TextStyle(color: Colors.white),
+                  });
+                } else {
+                  setState(() {
+                    _autovalidate = true;
+                  });
+                }
+              },
+              child: Text(
+                "Register",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              color: Theme.of(context).primaryColor,
             ),
-            color: Theme.of(context).primaryColor,
           ),
         ],
       ),
