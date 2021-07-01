@@ -27,22 +27,35 @@ class _RegisterScreenState extends State<RegisterScreen> {
               fit: BoxFit.cover,
             ),
           ),
-          Container(
-            height: MediaQuery.of(context).size.height,
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                RegisterForm(),
-                FormBottomActions(
-                  message: 'Have account?',
-                  action: () {
-                    Navigator.pushReplacementNamed(context, '/login');
-                  },
-                  actionText: 'Login',
-                ),
-              ],
+          Positioned(
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 4.0),
+                    child: Text(
+                      'Register',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32.0,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ),
+                  RegisterForm(),
+                  FormBottomActions(
+                    message: 'Have account?',
+                    action: () {
+                      Navigator.pushReplacementNamed(context, '/login');
+                    },
+                    actionText: 'Login',
+                  ),
+                ],
+              ),
             ),
           ),
         ],
