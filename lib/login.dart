@@ -56,7 +56,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: BoxDecoration(
                           color: Colors.black12.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(16.0),
-                          shape: BoxShape.rectangle,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,

@@ -56,7 +56,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         padding: const EdgeInsets.all(16.0),
                         decoration: BoxDecoration(
                           color: Colors.black12.withOpacity(0.5),
-                          shape: BoxShape.rectangle,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
