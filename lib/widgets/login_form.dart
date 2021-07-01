@@ -95,38 +95,49 @@ class _LoginFormState extends State<LoginForm> {
           ),
           auth.loggedInStatus == Status.Authenticating
               ? CircularProgressIndicator()
-              : FlatButton(
-                  onPressed: () {
-                    if (_formKey.currentState.validate()) {
-                      final Future<Map<String, dynamic>> successMessage =
-                          auth.login(_email.text, _password.text);
+              : Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: FlatButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        final Future<Map<String, dynamic>> successMessage =
+                            auth.login(_email.text, _password.text);
 
-                      successMessage.then((response) {
-                        if (response['status']) {
-                          Provider.of<UserProvider>(context, listen: false)
-                              .setUser(response['user']);
-                          Navigator.pushReplacementNamed(
-                              context, '/sponsorships');
-                        } else {
-                          Scaffold.of(context).showSnackBar(SnackBar(
-                              content: Text(response['message']
-                                      ['non_field_errors'][0]
-                                  .toString()),
-                              backgroundColor: Colors.red));
-                        }
-                      });
-                    } else {
-                      setState(() {
-                        _autovalidate = true;
-                      });
-                    }
-                  },
-                  child: Text(
-                    "Sign in",
-                    style: TextStyle(color: Colors.white),
+                        successMessage.then((response) {
+                          if (response['status']) {
+                            Provider.of<UserProvider>(context, listen: false)
+                                .setUser(response['user']);
+                            Navigator.pushReplacementNamed(
+                                context, '/sponsorships');
+                          } else {
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                                content: Text(response['message']
+                                        ['non_field_errors'][0]
+                                    .toString()),
+                                backgroundColor: Colors.red));
+                          }
+                        });
+                      } else {
+                        setState(() {
+                          _autovalidate = true;
+                        });
+                      }
+                    },
+                    child: Text(
+                      "Sign in",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    color: Theme.of(context).primaryColor,
                   ),
-                  color: Theme.of(context).primaryColor,
-                ),
+                )
         ],
       ),
     );
