@@ -52,10 +52,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                       child: Container(
-                        padding: const EdgeInsets.all(18.0),
+                        padding: const EdgeInsets.all(16.0),
                         decoration: BoxDecoration(
                           color: Colors.black12.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(24.0),
+                          borderRadius: BorderRadius.circular(16.0),
                           shape: BoxShape.rectangle,
                         ),
                         child: Column(
