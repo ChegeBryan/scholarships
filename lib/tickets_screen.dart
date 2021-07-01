@@ -116,7 +116,7 @@ class SliverFiltersHeader extends StatelessWidget {
                           Icons.search,
                           color: Theme.of(context).textTheme.body1.color,
                         ),
-                        hintText: 'Technician or Ticket Number',
+                        hintText: 'Search by Technician or Ticket Number',
                         hintStyle: TextStyle(
                           color: Color(0xFF9E9E9E),
                         ),
@@ -161,7 +161,7 @@ class _DateRangePickerButtonState extends State<DateRangePickerButton> {
           Expanded(
             child: Text(
               dateRange.length == 0
-                  ? 'Select Date range'
+                  ? 'Select a date or date range'
                   : dateRange.length == 1
                       ? DateFormat.yMMMd().format(dateRange[0])
                       : (DateFormat.yMMMd().format(dateRange[0]) +
