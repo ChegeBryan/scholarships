@@ -33,62 +33,65 @@ class _LoginFormState extends State<LoginForm> {
       autovalidate: _autovalidate,
       child: Column(
         children: <Widget>[
-          TextFormField(
-            controller: _email,
-            keyboardType: TextInputType.emailAddress,
-            style: TextStyle(color: Colors.white),
-            cursorColor: Colors.white,
-            decoration: InputDecoration(
-              prefixIcon: Icon(
-                Icons.email,
-                color: Colors.white,
-              ),
-              labelText: 'Email',
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
-              ),
-              labelStyle: TextStyle(color: Colors.white),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: Container(
+              height: 48.0,
+              color: Colors.white,
+              child: TextFormField(
+                controller: _email,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.email),
+                  labelText: 'Email',
+                  border: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                  contentPadding:
+                      const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                ),
+                validator: (value) =>
+                    value.isEmpty ? 'Please enter email' : null,
               ),
             ),
-            validator: (value) => value.isEmpty ? 'Please enter email' : null,
           ),
           SizedBox(
             height: 16.0,
           ),
-          TextFormField(
-            controller: _password,
-            obscureText: _obscureText,
-            style: TextStyle(color: Colors.white),
-            cursorColor: Colors.white,
-            decoration: InputDecoration(
-              prefixIcon: Icon(
-                Icons.lock,
-                color: Colors.white,
-              ),
-              suffixIcon: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _obscureText = !_obscureText;
-                  });
-                },
-                child: Icon(
-                  _obscureText ? Icons.visibility : Icons.visibility_off,
-                  color: Colors.white,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: Container(
+              height: 48.0,
+              color: Colors.white,
+              child: TextFormField(
+                controller: _password,
+                obscureText: _obscureText,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.lock),
+                  labelText: 'Password',
+                  border: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                  contentPadding:
+                      const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
+                  suffixIcon: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                    child: Icon(
+                      _obscureText ? Icons.visibility : Icons.visibility_off,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-              ),
-              labelText: 'Password',
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
-              ),
-              labelStyle: TextStyle(color: Colors.white),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
+                validator: (value) =>
+                    value.isEmpty ? 'Please enter password' : null,
               ),
             ),
-            validator: (value) =>
-                value.isEmpty ? 'Please enter password' : null,
           ),
           SizedBox(
             height: 16.0,
