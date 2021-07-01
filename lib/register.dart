@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:geopro/widgets/form_bottom_actions.dart';
 import 'package:geopro/widgets/register_form.dart';
@@ -46,13 +48,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                   ),
-                  RegisterForm(),
-                  FormBottomActions(
-                    message: 'Have account?',
-                    action: () {
-                      Navigator.pushReplacementNamed(context, '/login');
-                    },
-                    actionText: 'Login',
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                      child: Container(
+                        padding: const EdgeInsets.all(16.0),
+                        decoration: BoxDecoration(
+                          color: Colors.black12.withOpacity(0.5),
+                          shape: BoxShape.rectangle,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            RegisterForm(),
+                            FormBottomActions(
+                              message: 'Have account?',
+                              action: () {
+                                Navigator.pushReplacementNamed(
+                                    context, '/login');
+                              },
+                              actionText: 'Login',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
