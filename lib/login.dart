@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:geopro/widgets/form_bottom_actions.dart';
 import 'package:geopro/widgets/login_form.dart';
@@ -11,28 +13,80 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Theme.of(context).primaryColor, Color(0xFF5464BF)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter),
-        ),
-        height: MediaQuery.of(context).size.height,
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            LoginForm(),
-            FormBottomActions(
-              message: 'Don\'t have account?',
-              action: () {
-                Navigator.pushReplacementNamed(context, '/register');
-              },
-              actionText: 'Register',
+      resizeToAvoidBottomInset: false,
+      body: Stack(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              color: Color(0xFF16202B),
             ),
-          ],
-        ),
+          ),
+          Container(
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height * 0.5,
+            child: Image.asset(
+              'assets/student_graduate.jpg',
+              fit: BoxFit.cover,
+            ),
+          ),
+          Positioned(
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 4.0),
+                    child: Text(
+                      'Log in',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32.0,
+                        fontWeight: FontWeight.w800,
+                        shadows: [
+                          Shadow(
+                            offset: Offset(1.0, 3.0),
+                            blurRadius: 3.0,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                      child: Container(
+                        padding: const EdgeInsets.all(16.0),
+                        decoration: BoxDecoration(
+                          color: Colors.black12.withOpacity(0.5),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            LoginForm(),
+                            FormBottomActions(
+                              message: 'Don\'t have account?',
+                              action: () {
+                                Navigator.pushReplacementNamed(
+                                    context, '/register');
+                              },
+                              actionText: 'Register',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
