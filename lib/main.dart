@@ -9,6 +9,7 @@ import 'package:geopro/services/sponsorship.dart';
 import 'package:geopro/services/user.dart';
 import 'package:geopro/sponsorship_screen.dart';
 import 'package:geopro/add_sponsorship_screen.dart';
+import 'package:geopro/tickets_screen.dart';
 import 'package:geopro/util/shared_preferences.dart';
 import 'package:geopro/widgets/sponsorship_list.dart';
 import 'package:geopro/widgets/theme.dart';
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
           '/manage/sponsorships': (context) => SponsorshipScreen(),
           '/apply': (context) => ApplyScreen(),
           '/faqs': (context) => FaqScreen(),
+          '/tickets': (context) => TicketsScreen(),
         },
       ),
     );
