@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "276289974906",
+    "project_id": "geopro-attachment",
+    "storage_bucket": "geopro-attachment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276289974906:android:d3c268fe6738d7f1a301c3",
+        "android_client_info": {
+          "package_name": "com.example.geopro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "276289974906-3jd9u6odgf854luv2589sk96v2b144cl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWpLWX8uD_emjVnf7hIaGbwFTxn4wULGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "276289974906-3jd9u6odgf854luv2589sk96v2b144cl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
