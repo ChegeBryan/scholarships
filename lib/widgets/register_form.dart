@@ -204,7 +204,7 @@ class _RegisterFormState extends State<RegisterForm> {
               ? CircularProgressIndicator()
               : Container(
                   width: MediaQuery.of(context).size.width,
-                  child: FlatButton(
+                  child: TextButton(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),

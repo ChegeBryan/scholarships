@@ -116,7 +116,7 @@ class AppDrawer extends StatelessWidget {
                     Container(
                       width: MediaQuery.of(context).size.width * .7,
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
-                      child: FlatButton(
+                      child: TextButton(
                         onPressed: () {
                           // clear user data from local storage
                           UserPrefences().removeUser().then(

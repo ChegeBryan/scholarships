@@ -51,7 +51,7 @@ class SponsorshipListScreen extends StatelessWidget {
               Align(
                 child: Container(
                   width: MediaQuery.of(context).size.width * .75,
-                  child: FlatButton(
+                  child: TextButton(
                     textColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     shape: StadiumBorder(),
@@ -176,7 +176,7 @@ class SponsorshipListScreen extends StatelessWidget {
                                       fontSize: 18.0,
                                     ),
                                   ),
-                                  FlatButton(
+                                  TextButton(
                                     padding: const EdgeInsets.symmetric(
                                       vertical: 12.0,
                                     ),

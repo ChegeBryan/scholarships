@@ -161,7 +161,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  FlatButton(
+                  TextButton(
                     onPressed: () => _changeSponsorship(),
                     child: Text(
                       'Change Sponsorship',

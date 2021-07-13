@@ -145,7 +145,7 @@ class SponsorshipScreen extends StatelessWidget {
                                   SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width * 0.6,
-                                    child: FlatButton(
+                                    child: TextButton(
                                       padding: const EdgeInsets.symmetric(
                                         vertical: 12.0,
                                       ),

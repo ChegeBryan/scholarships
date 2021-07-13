@@ -81,7 +81,7 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
             height: 8.0,
           ),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            FlatButton(
+            TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -90,7 +90,7 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
             sponsorshipProvider.addedStatus == Status.Adding ||
                     sponsorshipProvider.updatedStatus == Status.Updating
                 ? CircularProgressIndicator()
-                : FlatButton(
+                : TextButton(
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         _formKey.currentState.save();

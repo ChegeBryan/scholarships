@@ -27,7 +27,7 @@ class FormBottomActions extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-          FlatButton(
+          TextButton(
             onPressed: action,
             child: Text(
               actionText,
