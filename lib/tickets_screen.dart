@@ -21,8 +21,8 @@ class _TicketsScreenState extends State<TicketsScreen> {
         appBarTheme: AppBarTheme(
           iconTheme: IconThemeData(color: Color(0xFF3A5160)),
           textTheme: TextTheme(
-            body1: TextStyle(color: Color(0xFF3A5160)),
-            title: TextStyle(color: Color(0xFF3A5160)),
+            bodyText1: TextStyle(color: Color(0xFF3A5160)),
+            headline6: TextStyle(color: Color(0xFF3A5160)),
           ),
           color: Theme.of(context).backgroundColor,
         ),
@@ -114,7 +114,7 @@ class SliverFiltersHeader extends StatelessWidget {
                       decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.search,
-                          color: Theme.of(context).textTheme.body1.color,
+                          color: Theme.of(context).textTheme.bodyText1.color,
                         ),
                         hintText: 'Search by Technician or Ticket Number',
                         hintStyle: TextStyle(
@@ -180,7 +180,9 @@ class _DateRangePickerButtonState extends State<DateRangePickerButton> {
               : (DateTime.now()).subtract(Duration(days: 7)),
           initialLastDate: dateRange.length != 0 && dateRange.length == 2
               ? dateRange[1]
-              : dateRange.length == 1 ? dateRange[0] : DateTime.now(),
+              : dateRange.length == 1
+                  ? dateRange[0]
+                  : DateTime.now(),
           firstDate: new DateTime(2020),
           lastDate: new DateTime.now(),
         );
