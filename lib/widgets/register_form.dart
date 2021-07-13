@@ -11,7 +11,7 @@ class RegisterForm extends StatefulWidget {
 
 class _RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
-  bool _autovalidate = false;
+
   bool _obscureText = true;
 
   Map<String, dynamic> errors = {};
@@ -36,7 +36,7 @@ class _RegisterFormState extends State<RegisterForm> {
 
     return Form(
       key: _formKey,
-      autovalidate: _autovalidate,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: <Widget>[
           ClipRRect(
@@ -237,10 +237,6 @@ class _RegisterFormState extends State<RegisterForm> {
                               errors = responseErrors;
                             });
                           }
-                        });
-                      } else {
-                        setState(() {
-                          _autovalidate = true;
                         });
                       }
                     },

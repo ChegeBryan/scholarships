@@ -24,7 +24,6 @@ class ApplicationForm extends StatefulWidget {
 
 class _ApplicationFormState extends State<ApplicationForm> {
   final _formKey = GlobalKey<FormState>();
-  bool _autovalidate = false;
   int _sponsorshipId;
   String _sponsorshipName;
 
@@ -130,7 +129,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
       padding: const EdgeInsets.all(16.0),
       child: Form(
         key: _formKey,
-        autovalidate: _autovalidate,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         child: Theme(
           data: Theme.of(context).copyWith(hintColor: Colors.grey.shade400),
           child: Column(
@@ -712,10 +711,6 @@ class _ApplicationFormState extends State<ApplicationForm> {
                                   ),
                                 );
                               }
-                            });
-                          } else {
-                            setState(() {
-                              _autovalidate = true;
                             });
                           }
                         },

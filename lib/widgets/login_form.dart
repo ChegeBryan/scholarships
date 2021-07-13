@@ -10,7 +10,6 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
-  bool _autovalidate = false;
   Map<String, dynamic> errors = {};
   bool _obscureText = true;
 
@@ -30,7 +29,7 @@ class _LoginFormState extends State<LoginForm> {
 
     return Form(
       key: _formKey,
-      autovalidate: _autovalidate,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: <Widget>[
           ClipRRect(
@@ -125,10 +124,6 @@ class _LoginFormState extends State<LoginForm> {
                                     .toString()),
                                 backgroundColor: Colors.red));
                           }
-                        });
-                      } else {
-                        setState(() {
-                          _autovalidate = true;
                         });
                       }
                     },

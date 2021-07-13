@@ -16,7 +16,6 @@ class AddSponsorshipForm extends StatefulWidget {
 
 class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
   final _formKey = GlobalKey<FormState>();
-  bool _autovalidate = false;
 
   TextEditingController _name;
   TextEditingController _description;
@@ -64,7 +63,7 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
 
     return Form(
       key: _formKey,
-      autovalidate: _autovalidate,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -148,10 +147,6 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                             }
                           });
                         }
-                      } else {
-                        setState(() {
-                          _autovalidate = true;
-                        });
                       }
                     },
                     child: Text(
