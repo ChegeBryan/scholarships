@@ -26,7 +26,7 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
 
     Response res = await post(
-      ApiUrl.login,
+      Uri.parse(ApiUrl.login),
       body: jsonEncode(data),
       headers: {'Content-Type': 'application/json'},
     );
@@ -67,7 +67,7 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
 
     Response res = await post(
-      ApiUrl.register,
+      Uri.parse(ApiUrl.register),
       body: jsonEncode(data),
       headers: {'Content-Type': 'application/json'},
     );

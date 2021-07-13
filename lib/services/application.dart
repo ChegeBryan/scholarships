@@ -58,7 +58,7 @@ class ApplicationProvider with ChangeNotifier {
     _submissionStatus = Status.Submitting;
     notifyListeners();
 
-    Response response = await post("$applicationUrl$sponsorshipId/",
+    Response response = await post(Uri.parse("$applicationUrl$sponsorshipId/"),
         body: jsonEncode(data),
         headers: {
           'Content-Type': 'application/json',

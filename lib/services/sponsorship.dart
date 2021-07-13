@@ -26,7 +26,7 @@ class SponsorshipProvider with ChangeNotifier {
     List sponsorshipsList;
 
     Response response = await get(
-      sponsorshipUrl,
+      Uri.parse(sponsorshipUrl),
       headers: {
         'Accept': 'application/json',
         'Authorization': 'Bearer ${auth.user.token}',
@@ -57,7 +57,7 @@ class SponsorshipProvider with ChangeNotifier {
     notifyListeners();
 
     Response response = await post(
-      sponsorshipUrl,
+      Uri.parse(sponsorshipUrl),
       body: jsonEncode(data),
       headers: {
         'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ class SponsorshipProvider with ChangeNotifier {
     var result;
 
     Response response = await delete(
-      '$sponsorshipUrl$id/',
+      Uri.parse('$sponsorshipUrl$id/'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ${auth.user.token}',
@@ -114,7 +114,7 @@ class SponsorshipProvider with ChangeNotifier {
     notifyListeners();
 
     Response response = await put(
-      '$sponsorshipUrl$id/',
+      Uri.parse('$sponsorshipUrl$id/'),
       body: jsonEncode(data),
       headers: {
         'Content-Type': 'application/json',
