@@ -672,12 +672,16 @@ class _ApplicationFormState extends State<ApplicationForm> {
                   ? Center(child: CircularProgressIndicator())
                   : Container(
                       width: MediaQuery.of(context).size.width,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          elevation: 6.0,
+                          padding: const EdgeInsets.symmetric(vertical: 12.0),
+                          textStyle: TextStyle(color: Colors.white),
+                          primary: Theme.of(context).primaryColor,
                         ),
-                        elevation: 6.0,
-                        padding: const EdgeInsets.symmetric(vertical: 12.0),
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
                             _formKey.currentState.save();
@@ -718,8 +722,6 @@ class _ApplicationFormState extends State<ApplicationForm> {
                           'Submit',
                           style: TextStyle(fontSize: 16.0),
                         ),
-                        textColor: Colors.white,
-                        color: Theme.of(context).primaryColor,
                       ),
                     )
             ],
