@@ -152,9 +152,11 @@ class _DateRangePickerButtonState extends State<DateRangePickerButton> {
 
   @override
   Widget build(BuildContext context) {
-    return OutlineButton(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
+    return OutlinedButton(
+      style: OutlinedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+        ),
       ),
       child: Row(
         children: <Widget>[
