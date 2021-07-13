@@ -52,9 +52,12 @@ class SponsorshipListScreen extends StatelessWidget {
                 child: Container(
                   width: MediaQuery.of(context).size.width * .75,
                   child: TextButton(
-                    textColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    shape: StadiumBorder(),
+                    style: TextButton.styleFrom(
+                      textStyle: TextStyle(color: Colors.white),
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      shape: StadiumBorder(),
+                      primary: Theme.of(context).primaryColor,
+                    ),
                     onPressed: () {
                       Navigator.pop(context);
                       Navigator.pushNamed(
@@ -73,7 +76,6 @@ class SponsorshipListScreen extends StatelessWidget {
                         fontSize: 18.0,
                       ),
                     ),
-                    color: Theme.of(context).primaryColor,
                   ),
                 ),
               ),
@@ -177,8 +179,10 @@ class SponsorshipListScreen extends StatelessWidget {
                                     ),
                                   ),
                                   TextButton(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 12.0,
+                                    style: TextButton.styleFrom(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0,
+                                      ),
                                     ),
                                     child: Row(
                                       textBaseline: TextBaseline.alphabetic,

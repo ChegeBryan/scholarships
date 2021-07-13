@@ -91,6 +91,10 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                     sponsorshipProvider.updatedStatus == Status.Updating
                 ? CircularProgressIndicator()
                 : TextButton(
+                    style: TextButton.styleFrom(
+                      primary: Theme.of(context).primaryColor,
+                      textStyle: TextStyle(color: Colors.white),
+                    ),
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         _formKey.currentState.save();
@@ -154,8 +158,6 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                       'Submit',
                       style: TextStyle(fontSize: 16.0),
                     ),
-                    textColor: Colors.white,
-                    color: Theme.of(context).primaryColor,
                   ),
           ]),
         ],

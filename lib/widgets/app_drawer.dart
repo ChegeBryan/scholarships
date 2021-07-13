@@ -127,16 +127,18 @@ class AppDrawer extends StatelessWidget {
                                 ),
                               );
                         },
-                        textColor: Colors.white,
-                        shape: StadiumBorder(),
-                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        style: TextButton.styleFrom(
+                          primary: Theme.of(context).primaryColor,
+                          shape: StadiumBorder(),
+                          textStyle: TextStyle(color: Colors.white),
+                          padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        ),
                         child: Text(
                           'Logout',
                           style: TextStyle(
                             fontSize: 18.0,
                           ),
                         ),
-                        color: Theme.of(context).primaryColor,
                       ),
                     ),
                   ],

@@ -36,7 +36,9 @@ class FormBottomActions extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            textColor: Theme.of(context).accentColor,
+            style: TextButton.styleFrom(
+              textStyle: TextStyle(color: Theme.of(context).accentColor),
+            ),
           ),
         ],
       ),

@@ -100,10 +100,13 @@ class _LoginFormState extends State<LoginForm> {
               : Container(
                   width: MediaQuery.of(context).size.width,
                   child: TextButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      primary: Theme.of(context).primaryColor,
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         final Future<Map<String, dynamic>> successMessage =
@@ -137,7 +140,6 @@ class _LoginFormState extends State<LoginForm> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    color: Theme.of(context).primaryColor,
                   ),
                 )
         ],
