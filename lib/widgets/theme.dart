@@ -5,10 +5,10 @@ class AppTheme {
     return ThemeData(
       primaryColor: _primaryColor,
       accentColor: _accentColor,
-      cursorColor: _primaryColor,
       fontFamily: 'Avenir',
       scaffoldBackgroundColor: _bgColor,
       backgroundColor: _bgColor,
+      textSelectionTheme: TextSelectionThemeData(cursorColor: _primaryColor),
     );
   }
 
@@ -17,8 +17,8 @@ class AppTheme {
       brightness: Brightness.dark,
       primaryColor: _primaryColor,
       accentColor: _accentColor,
-      cursorColor: _primaryColor,
       fontFamily: 'Avenir',
+      textSelectionTheme: TextSelectionThemeData(cursorColor: _primaryColor),
     );
   }
 
