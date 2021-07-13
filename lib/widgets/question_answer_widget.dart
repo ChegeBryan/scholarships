@@ -103,7 +103,10 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
                 children: <Widget>[
                   StyledText(
                     text: widget.answer,
-                    styles: {'bold': TextStyle(fontWeight: FontWeight.bold)},
+                    tags: {
+                      'bold': StyledTextTag(
+                          style: TextStyle(fontWeight: FontWeight.bold))
+                    },
                     style: TextStyle(
                       fontFamily: 'Avenir',
                       fontSize: 16.0,
