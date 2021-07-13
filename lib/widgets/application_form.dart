@@ -703,7 +703,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                               if (res['status']) {
                                 _showApplicationDetails(context, res['data']);
                               } else {
-                                Scaffold.of(context).showSnackBar(
+                                ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(res['errors']['error']
                                             .toString() +

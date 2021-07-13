@@ -198,7 +198,7 @@ class SponsorshipScreen extends StatelessWidget {
                                               snapshot.data[index].id)
                                           .then((response) {
                                         if (response['status']) {
-                                          Scaffold.of(context)
+                                          ScaffoldMessenger.of(context)
                                               .showSnackBar(SnackBar(
                                             content:
                                                 Text('Sponsorship deleted'),
@@ -206,7 +206,7 @@ class SponsorshipScreen extends StatelessWidget {
                                                 const Duration(seconds: 2),
                                           ));
                                         } else {
-                                          Scaffold.of(context)
+                                          ScaffoldMessenger.of(context)
                                               .showSnackBar(SnackBar(
                                             content: Text(
                                                 'Sponsorship has not been deleted'),

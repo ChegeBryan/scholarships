@@ -116,7 +116,7 @@ class _LoginFormState extends State<LoginForm> {
                             Navigator.pushReplacementNamed(
                                 context, '/sponsorships');
                           } else {
-                            Scaffold.of(context).showSnackBar(SnackBar(
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text(response['message']
                                         ['non_field_errors'][0]
                                     .toString()),

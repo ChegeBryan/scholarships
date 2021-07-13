@@ -100,7 +100,8 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                                   _name.text, _description.text, _id)
                               .then((response) {
                             if (response['status']) {
-                              Scaffold.of(context).showSnackBar(SnackBar(
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
                                 content: Text('Sponsorship updated'),
                                 duration: Duration(seconds: 2),
                               ));
@@ -110,7 +111,8 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                                     context, '/manage/sponsorships');
                               });
                             } else {
-                              Scaffold.of(context).showSnackBar(SnackBar(
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
                                 content: Text(response['message']["name"][0]),
                                 duration: Duration(seconds: 2),
                                 backgroundColor: Colors.red,
@@ -122,7 +124,8 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                               .addSponsorship(_name.text, _description.text)
                               .then((response) {
                             if (response['status']) {
-                              Scaffold.of(context).showSnackBar(SnackBar(
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
                                 content: Text('Sponsorship added'),
                                 duration: Duration(seconds: 2),
                               ));
@@ -132,7 +135,8 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                                     context, '/manage/sponsorships');
                               });
                             } else {
-                              Scaffold.of(context).showSnackBar(SnackBar(
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
                                 content: Text(response['message']["name"][0]),
                                 duration: Duration(seconds: 2),
                                 backgroundColor: Colors.red,
