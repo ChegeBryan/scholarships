@@ -1,10 +1,14 @@
 class Faq {
   final String question;
   final String answer;
-  final List images;
+  final List? images;
   final String category;
 
-  Faq({this.question, this.answer, this.images, this.category});
+  Faq(
+      {required this.question,
+      required this.answer,
+      this.images,
+      required this.category});
 
   Faq.fromJson(Map<String, dynamic> json)
       : question = json['question'],

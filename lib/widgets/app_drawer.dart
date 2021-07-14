@@ -81,7 +81,7 @@ class AppDrawer extends StatelessWidget {
                           title: Text('Sponsorships'),
                           onTap: () => Navigator.pushReplacementNamed(
                               context, '/sponsorships'),
-                          selected: ModalRoute.of(context).settings.name ==
+                          selected: ModalRoute.of(context)!.settings.name ==
                               '/sponsorships',
                         ),
                         Divider(),
@@ -90,7 +90,7 @@ class AppDrawer extends StatelessWidget {
                           title: Text('Manage Sponsorships'),
                           onTap: () => Navigator.pushReplacementNamed(
                               context, '/manage/sponsorships'),
-                          selected: ModalRoute.of(context).settings.name ==
+                          selected: ModalRoute.of(context)!.settings.name ==
                               '/manage/sponsorships',
                         ),
                         Divider(),
@@ -100,7 +100,7 @@ class AppDrawer extends StatelessWidget {
                           onTap: () =>
                               Navigator.pushReplacementNamed(context, '/faqs'),
                           selected:
-                              ModalRoute.of(context).settings.name == '/faqs',
+                              ModalRoute.of(context)!.settings.name == '/faqs',
                         ),
                         Divider(),
                         ListTile(
@@ -108,7 +108,7 @@ class AppDrawer extends StatelessWidget {
                           title: Text('Tickets'),
                           onTap: () => Navigator.pushReplacementNamed(
                               context, '/tickets'),
-                          selected: ModalRoute.of(context).settings.name ==
+                          selected: ModalRoute.of(context)!.settings.name ==
                               '/tickets',
                         ),
                       ],

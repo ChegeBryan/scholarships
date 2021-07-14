@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget {
   const AppBarWidget({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

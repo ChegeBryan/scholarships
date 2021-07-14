@@ -58,7 +58,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                 ),
                 validator: (value) {
-                  if (value.isEmpty) {
+                  if (value!.isEmpty) {
                     return 'Please enter username';
                   } else if (value.length < 3) {
                     return 'Username allows a minimum of 3 characters.';
@@ -97,7 +97,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                 ),
                 validator: (value) {
-                  if (value.isEmpty) {
+                  if (value!.isEmpty) {
                     return 'Please enter email';
                   } else if (!isEmail(value)) {
                     return 'Provide a valid email';
@@ -144,7 +144,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                 ),
                 validator: (value) {
-                  if (value.isEmpty) {
+                  if (value!.isEmpty) {
                     return 'Please enter password';
                   } else if (value.length < 8) {
                     return 'Password cannot be less than 8 Characters';
@@ -213,8 +213,8 @@ class _RegisterFormState extends State<RegisterForm> {
                       primary: Theme.of(context).primaryColor,
                     ),
                     onPressed: () {
-                      if (_formKey.currentState.validate()) {
-                        _formKey.currentState.save();
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
 
                         final Future<Map<String, dynamic>> successMessage =
                             auth.register(

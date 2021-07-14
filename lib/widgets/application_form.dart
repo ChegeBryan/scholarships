@@ -7,12 +7,12 @@ import 'package:provider/provider.dart';
 import 'package:validators/validators.dart';
 
 class ApplicationForm extends StatefulWidget {
-  final String name;
-  final int sponsorshipId;
-  final List<Sponsorship> sponsorships;
+  final String? name;
+  final int? sponsorshipId;
+  final List<Sponsorship>? sponsorships;
 
   const ApplicationForm({
-    Key key,
+    Key? key,
     this.name,
     this.sponsorshipId,
     this.sponsorships,
@@ -24,13 +24,13 @@ class ApplicationForm extends StatefulWidget {
 
 class _ApplicationFormState extends State<ApplicationForm> {
   final _formKey = GlobalKey<FormState>();
-  int _sponsorshipId;
-  String _sponsorshipName;
+  late int _sponsorshipId;
+  late String _sponsorshipName;
 
   @override
   void initState() {
-    _sponsorshipId = widget.sponsorshipId;
-    _sponsorshipName = widget.name.inCaps;
+    _sponsorshipId = widget.sponsorshipId!;
+    _sponsorshipName = widget.name!.inCaps;
     super.initState();
   }
 
@@ -45,7 +45,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
   }
 
   Future<void> _changeSponsorship() async {
-    Sponsorship sponsorship = await showDialog<Sponsorship>(
+    Sponsorship? sponsorship = await showDialog<Sponsorship>(
       context: context,
       builder: (BuildContext context) {
         return SimpleDialog(
@@ -59,7 +59,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
             ),
           ),
           children: <Widget>[
-            for (var sponsorship in widget.sponsorships)
+            for (var sponsorship in widget.sponsorships!)
               SimpleDialogOption(
                 onPressed: () {
                   Navigator.pop(context, sponsorship);
@@ -81,7 +81,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
     );
     if (sponsorship != null) {
       setState(() {
-        _sponsorshipId = sponsorship.id;
+        _sponsorshipId = sponsorship.id!;
         _sponsorshipName = sponsorship.name;
       });
     }
@@ -213,7 +213,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                           const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                     ),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value!.isEmpty) {
                         return 'Please provide first name';
                       }
                       return null;
@@ -244,7 +244,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                           const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                     ),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value!.isEmpty) {
                         return 'Please provide last name';
                       }
                       return null;
@@ -275,7 +275,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                           const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                     ),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value!.isEmpty) {
                         return 'Please provide phone number';
                       }
                       return null;
@@ -306,7 +306,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                           const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                     ),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value!.isEmpty) {
                         return 'Please provide your country';
                       }
                       return null;
@@ -337,7 +337,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                           const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                     ),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value!.isEmpty) {
                         return 'Please provide your city';
                       }
                       return null;
@@ -368,7 +368,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                           const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                     ),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value!.isEmpty) {
                         return 'Please provide postal code';
                       }
                       return null;
@@ -416,7 +416,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                           const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                     ),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value!.isEmpty) {
                         return 'Please provide your school';
                       }
                       return null;
@@ -447,7 +447,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                           const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                     ),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value!.isEmpty) {
                         return 'Please provide degree';
                       }
                       return null;
@@ -493,7 +493,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                               errorMaxLines: 2,
                             ),
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Please provide year';
                               } else if (int.tryParse(value) == null) {
                                 return 'Please provide an year value';
@@ -532,7 +532,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                               errorMaxLines: 2,
                             ),
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Please provide year';
                               } else if (int.tryParse(value) == null) {
                                 return 'Please provide an year value';
@@ -589,7 +589,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                           const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                     ),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value!.isEmpty) {
                         return 'Please provide cover letter';
                       } else if (!isURL(value)) {
                         return 'PLease provide a valid URL';
@@ -622,7 +622,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                           const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                     ),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value!.isEmpty) {
                         return 'Please provide birth certificate';
                       } else if (!isURL(value)) {
                         return 'Please provide a valid URL';
@@ -655,7 +655,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                           const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                     ),
                     validator: (value) {
-                      if (value.isEmpty) {
+                      if (value!.isEmpty) {
                         return 'Please provide national Id';
                       } else if (!isURL(value)) {
                         return 'Please provide a valid URL';
@@ -683,8 +683,8 @@ class _ApplicationFormState extends State<ApplicationForm> {
                           primary: Theme.of(context).primaryColor,
                         ),
                         onPressed: () {
-                          if (_formKey.currentState.validate()) {
-                            _formKey.currentState.save();
+                          if (_formKey.currentState!.validate()) {
+                            _formKey.currentState!.save();
                             Future<Map<String, dynamic>> response =
                                 application.addApplication(
                               sponsorshipId: _sponsorshipId.toString(),

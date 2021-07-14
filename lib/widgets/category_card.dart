@@ -8,7 +8,12 @@ class CategoryCard extends StatefulWidget {
   final bool isSelected;
   final VoidCallback onSelect;
 
-  CategoryCard({this.categoryName, this.index, this.isSelected, this.onSelect});
+  CategoryCard({
+    required this.categoryName,
+    required this.index,
+    required this.isSelected,
+    required this.onSelect,
+  });
 
   @override
   _CategoryCardState createState() => _CategoryCardState();

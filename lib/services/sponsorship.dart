@@ -12,30 +12,30 @@ import 'api.dart';
 enum Status { Added, Adding, NotAdded, Updated, Updating, NotUpdated }
 
 class SponsorshipProvider with ChangeNotifier {
-  Status addedStatus;
-  Status updatedStatus;
+  Status? addedStatus;
+  Status? updatedStatus;
 
-  UserProvider auth;
+  UserProvider? auth;
 
   SponsorshipProvider(this.auth);
 
   String sponsorshipUrl = ApiUrl.sponsorship;
 
   // get sponsorship list
-  Future<List<Sponsorship>> fetchSponsorships() async {
-    List sponsorshipsList;
+  Future<List<Sponsorship>?> fetchSponsorships() async {
+    List? sponsorshipsList;
 
     Response response = await get(
       Uri.parse(sponsorshipUrl),
       headers: {
         'Accept': 'application/json',
-        'Authorization': 'Bearer ${auth.user.token}',
+        'Authorization': 'Bearer ${auth!.user.token}',
       },
     );
 
     if (response.statusCode == 200) {
       sponsorshipsList = jsonDecode(response.body);
-      return sponsorshipsList
+      return sponsorshipsList!
           .map<Sponsorship>((json) => Sponsorship.fromJson(json))
           .toList();
     } else {
@@ -61,7 +61,7 @@ class SponsorshipProvider with ChangeNotifier {
       body: jsonEncode(data),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${auth.user.token}',
+        'Authorization': 'Bearer ${auth!.user.token}',
       },
     );
 
@@ -86,7 +86,7 @@ class SponsorshipProvider with ChangeNotifier {
       Uri.parse('$sponsorshipUrl$id/'),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${auth.user.token}',
+        'Authorization': 'Bearer ${auth!.user.token}',
       },
     );
 
@@ -118,7 +118,7 @@ class SponsorshipProvider with ChangeNotifier {
       body: jsonEncode(data),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${auth.user.token}',
+        'Authorization': 'Bearer ${auth!.user.token}',
       },
     );
 

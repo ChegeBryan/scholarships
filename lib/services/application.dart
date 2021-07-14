@@ -9,7 +9,7 @@ import 'package:http/http.dart';
 enum Status { Submitting, NotSubmitted, Submitted }
 
 class ApplicationProvider with ChangeNotifier {
-  UserProvider auth;
+  UserProvider? auth;
 
   ApplicationProvider(this.auth);
 
@@ -21,38 +21,38 @@ class ApplicationProvider with ChangeNotifier {
 
   //Save sponsorship application
   Future<Map<String, dynamic>> addApplication({
-    String sponsorshipId,
-    String firstName,
-    String lastName,
-    String mobile,
-    String country,
-    String city,
-    String schoolName,
-    String degree,
-    String coverLetter,
-    String start,
-    String to,
-    String postalCode,
-    String birthCertificate,
-    String nationalId,
+    String? sponsorshipId,
+    String? firstName,
+    String? lastName,
+    String? mobile,
+    String? country,
+    String? city,
+    String? schoolName,
+    String? degree,
+    String? coverLetter,
+    String? start,
+    String? to,
+    String? postalCode,
+    String? birthCertificate,
+    String? nationalId,
   }) async {
     var result;
 
     //serialize to JSON
     final Map<String, dynamic> data = Application(
-      firstName: firstName,
-      lastName: lastName,
-      mobile: mobile,
-      country: country,
-      city: city,
-      schoolName: schoolName,
-      degree: degree,
-      coverLetter: coverLetter,
-      start: start,
-      to: to,
-      postalCode: postalCode,
-      birthCertificate: birthCertificate,
-      nationalId: nationalId,
+      firstName: firstName!,
+      lastName: lastName!,
+      mobile: mobile!,
+      country: country!,
+      city: city!,
+      schoolName: schoolName!,
+      degree: degree!,
+      coverLetter: coverLetter!,
+      start: start!,
+      to: to!,
+      postalCode: postalCode!,
+      birthCertificate: birthCertificate!,
+      nationalId: nationalId!,
     ).toJson();
 
     _submissionStatus = Status.Submitting;
@@ -62,7 +62,7 @@ class ApplicationProvider with ChangeNotifier {
         body: jsonEncode(data),
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ${auth.user.token}',
+          'Authorization': 'Bearer ${auth!.user.token}',
         });
 
     if (response.statusCode == 201) {

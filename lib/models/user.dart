@@ -3,7 +3,7 @@ class User {
   String email;
   String token;
 
-  User({this.email, this.username, this.token});
+  User({required this.email, required this.username, required this.token});
 
   factory User.fromJson(Map<String, dynamic> responseData) {
     return User(

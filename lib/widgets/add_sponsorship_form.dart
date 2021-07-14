@@ -3,11 +3,11 @@ import 'package:geopro/services/sponsorship.dart';
 import 'package:provider/provider.dart';
 
 class AddSponsorshipForm extends StatefulWidget {
-  final String name;
-  final String description;
-  final int id;
+  final String? name;
+  final String? description;
+  final int? id;
 
-  AddSponsorshipForm({Key key, this.name, this.description, this.id})
+  AddSponsorshipForm({Key? key, this.name, this.description, this.id})
       : super(key: key);
 
   @override
@@ -17,9 +17,9 @@ class AddSponsorshipForm extends StatefulWidget {
 class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
   final _formKey = GlobalKey<FormState>();
 
-  TextEditingController _name;
-  TextEditingController _description;
-  int _id;
+  late TextEditingController _name;
+  late TextEditingController _description;
+  int? _id;
 
   Material buildTextInputField(TextEditingController controller, String label,
       String validatorErrorMessage, int minimumLines) {
@@ -39,7 +39,7 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
           focusedBorder: InputBorder.none,
         ),
         validator: (value) {
-          if (value.isEmpty) {
+          if (value!.isEmpty) {
             return validatorErrorMessage;
           }
           return null;
@@ -95,12 +95,12 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                       textStyle: TextStyle(color: Colors.white),
                     ),
                     onPressed: () {
-                      if (_formKey.currentState.validate()) {
-                        _formKey.currentState.save();
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
                         if (_id != null) {
                           sponsorshipProvider
                               .updateSponsorship(
-                                  _name.text, _description.text, _id)
+                                  _name.text, _description.text, _id!)
                               .then((response) {
                             if (response['status']) {
                               ScaffoldMessenger.of(context)

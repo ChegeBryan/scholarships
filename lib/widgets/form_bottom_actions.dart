@@ -6,10 +6,10 @@ class FormBottomActions extends StatelessWidget {
   final Function action;
 
   const FormBottomActions({
-    Key key,
-    @required this.message,
-    @required this.action,
-    @required this.actionText,
+    Key? key,
+    required this.message,
+    required this.action,
+    required this.actionText,
   });
 
   @override

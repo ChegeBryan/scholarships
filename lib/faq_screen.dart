@@ -15,9 +15,9 @@ class FaqScreen extends StatefulWidget {
 class _FaqScreenState extends State<FaqScreen> {
   List<FaqCategory> categories = FaqCategoryList().getFaqCategories();
 
-  List<Faq> faqs;
+  late List<Faq> faqs;
 
-  int currentSelectedCategory;
+  int? currentSelectedCategory;
   bool isSelected = false;
 
   @override

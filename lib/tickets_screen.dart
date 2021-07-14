@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:date_range_picker/date_range_picker.dart' as DateRangePicker;
 
 class TicketsScreen extends StatefulWidget {
-  const TicketsScreen({Key key}) : super(key: key);
+  const TicketsScreen({Key? key}) : super(key: key);
 
   @override
   _TicketsScreenState createState() => _TicketsScreenState();
@@ -85,7 +85,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
 }
 
 class SliverFiltersHeader extends StatelessWidget {
-  SliverFiltersHeader({Key key}) : super(key: key);
+  SliverFiltersHeader({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +114,7 @@ class SliverFiltersHeader extends StatelessWidget {
                       decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.search,
-                          color: Theme.of(context).textTheme.bodyText1.color,
+                          color: Theme.of(context).textTheme.bodyText1?.color,
                         ),
                         hintText: 'Search by Technician or Ticket Number',
                         hintStyle: TextStyle(
@@ -140,7 +140,7 @@ class SliverFiltersHeader extends StatelessWidget {
 
 class DateRangePickerButton extends StatefulWidget {
   const DateRangePickerButton({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -205,9 +205,9 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   final Widget child;
 
   SliverAppBarDelegate({
-    @required this.minHeight,
-    @required this.maxHeight,
-    @required this.child,
+    required this.minHeight,
+    required this.maxHeight,
+    required this.child,
   });
 
   @override

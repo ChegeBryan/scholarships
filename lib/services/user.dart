@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:geopro/models/user.dart';
 
 class UserProvider with ChangeNotifier {
-  User _user = User();
+  late User _user;
 
   User get user => _user;
 

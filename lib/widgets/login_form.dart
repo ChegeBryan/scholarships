@@ -51,7 +51,7 @@ class _LoginFormState extends State<LoginForm> {
                       const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                 ),
                 validator: (value) =>
-                    value.isEmpty ? 'Please enter email' : null,
+                    value!.isEmpty ? 'Please enter email' : null,
               ),
             ),
           ),
@@ -87,7 +87,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
                 validator: (value) =>
-                    value.isEmpty ? 'Please enter password' : null,
+                    value!.isEmpty ? 'Please enter password' : null,
               ),
             ),
           ),
@@ -107,7 +107,7 @@ class _LoginFormState extends State<LoginForm> {
                       primary: Theme.of(context).primaryColor,
                     ),
                     onPressed: () {
-                      if (_formKey.currentState.validate()) {
+                      if (_formKey.currentState!.validate()) {
                         final Future<Map<String, dynamic>> successMessage =
                             auth.login(_email.text, _password.text);
 
