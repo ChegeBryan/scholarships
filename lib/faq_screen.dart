@@ -181,7 +181,7 @@ class _FaqScreenState extends State<FaqScreen> {
                 return QuestionAnswerWidget(
                   question: faqs[index].question,
                   answer: faqs[index].answer,
-                  screenshots: faqs[index].images,
+                  screenshots: faqs[index].images as List<String>,
                 );
               },
               childCount: faqs.length,

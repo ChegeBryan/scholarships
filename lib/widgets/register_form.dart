@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:geopro/helpers/validators.dart';
+// import 'package:geopro/helpers/validators.dart';
 import 'package:geopro/services/auth.dart';
 import 'package:geopro/services/user.dart';
 import 'package:provider/provider.dart';
+import 'package:validators/validators.dart';
 
 class RegisterForm extends StatefulWidget {
   @override

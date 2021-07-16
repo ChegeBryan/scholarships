@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class FormBottomActions extends StatelessWidget {
   final String message;
   final String actionText;
-  final Function action;
+  final VoidCallback action;
 
   const FormBottomActions({
     Key? key,

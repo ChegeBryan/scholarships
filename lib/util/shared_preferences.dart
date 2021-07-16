@@ -5,8 +5,8 @@ class UserPrefences {
   Future<void> saveUser(User user) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    prefs.setString('token', user.token);
-    prefs.setString('email', user.email);
+    prefs.setString('token', user.token!);
+    prefs.setString('email', user.email!);
   }
 
   Future<User> getUser() async {
@@ -15,7 +15,7 @@ class UserPrefences {
     String? email = prefs.getString('email');
     String? token = prefs.getString('token');
 
-    return User(email: email!, token: token!, username: '');
+    return User(email: email, token: token, username: '');
   }
 
   Future<void> removeUser() async {

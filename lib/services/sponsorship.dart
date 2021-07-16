@@ -22,8 +22,8 @@ class SponsorshipProvider with ChangeNotifier {
   String sponsorshipUrl = ApiUrl.sponsorship;
 
   // get sponsorship list
-  Future<List<Sponsorship>?> fetchSponsorships() async {
-    List? sponsorshipsList;
+  Future<List<Sponsorship>> fetchSponsorships() async {
+    List sponsorshipsList;
 
     Response response = await get(
       Uri.parse(sponsorshipUrl),
@@ -35,11 +35,11 @@ class SponsorshipProvider with ChangeNotifier {
 
     if (response.statusCode == 200) {
       sponsorshipsList = jsonDecode(response.body);
-      return sponsorshipsList!
+      return sponsorshipsList
           .map<Sponsorship>((json) => Sponsorship.fromJson(json))
           .toList();
     } else {
-      return sponsorshipsList;
+      throw Exception('Couldn\'t load sponsorships.');
     }
   }
 

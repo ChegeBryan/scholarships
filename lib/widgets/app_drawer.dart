@@ -48,7 +48,7 @@ class AppDrawer extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              Provider.of<UserProvider>(context).user.email,
+                              Provider.of<UserProvider>(context).user.email!,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontStyle: FontStyle.italic,

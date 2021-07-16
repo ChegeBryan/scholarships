@@ -11,7 +11,7 @@ class ScreenshotsViewerWrapper extends StatefulWidget {
     this.initialIndex = 0,
     required this.screenshots,
     this.scrollDirection,
-  }) : pageController = PageController(initialPage: initialIndex);
+  }) : pageController = PageController(initialPage: initialIndex!);
 
   final LoadingBuilder? loadingBuilder;
   final BoxDecoration? backgroundDecoration;
