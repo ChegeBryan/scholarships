@@ -6,7 +6,7 @@ import 'package:transparent_image/transparent_image.dart';
 class QuestionAnswerWidget extends StatefulWidget {
   final String question;
   final String answer;
-  final List<String>? screenshots;
+  final List? screenshots;
 
   const QuestionAnswerWidget({
     Key? key,
@@ -38,7 +38,7 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
       context,
       MaterialPageRoute(
         builder: (context) => ScreenshotsViewerWrapper(
-          screenshots: widget.screenshots!,
+          screenshots: widget.screenshots! as List<String>,
           backgroundDecoration: const BoxDecoration(
             color: Colors.black,
           ),
@@ -51,8 +51,6 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.screenshots);
-
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xFFF5F4F4),
