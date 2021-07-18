@@ -211,7 +211,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
-                      primary: Theme.of(context).primaryColor,
+                      backgroundColor: Theme.of(context).primaryColor,
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {

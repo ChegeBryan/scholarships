@@ -9,6 +9,7 @@ class AppTheme {
       scaffoldBackgroundColor: _bgColor,
       backgroundColor: _bgColor,
       textSelectionTheme: TextSelectionThemeData(cursorColor: _primaryColor),
+      visualDensity: VisualDensity.adaptivePlatformDensity,
     );
   }
 
@@ -19,6 +20,7 @@ class AppTheme {
       accentColor: _accentColor,
       fontFamily: 'Avenir',
       textSelectionTheme: TextSelectionThemeData(cursorColor: _primaryColor),
+      visualDensity: VisualDensity.adaptivePlatformDensity,
     );
   }
 

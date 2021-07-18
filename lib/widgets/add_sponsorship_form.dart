@@ -91,8 +91,7 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                 ? CircularProgressIndicator()
                 : TextButton(
                     style: TextButton.styleFrom(
-                      primary: Theme.of(context).primaryColor,
-                      textStyle: TextStyle(color: Colors.white),
+                      backgroundColor: Theme.of(context).primaryColor,
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -151,7 +150,10 @@ class _AddSponsorshipFormState extends State<AddSponsorshipForm> {
                     },
                     child: Text(
                       'Submit',
-                      style: TextStyle(fontSize: 16.0),
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
           ]),
