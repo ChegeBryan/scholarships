@@ -10,7 +10,6 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
-  bool _autovalidate = false;
   Map<String, dynamic> errors = {};
   bool _obscureText = true;
 
@@ -30,7 +29,7 @@ class _LoginFormState extends State<LoginForm> {
 
     return Form(
       key: _formKey,
-      autovalidate: _autovalidate,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: <Widget>[
           ClipRRect(
@@ -52,7 +51,7 @@ class _LoginFormState extends State<LoginForm> {
                       const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                 ),
                 validator: (value) =>
-                    value.isEmpty ? 'Please enter email' : null,
+                    value!.isEmpty ? 'Please enter email' : null,
               ),
             ),
           ),
@@ -88,7 +87,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
                 validator: (value) =>
-                    value.isEmpty ? 'Please enter password' : null,
+                    value!.isEmpty ? 'Please enter password' : null,
               ),
             ),
           ),
@@ -99,13 +98,16 @@ class _LoginFormState extends State<LoginForm> {
               ? CircularProgressIndicator()
               : Container(
                   width: MediaQuery.of(context).size.width,
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      backgroundColor: Theme.of(context).primaryColor,
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
                     onPressed: () {
-                      if (_formKey.currentState.validate()) {
+                      if (_formKey.currentState!.validate()) {
                         final Future<Map<String, dynamic>> successMessage =
                             auth.login(_email.text, _password.text);
 
@@ -116,16 +118,12 @@ class _LoginFormState extends State<LoginForm> {
                             Navigator.pushReplacementNamed(
                                 context, '/sponsorships');
                           } else {
-                            Scaffold.of(context).showSnackBar(SnackBar(
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text(response['message']
                                         ['non_field_errors'][0]
                                     .toString()),
                                 backgroundColor: Colors.red));
                           }
-                        });
-                      } else {
-                        setState(() {
-                          _autovalidate = true;
                         });
                       }
                     },
@@ -137,7 +135,6 @@ class _LoginFormState extends State<LoginForm> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    color: Theme.of(context).primaryColor,
                   ),
                 )
         ],

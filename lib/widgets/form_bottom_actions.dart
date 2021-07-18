@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class FormBottomActions extends StatelessWidget {
   final String message;
   final String actionText;
-  final Function action;
+  final VoidCallback action;
 
   const FormBottomActions({
-    Key key,
-    @required this.message,
-    @required this.action,
-    @required this.actionText,
+    Key? key,
+    required this.message,
+    required this.action,
+    required this.actionText,
   });
 
   @override
@@ -27,16 +27,16 @@ class FormBottomActions extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-          FlatButton(
+          TextButton(
             onPressed: action,
             child: Text(
               actionText,
               style: TextStyle(
+                color: Theme.of(context).accentColor,
                 fontSize: 16.0,
                 fontWeight: FontWeight.w700,
               ),
             ),
-            textColor: Theme.of(context).accentColor,
           ),
         ],
       ),

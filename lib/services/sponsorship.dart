@@ -12,10 +12,10 @@ import 'api.dart';
 enum Status { Added, Adding, NotAdded, Updated, Updating, NotUpdated }
 
 class SponsorshipProvider with ChangeNotifier {
-  Status addedStatus;
-  Status updatedStatus;
+  Status? addedStatus;
+  Status? updatedStatus;
 
-  UserProvider auth;
+  UserProvider? auth;
 
   SponsorshipProvider(this.auth);
 
@@ -26,10 +26,10 @@ class SponsorshipProvider with ChangeNotifier {
     List sponsorshipsList;
 
     Response response = await get(
-      sponsorshipUrl,
+      Uri.parse(sponsorshipUrl),
       headers: {
         'Accept': 'application/json',
-        'Authorization': 'Bearer ${auth.user.token}',
+        'Authorization': 'Bearer ${auth!.user.token}',
       },
     );
 
@@ -39,7 +39,7 @@ class SponsorshipProvider with ChangeNotifier {
           .map<Sponsorship>((json) => Sponsorship.fromJson(json))
           .toList();
     } else {
-      return sponsorshipsList;
+      throw Exception('Couldn\'t load sponsorships.');
     }
   }
 
@@ -57,11 +57,11 @@ class SponsorshipProvider with ChangeNotifier {
     notifyListeners();
 
     Response response = await post(
-      sponsorshipUrl,
+      Uri.parse(sponsorshipUrl),
       body: jsonEncode(data),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${auth.user.token}',
+        'Authorization': 'Bearer ${auth!.user.token}',
       },
     );
 
@@ -83,10 +83,10 @@ class SponsorshipProvider with ChangeNotifier {
     var result;
 
     Response response = await delete(
-      '$sponsorshipUrl$id/',
+      Uri.parse('$sponsorshipUrl$id/'),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${auth.user.token}',
+        'Authorization': 'Bearer ${auth!.user.token}',
       },
     );
 
@@ -114,11 +114,11 @@ class SponsorshipProvider with ChangeNotifier {
     notifyListeners();
 
     Response response = await put(
-      '$sponsorshipUrl$id/',
+      Uri.parse('$sponsorshipUrl$id/'),
       body: jsonEncode(data),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${auth.user.token}',
+        'Authorization': 'Bearer ${auth!.user.token}',
       },
     );
 

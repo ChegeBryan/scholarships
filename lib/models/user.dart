@@ -1,7 +1,7 @@
 class User {
-  String username;
-  String email;
-  String token;
+  String? username;
+  String? email;
+  String? token;
 
   User({this.email, this.username, this.token});
 

@@ -4,8 +4,11 @@ class ApplicationDetailInfo extends StatelessWidget {
   final String detailFor;
   final String detailText;
 
-  const ApplicationDetailInfo({Key key, this.detailFor, this.detailText})
-      : super(key: key);
+  const ApplicationDetailInfo({
+    Key? key,
+    required this.detailFor,
+    required this.detailText,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -48,7 +48,7 @@ class AppDrawer extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              Provider.of<UserProvider>(context).user.email,
+                              Provider.of<UserProvider>(context).user.email!,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontStyle: FontStyle.italic,
@@ -81,7 +81,7 @@ class AppDrawer extends StatelessWidget {
                           title: Text('Sponsorships'),
                           onTap: () => Navigator.pushReplacementNamed(
                               context, '/sponsorships'),
-                          selected: ModalRoute.of(context).settings.name ==
+                          selected: ModalRoute.of(context)!.settings.name ==
                               '/sponsorships',
                         ),
                         Divider(),
@@ -90,7 +90,7 @@ class AppDrawer extends StatelessWidget {
                           title: Text('Manage Sponsorships'),
                           onTap: () => Navigator.pushReplacementNamed(
                               context, '/manage/sponsorships'),
-                          selected: ModalRoute.of(context).settings.name ==
+                          selected: ModalRoute.of(context)!.settings.name ==
                               '/manage/sponsorships',
                         ),
                         Divider(),
@@ -100,7 +100,7 @@ class AppDrawer extends StatelessWidget {
                           onTap: () =>
                               Navigator.pushReplacementNamed(context, '/faqs'),
                           selected:
-                              ModalRoute.of(context).settings.name == '/faqs',
+                              ModalRoute.of(context)!.settings.name == '/faqs',
                         ),
                         Divider(),
                         ListTile(
@@ -108,7 +108,7 @@ class AppDrawer extends StatelessWidget {
                           title: Text('Tickets'),
                           onTap: () => Navigator.pushReplacementNamed(
                               context, '/tickets'),
-                          selected: ModalRoute.of(context).settings.name ==
+                          selected: ModalRoute.of(context)!.settings.name ==
                               '/tickets',
                         ),
                       ],
@@ -116,7 +116,7 @@ class AppDrawer extends StatelessWidget {
                     Container(
                       width: MediaQuery.of(context).size.width * .7,
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
-                      child: FlatButton(
+                      child: TextButton(
                         onPressed: () {
                           // clear user data from local storage
                           UserPrefences().removeUser().then(
@@ -127,16 +127,18 @@ class AppDrawer extends StatelessWidget {
                                 ),
                               );
                         },
-                        textColor: Colors.white,
-                        shape: StadiumBorder(),
-                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        style: TextButton.styleFrom(
+                          backgroundColor: Theme.of(context).primaryColor,
+                          shape: StadiumBorder(),
+                          primary: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        ),
                         child: Text(
                           'Logout',
                           style: TextStyle(
                             fontSize: 18.0,
                           ),
                         ),
-                        color: Theme.of(context).primaryColor,
                       ),
                     ),
                   ],

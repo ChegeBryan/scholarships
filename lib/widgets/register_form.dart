@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:geopro/helpers/validators.dart';
+// import 'package:geopro/helpers/validators.dart';
 import 'package:geopro/services/auth.dart';
 import 'package:geopro/services/user.dart';
 import 'package:provider/provider.dart';
+import 'package:validators/validators.dart';
 
 class RegisterForm extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class RegisterForm extends StatefulWidget {
 
 class _RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
-  bool _autovalidate = false;
+
   bool _obscureText = true;
 
   Map<String, dynamic> errors = {};
@@ -36,7 +37,7 @@ class _RegisterFormState extends State<RegisterForm> {
 
     return Form(
       key: _formKey,
-      autovalidate: _autovalidate,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: <Widget>[
           ClipRRect(
@@ -58,7 +59,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                 ),
                 validator: (value) {
-                  if (value.isEmpty) {
+                  if (value!.isEmpty) {
                     return 'Please enter username';
                   } else if (value.length < 3) {
                     return 'Username allows a minimum of 3 characters.';
@@ -97,7 +98,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                 ),
                 validator: (value) {
-                  if (value.isEmpty) {
+                  if (value!.isEmpty) {
                     return 'Please enter email';
                   } else if (!isEmail(value)) {
                     return 'Provide a valid email';
@@ -144,7 +145,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       const EdgeInsets.fromLTRB(10.0, 8.0, 10.0, 10.0),
                 ),
                 validator: (value) {
-                  if (value.isEmpty) {
+                  if (value!.isEmpty) {
                     return 'Please enter password';
                   } else if (value.length < 8) {
                     return 'Password cannot be less than 8 Characters';
@@ -204,14 +205,17 @@ class _RegisterFormState extends State<RegisterForm> {
               ? CircularProgressIndicator()
               : Container(
                   width: MediaQuery.of(context).size.width,
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      backgroundColor: Theme.of(context).primaryColor,
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
                     onPressed: () {
-                      if (_formKey.currentState.validate()) {
-                        _formKey.currentState.save();
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
 
                         final Future<Map<String, dynamic>> successMessage =
                             auth.register(
@@ -235,10 +239,6 @@ class _RegisterFormState extends State<RegisterForm> {
                             });
                           }
                         });
-                      } else {
-                        setState(() {
-                          _autovalidate = true;
-                        });
                       }
                     },
                     child: Text(
@@ -249,7 +249,6 @@ class _RegisterFormState extends State<RegisterForm> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    color: Theme.of(context).primaryColor,
                   ),
                 ),
         ],

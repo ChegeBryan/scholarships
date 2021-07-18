@@ -1,7 +1,7 @@
 class Sponsorship {
   String name;
   String description;
-  int id;
+  int? id;
 
   Sponsorship(this.name, this.description, [this.id]);
 

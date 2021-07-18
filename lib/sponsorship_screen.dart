@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geopro/models/sponsorship.dart';
 import 'package:geopro/services/sponsorship.dart';
 import 'package:geopro/widgets/app_drawer.dart';
 import 'package:provider/provider.dart';
@@ -70,9 +71,9 @@ class SponsorshipScreen extends StatelessWidget {
       drawer: AppDrawer(),
       body: FutureBuilder(
         future: Provider.of<SponsorshipProvider>(context).fetchSponsorships(),
-        builder: (context, snapshot) {
+        builder: (context, AsyncSnapshot<List<Sponsorship>> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            if (!snapshot.hasData || snapshot.data.isEmpty) {
+            if (!snapshot.hasData || snapshot.data!.isEmpty) {
               return Center(
                 child: Text('No sponsorships available'),
               );
@@ -81,7 +82,7 @@ class SponsorshipScreen extends StatelessWidget {
               child: ListView.builder(
                 shrinkWrap: true,
                 padding: EdgeInsets.all(4),
-                itemCount: snapshot.data.length,
+                itemCount: snapshot.data!.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     margin: const EdgeInsets.all(8.0),
@@ -118,7 +119,7 @@ class SponsorshipScreen extends StatelessWidget {
                                         top: 12.0,
                                       ),
                                       child: Text(
-                                        snapshot.data[index].name.toString(),
+                                        snapshot.data![index].name.toString(),
                                         style: TextStyle(
                                           color: Theme.of(context).primaryColor,
                                           fontSize: 20.0,
@@ -132,7 +133,7 @@ class SponsorshipScreen extends StatelessWidget {
                                     width:
                                         MediaQuery.of(context).size.width * 0.6,
                                     child: Text(
-                                      snapshot.data[index].description,
+                                      snapshot.data![index].description,
                                       softWrap: true,
                                       maxLines: 3,
                                       overflow: TextOverflow.ellipsis,
@@ -145,9 +146,11 @@ class SponsorshipScreen extends StatelessWidget {
                                   SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width * 0.6,
-                                    child: FlatButton(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 12.0,
+                                    child: TextButton(
+                                      style: TextButton.styleFrom(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 12.0,
+                                        ),
                                       ),
                                       child: Row(
                                         textBaseline: TextBaseline.alphabetic,
@@ -183,10 +186,10 @@ class SponsorshipScreen extends StatelessWidget {
                                           context,
                                           '/addSponsorship',
                                           arguments: {
-                                            'name': snapshot.data[index].name,
+                                            'name': snapshot.data![index].name,
                                             'description': snapshot
-                                                .data[index].description,
-                                            'id': snapshot.data[index].id
+                                                .data![index].description,
+                                            'id': snapshot.data![index].id
                                           },
                                         );
                                       }),
@@ -195,10 +198,10 @@ class SponsorshipScreen extends StatelessWidget {
                                     onPressed: () {
                                       sponsorshipProvider
                                           .deleteSponsorship(
-                                              snapshot.data[index].id)
+                                              snapshot.data![index].id!)
                                           .then((response) {
                                         if (response['status']) {
-                                          Scaffold.of(context)
+                                          ScaffoldMessenger.of(context)
                                               .showSnackBar(SnackBar(
                                             content:
                                                 Text('Sponsorship deleted'),
@@ -206,7 +209,7 @@ class SponsorshipScreen extends StatelessWidget {
                                                 const Duration(seconds: 2),
                                           ));
                                         } else {
-                                          Scaffold.of(context)
+                                          ScaffoldMessenger.of(context)
                                               .showSnackBar(SnackBar(
                                             content: Text(
                                                 'Sponsorship has not been deleted'),

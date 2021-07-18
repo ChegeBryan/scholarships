@@ -15,9 +15,9 @@ class FaqScreen extends StatefulWidget {
 class _FaqScreenState extends State<FaqScreen> {
   List<FaqCategory> categories = FaqCategoryList().getFaqCategories();
 
-  List<Faq> faqs;
+  late List<Faq> faqs;
 
-  int currentSelectedCategory;
+  int? currentSelectedCategory;
   bool isSelected = false;
 
   @override
@@ -27,10 +27,10 @@ class _FaqScreenState extends State<FaqScreen> {
   }
 
   void filterByQuestions(String query) {
-    List<Faq> startingSearchList = List<Faq>();
+    List<Faq> startingSearchList = [];
     startingSearchList.addAll(faqs);
     if (query.isNotEmpty) {
-      List<Faq> filteredListData = List<Faq>();
+      List<Faq> filteredListData = [];
       startingSearchList.forEach((item) {
         if (item.question.toLowerCase().contains(query.toLowerCase())) {
           filteredListData.add(item);

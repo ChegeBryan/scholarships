@@ -9,18 +9,18 @@ class ScreenshotsViewerWrapper extends StatefulWidget {
     this.minScale,
     this.maxScale,
     this.initialIndex = 0,
-    @required this.screenshots,
+    required this.screenshots,
     this.scrollDirection,
-  }) : pageController = PageController(initialPage: initialIndex);
+  }) : pageController = PageController(initialPage: initialIndex!);
 
-  final LoadingBuilder loadingBuilder;
-  final BoxDecoration backgroundDecoration;
+  final LoadingBuilder? loadingBuilder;
+  final BoxDecoration? backgroundDecoration;
   final dynamic minScale;
   final dynamic maxScale;
-  final int initialIndex;
-  final PageController pageController;
+  final int? initialIndex;
+  final PageController? pageController;
   final List<String> screenshots;
-  final Axis scrollDirection;
+  final Axis? scrollDirection;
 
   @override
   _ScreenshotsViewerWrapperState createState() =>
@@ -28,11 +28,11 @@ class ScreenshotsViewerWrapper extends StatefulWidget {
 }
 
 class _ScreenshotsViewerWrapperState extends State<ScreenshotsViewerWrapper> {
-  int currentIndex;
+  late int currentIndex;
 
   @override
   void initState() {
-    currentIndex = widget.initialIndex;
+    currentIndex = widget.initialIndex!;
     super.initState();
   }
 
@@ -61,7 +61,7 @@ class _ScreenshotsViewerWrapperState extends State<ScreenshotsViewerWrapper> {
               backgroundDecoration: widget.backgroundDecoration,
               pageController: widget.pageController,
               onPageChanged: onPageChanged,
-              scrollDirection: widget.scrollDirection,
+              scrollDirection: widget.scrollDirection!,
             ),
             Container(
               padding: const EdgeInsets.all(20.0),

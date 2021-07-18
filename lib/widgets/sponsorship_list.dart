@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geopro/models/sponsorship.dart';
 import 'package:geopro/services/sponsorship.dart';
 import 'package:geopro/widgets/app_drawer.dart';
 import 'package:geopro/widgets/appbar_widget.dart';
@@ -51,10 +52,12 @@ class SponsorshipListScreen extends StatelessWidget {
               Align(
                 child: Container(
                   width: MediaQuery.of(context).size.width * .75,
-                  child: FlatButton(
-                    textColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    shape: StadiumBorder(),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      shape: StadiumBorder(),
+                      backgroundColor: Theme.of(context).primaryColor,
+                    ),
                     onPressed: () {
                       Navigator.pop(context);
                       Navigator.pushNamed(
@@ -71,9 +74,9 @@ class SponsorshipListScreen extends StatelessWidget {
                       'Apply Now',
                       style: TextStyle(
                         fontSize: 18.0,
+                        color: Colors.white,
                       ),
                     ),
-                    color: Theme.of(context).primaryColor,
                   ),
                 ),
               ),
@@ -96,9 +99,9 @@ class SponsorshipListScreen extends StatelessWidget {
       drawer: AppDrawer(),
       body: FutureBuilder(
         future: Provider.of<SponsorshipProvider>(context).fetchSponsorships(),
-        builder: (context, snapshot) {
+        builder: (context, AsyncSnapshot<List<Sponsorship>> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            if (!snapshot.hasData || snapshot.data.isEmpty) {
+            if (!snapshot.hasData || snapshot.data!.isEmpty) {
               return CustomScrollView(
                 slivers: <Widget>[
                   AppBarWidget(),
@@ -155,7 +158,7 @@ class SponsorshipListScreen extends StatelessWidget {
                                       top: 12.0,
                                     ),
                                     child: Text(
-                                      snapshot.data[index].name
+                                      snapshot.data![index].name
                                           .toString()
                                           .inCaps,
                                       style: TextStyle(
@@ -167,7 +170,7 @@ class SponsorshipListScreen extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    snapshot.data[index].description,
+                                    snapshot.data![index].description,
                                     softWrap: true,
                                     maxLines: 3,
                                     overflow: TextOverflow.ellipsis,
@@ -176,9 +179,11 @@ class SponsorshipListScreen extends StatelessWidget {
                                       fontSize: 18.0,
                                     ),
                                   ),
-                                  FlatButton(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 12.0,
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 12.0,
+                                      ),
                                     ),
                                     child: Row(
                                       textBaseline: TextBaseline.alphabetic,
@@ -207,7 +212,7 @@ class SponsorshipListScreen extends StatelessWidget {
                         ),
                       );
                     },
-                    childCount: snapshot.data.length,
+                    childCount: snapshot.data!.length,
                   ),
                 )
               ],

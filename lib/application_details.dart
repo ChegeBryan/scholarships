@@ -4,7 +4,7 @@ import 'package:geopro/widgets/application_detail_info.dart';
 class ApplicationDetails extends StatelessWidget {
   final Map<String, dynamic> data;
 
-  const ApplicationDetails({Key key, this.data}) : super(key: key);
+  const ApplicationDetails({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

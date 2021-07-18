@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geopro/apply_screen.dart';
 import 'package:geopro/faq_screen.dart';
 import 'package:geopro/login.dart';
+import 'package:geopro/models/user.dart';
 import 'package:geopro/register.dart';
 import 'package:geopro/services/application.dart';
 import 'package:geopro/services/auth.dart';
@@ -9,7 +10,7 @@ import 'package:geopro/services/sponsorship.dart';
 import 'package:geopro/services/user.dart';
 import 'package:geopro/sponsorship_screen.dart';
 import 'package:geopro/add_sponsorship_screen.dart';
-import 'package:geopro/tickets_screen.dart';
+//import 'package:geopro/tickets_screen.dart';
 import 'package:geopro/util/shared_preferences.dart';
 import 'package:geopro/widgets/sponsorship_list.dart';
 import 'package:geopro/widgets/theme.dart';
@@ -44,9 +45,9 @@ class MyApp extends StatelessWidget {
         darkTheme: AppTheme.dark(),
         home: FutureBuilder(
           future: UserPrefences().getUser(),
-          builder: (context, snapshot) {
+          builder: (context, AsyncSnapshot<User> snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
-              if (snapshot.data.token == null) {
+              if (snapshot.data!.token == null) {
                 return LoginScreen();
               }
               Provider.of<UserProvider>(context).setUser(snapshot.data);
@@ -65,7 +66,7 @@ class MyApp extends StatelessWidget {
           '/manage/sponsorships': (context) => SponsorshipScreen(),
           '/apply': (context) => ApplyScreen(),
           '/faqs': (context) => FaqScreen(),
-          '/tickets': (context) => TicketsScreen(),
+          //'/tickets': (context) => TicketsScreen(),
         },
       ),
     );

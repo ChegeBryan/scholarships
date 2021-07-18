@@ -6,12 +6,12 @@ import 'package:transparent_image/transparent_image.dart';
 class QuestionAnswerWidget extends StatefulWidget {
   final String question;
   final String answer;
-  final List screenshots;
+  final List? screenshots;
 
   const QuestionAnswerWidget({
-    Key key,
-    @required this.question,
-    @required this.answer,
+    Key? key,
+    required this.question,
+    required this.answer,
     this.screenshots,
   }) : super(key: key);
 
@@ -38,7 +38,7 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
       context,
       MaterialPageRoute(
         builder: (context) => ScreenshotsViewerWrapper(
-          screenshots: widget.screenshots,
+          screenshots: widget.screenshots! as List<String>,
           backgroundDecoration: const BoxDecoration(
             color: Colors.black,
           ),
@@ -51,8 +51,6 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.screenshots);
-
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xFFF5F4F4),
@@ -103,7 +101,10 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
                 children: <Widget>[
                   StyledText(
                     text: widget.answer,
-                    styles: {'bold': TextStyle(fontWeight: FontWeight.bold)},
+                    tags: {
+                      'bold': StyledTextTag(
+                          style: TextStyle(fontWeight: FontWeight.bold))
+                    },
                     style: TextStyle(
                       fontFamily: 'Avenir',
                       fontSize: 16.0,
@@ -111,7 +112,7 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
                     ),
                     newLineAsBreaks: true,
                   ),
-                  if (widget.screenshots.isNotEmpty)
+                  if (widget.screenshots!.isNotEmpty)
                     Container(
                       height: 120.0,
                       padding: const EdgeInsets.only(top: 16.0),
@@ -135,7 +136,7 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
                                       clipBehavior: Clip.antiAlias,
                                       child: FadeInImage.memoryNetwork(
                                         placeholder: kTransparentImage,
-                                        image: widget.screenshots[index],
+                                        image: widget.screenshots![index],
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -145,7 +146,7 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
                             ),
                           ),
                         ),
-                        itemCount: widget.screenshots.length,
+                        itemCount: widget.screenshots!.length,
                       ),
                     ),
                 ],
